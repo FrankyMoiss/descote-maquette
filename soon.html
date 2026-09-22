@@ -324,6 +324,37 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .btn.solid:hover{background:var(--red-deep);border-color:var(--red-deep)}
 .sent{display:none;padding:16px 20px;background:var(--paper-soft);border-left:3px solid var(--red);color:var(--ink);font-size:15px}
 .form.is-sent .sent{display:block;grid-column:1 / -1}
+/* carte monde */
+.map-wrap{position:relative;width:calc(100% + 2 * var(--pad));margin:0 calc(-1 * var(--pad)) 8px;background:var(--paper-soft);border-radius:var(--r) var(--r) 0 0;overflow:hidden}
+.worldmap{display:block;width:100%;height:auto}
+.worldmap .c{fill:#DDDCD9;stroke:#fff;stroke-width:.6;transition:fill .25s}
+.worldmap .c.on{fill:#2E2E2C}
+.worldmap .c.repair{fill:var(--red)}
+.worldmap .m{stroke:#fff;stroke-width:1.4}
+.worldmap .m.main{fill:var(--red);stroke-width:2}
+.worldmap .m.office,.worldmap .m.on{fill:#2E2E2C}
+/* filtres : on éteint ce qui n'est pas sélectionné */
+.map-wrap[data-filter="global-presence"] .c.repair{fill:#2E2E2C}
+.map-wrap[data-filter="global-presence"] .m.main{fill:#2E2E2C}
+.map-wrap[data-filter="repair-shops"] .c.on{fill:#DDDCD9}
+.map-wrap[data-filter="repair-shops"] .m.office,.map-wrap[data-filter="repair-shops"] .m.on{fill:#DDDCD9}
+.map-wrap[data-filter="repair-shops"] .m.main{fill:#DDDCD9}
+.map-wrap[data-filter="main"] .c.on,.map-wrap[data-filter="main"] .c.repair{fill:#DDDCD9}
+.map-wrap[data-filter="main"] .m.office,.map-wrap[data-filter="main"] .m.on{fill:#DDDCD9}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 30px}
+.filters button{
+  padding:10px 16px;border:1px solid var(--line);border-radius:3px;background:#fff;
+  font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;color:var(--body);
+  transition:color .2s,border-color .2s,background .2s;
+}
+.filters button:hover{color:var(--ink);border-color:rgba(22,22,21,.3)}
+.filters button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:26px;margin:22px 0 38px;font-size:13.5px;color:var(--body)}
+.legend span{display:flex;align-items:center;gap:9px}
+.legend i{width:12px;height:12px;border-radius:2px;display:block}
+.legend i.on{background:#2E2E2C}
+.legend i.repair{background:var(--red)}
+.legend i.main{border-radius:50%;background:var(--red);width:11px;height:11px;box-shadow:0 0 0 2px #fff,0 0 0 3px var(--line)}
 /* réseau */
 .stats{display:flex;gap:60px;flex-wrap:wrap;margin-top:34px}
 .stat b{display:block;font-size:clamp(40px,5vw,64px);font-weight:300;line-height:1;letter-spacing:-.02em}
@@ -497,6 +528,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   document.querySelectorAll('form.form').forEach(function(f){
     f.addEventListener('submit',function(e){e.preventDefault();f.classList.add('is-sent');f.querySelector('.sent').scrollIntoView({block:'nearest'});});
   });
+
+  // --- Carte Globally : filtres ---
+  var map=document.getElementById('map');
+  if(map){
+    document.querySelectorAll('.filters button').forEach(function(b){
+      b.addEventListener('click',function(){
+        document.querySelectorAll('.filters button').forEach(function(o){o.setAttribute('aria-pressed','false');});
+        b.setAttribute('aria-pressed','true');
+        map.setAttribute('data-filter',b.dataset.f);
+      });
+    });
+  }
 })();
 </script>
 
