@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Navigation Descote — plan</title>
+<meta name="description" content="Descote 2026 — passer d'une arborescence pyramidale à une navigation croisée produits × industries.">
+<link rel="icon" href="assets/favicon-descote.png">
+<style>
+@font-face{font-family:"Outfit";src:url("assets/Outfit.ttf") format("truetype");font-weight:100 900;font-display:swap}
+:root{
+  --red:#F0473B; --red-deep:#E22B22;
+  --ink:#161615; --body:#4B4A48; --muted:#8A8884;
+  --paper:rgba(255,255,255,.975); --paper-soft:rgba(247,246,244,.975);
+  --line:rgba(22,22,21,.09); --line-dark:rgba(255,255,255,.14);
+  --dark:rgba(16,16,15,.92);
+  --r:6px; --pad:48px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;color-scheme:light}
+body{
+  font-family:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);background:#0e0e0e;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#0e0e0e}
+.bg img{width:100%;height:100%;object-fit:cover;object-position:50% 72%}
+.bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.05) 40%,rgba(0,0,0,.35))}
+
+.wrap{position:relative;max-width:1440px;margin:0 auto;width:min(calc(100% * 6 / 7),calc(1440px * 6 / 7))}
+.panel{position:relative;margin:64px 0}
+.panel .box{background:var(--paper);border-radius:var(--r);padding:64px var(--pad) 68px}
+.panel.soft .box{background:var(--paper-soft)}
+
+/* en-tête */
+.head{padding:96px 0 64px;color:#fff}
+.tagline{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  color:#fff;background:var(--red);padding:7px 12px;border-radius:3px;margin-bottom:26px}
+.head h1{font-size:clamp(34px,4.4vw,60px);font-weight:400;line-height:1.05;letter-spacing:-.02em;text-wrap:balance;max-width:20ch}
+.head h1 em{font-style:normal;color:var(--red)}
+.head .intro{margin-top:24px;font-size:18px;line-height:1.55;max-width:60ch;color:rgba(255,255,255,.85)}
+.head .meta{margin-top:30px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+
+h2.sec{font-size:clamp(26px,2.7vw,38px);font-weight:400;line-height:1.1;letter-spacing:-.015em;margin-bottom:10px;text-wrap:balance}
+.kicker{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--red);margin-bottom:16px}
+.kicker::before{content:"";width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent var(--red)}
+p.lead{font-size:16.5px;line-height:1.65;color:var(--body);max-width:72ch}
+p.lead + p.lead{margin-top:14px}
+p.lead strong{color:var(--ink);font-weight:500}
+.mt{margin-top:38px}
+
+/* deux colonnes */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.stack{display:flex;flex-direction:column;gap:14px}
+
+/* cartes */
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 28px}
+.panel .box .card{background:#fff}
+.card h3{font-size:18px;font-weight:500;margin-bottom:8px}
+.card p{font-size:15px;color:var(--body);line-height:1.6}
+.card .num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:13px;font-weight:600;margin-bottom:14px}
+
+/* avant / après */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:32px}
+.ba > div{border:1px solid var(--line);border-radius:var(--r);padding:26px 28px;background:#fff}
+.ba .now{border-left:3px solid var(--muted)}
+.ba .next{border-left:3px solid var(--red)}
+.ba h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-bottom:16px}
+.ba .next h3{color:var(--red)}
+.ba ul{list-style:none;font-size:15px;color:var(--body);line-height:1.5}
+.ba li{padding:9px 0;border-bottom:1px solid var(--line);display:flex;gap:10px}
+.ba li:last-child{border-bottom:0}
+.ba li b{color:var(--ink);font-weight:500}
+.ba li span.n{color:var(--muted);flex:0 0 auto;font-variant-numeric:tabular-nums}
+
+/* matrice */
+.matrix-scroll{overflow-x:auto;margin-top:30px;padding-bottom:6px}
+table.matrix{border-collapse:separate;border-spacing:0;font-size:14.5px;min-width:760px;width:100%}
+table.matrix th,table.matrix td{padding:14px 12px;text-align:center;border-bottom:1px solid var(--line)}
+table.matrix thead th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);vertical-align:bottom;line-height:1.35}
+table.matrix tbody th{text-align:left;font-weight:500;color:var(--ink);white-space:nowrap;padding-left:0}
+table.matrix tbody tr:hover td,table.matrix tbody tr:hover th{background:rgba(240,71,59,.05)}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%}
+.dot.core{background:var(--red)}
+.dot.rel{background:#2E2E2C}
+.dot.no{width:8px;height:1px;border-radius:0;background:rgba(22,22,21,.18);vertical-align:middle}
+.legend{display:flex;flex-wrap:wrap;gap:24px;margin-top:20px;font-size:13.5px;color:var(--body)}
+.legend span{display:flex;align-items:center;gap:9px}
+.note{margin-top:22px;padding:16px 20px;background:var(--paper-soft);border-left:3px solid var(--red);font-size:14.5px;color:var(--body);line-height:1.6}
+.note b{color:var(--ink);font-weight:500}
+
+/* mini-maquettes */
+.demo{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;margin-top:18px}
+.demo .bar{display:flex;gap:2px;background:var(--paper-soft);padding:10px 12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.demo .bar i{font-style:normal;font-size:12.5px;padding:7px 12px;border-radius:3px;color:var(--body);background:#fff;border:1px solid var(--line)}
+.demo .bar i.on{background:var(--red);border-color:var(--red);color:#fff;font-weight:500}
+.demo .body{padding:20px 22px;font-size:14px;color:var(--muted)}
+.demo .body b{display:block;color:var(--ink);font-size:16px;font-weight:500;margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chips i{font-style:normal;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:3px;
+  background:rgba(240,71,59,.1);color:var(--red-deep);font-weight:500}
+.next3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.next3 div{border:1px solid var(--line);border-radius:3px;padding:12px 14px;font-size:13.5px;color:var(--ink);line-height:1.4}
+.next3 span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:5px}
+
+/* schéma pyramide / maillage */
+.diagram{width:100%;height:auto;margin-top:8px}
+.diagram text{font-family:inherit;font-size:13px;fill:var(--ink)}
+.diagram text.s{font-size:11px;fill:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.diagram .n{fill:#fff;stroke:rgba(22,22,21,.22);stroke-width:1}
+.diagram .n.hi{fill:var(--red);stroke:var(--red)}
+.diagram .n.hi + text{fill:#fff}
+.diagram .e{stroke:rgba(22,22,21,.25);stroke-width:1.2;fill:none}
+.diagram .e.red{stroke:var(--red);stroke-width:1.6;stroke-dasharray:4 4}
+
+/* parcours */
+.path{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14.5px;color:var(--body);margin-top:10px}
+.path b{background:#fff;border:1px solid var(--line);border-radius:3px;padding:9px 13px;font-weight:400;color:var(--ink)}
+.path b.hi{border-color:var(--red);color:var(--red-deep)}
+.path em{font-style:normal;color:var(--muted)}
+.count{display:inline-block;margin-top:14px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.count b{color:var(--red);font-weight:600}
+
+/* menu avant/après */
+.menu-cmp{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:30px}
+.menu-cmp ul{list-style:none;font-size:15px}
+.menu-cmp > div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px 26px}
+.menu-cmp h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-bottom:14px}
+.menu-cmp li{padding:8px 0;color:var(--ink);border-bottom:1px solid var(--line)}
+.menu-cmp li:last-child{border-bottom:0}
+.menu-cmp li small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.menu-cmp .after h3{color:var(--red)}
+
+/* étapes */
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:12px;margin-top:26px}
+.steps li{list-style:none;counter-increment:s;display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px 22px}
+.steps li::before{content:counter(s);flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;
+  font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.steps b{font-weight:500}
+.steps p{font-size:14.5px;color:var(--body);margin-top:3px;line-height:1.55}
+
+footer.end{background:var(--dark);color:#fff;margin-top:64px}
+footer.end .in{padding:46px 0 52px;width:min(calc(100% * 6 / 7),calc(1440px * 6 / 7));margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer.end img{height:26px;width:auto}
+footer.end p{font-size:13.5px;color:rgba(255,255,255,.7)}
+footer.end a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+@media (max-width:980px){
+  :root{--pad:24px}
+  .wrap{width:calc(100% - 24px)}
+  .panel{margin:24px 0}
+  .panel .box{padding:36px var(--pad) 40px}
+  .head{padding:48px 0 36px}
+  .two,.ba,.menu-cmp{grid-template-columns:1fr}
+  .next3{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <picture>
+    <source media="(max-width:700px)" srcset="assets/phare-mobile.jpg">
+    <img src="assets/phare-desktop.jpg" alt="">
+  </picture>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <p class="tagline">Document de travail · navigation</p>
+    <h1>De l'arborescence <em>pyramidale</em> au <em>maillage</em></h1>
+    <p class="intro">Le plan actuel compte 29 pages sur 3 niveaux, réparties en deux branches qui parlent des mêmes vannes : les <strong>solutions</strong> d'un côté, les <strong>industries</strong> de l'autre. Aujourd'hui, passer de l'une à l'autre oblige à remonter par le menu. Voici comment les relier.</p>
+    <p class="meta">Descote 2026 · proposition de navigation</p>
+  </div>
+</header>
+
+<!-- 1. Le constat -->
+<section class="panel">
+  <div class="wrap"><div class="box">
+    <p class="kicker">Le constat</p>
+    <h2 class="sec">Deux branches parallèles qui ne se parlent pas</h2>
+    <p class="lead">Un client qui cherche une vanne pour du chlore peut entrer par le produit (<em>Storage → Top &amp; Bottom tank valves</em>) ou par son fluide (<em>Industry → Chlorine related</em>). Les deux chemins mènent au même sujet, mais aucun lien ne les relie : il faut revenir au menu, rouvrir un sous-menu, redescendre. Sur un site technique, c'est là qu'on perd la visite.</p>
+
+    <div class="ba">
+      <div class="now">
+        <h3>Aujourd'hui — 3 niveaux, 6 entrées de menu</h3>
+        <ul>
+          <li><span class="n">1</span><span><b>What we do</b> — Pre-engineered solutions, Process/Piping, Instrumentation, Transport, Storage, Fluid transfer, Tailor-made</span></li>
+          <li><span class="n">2</span><span><b>Industry</b> — Chlorine, Fluorine, Nuclear, CN, Other critical applications</span></li>
+          <li><span class="n">3</span><span><b>Case studies</b> — une grille isolée</span></li>
+          <li><span class="n">4</span><span><b>After sales</b> — réparation, repair shops</span></li>
+          <li><span class="n">5</span><span><b>About us</b> — Company, Quality, Globally, Careers</span></li>
+          <li><span class="n">6</span><span><b>Resources</b> — Literature, FAQ, formulaires</span></li>
+        </ul>
+      </div>
+      <div class="next">
+        <h3>Ce qui manque</h3>
+        <ul>
+          <li><span>Aucun lien <b>produit → industrie</b> ni <b>industrie → produit</b></span></li>
+          <li><span>Aucun passage entre pages <b>sœurs</b> (Storage → Transport)</span></li>
+          <li><span>Les <b>case studies</b> et la <b>documentation</b> vivent à part, alors qu'elles sont la preuve dont on a besoin sur chaque page</span></li>
+          <li><span>Une seule fin de page : le <b>pied de page</b>, identique partout</span></li>
+          <li><span>Un menu à <b>3 niveaux</b> pour compenser tout ça</span></li>
+        </ul>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- 2. Le principe -->
+<section class="panel soft">
+  <div class="wrap"><div class="box">
+    <p class="kicker">Le principe</p>
+    <h2 class="sec">Garder la pyramide pour les URL, ajouter le maillage pour la visite</h2>
+    <p class="lead">L'arborescence hiérarchique reste utile : elle donne des URL propres et une structure lisible pour Google. On n'y touche pas. On superpose simplement des <strong>liens transversaux</strong> entre pages de même niveau et entre les deux branches — le visiteur avance latéralement, sans jamais remonter.</p>
+
+    <svg class="diagram" viewBox="0 0 1000 300" role="img" aria-label="Schéma : à gauche une arborescence pyramidale, à droite le même plan avec des liens transversaux">
+      <text class="s" x="0" y="16">Aujourd'hui — on remonte pour redescendre</text>
+      <path class="e" d="M210 60 L110 130 M210 60 L210 130 M210 60 L310 130 M110 130 L70 200 M110 130 L150 200 M310 130 L270 200 M310 130 L350 200"/>
+      <circle class="n hi" cx="210" cy="60" r="13"/>
+      <circle class="n" cx="110" cy="130" r="11"/><circle class="n" cx="210" cy="130" r="11"/><circle class="n" cx="310" cy="130" r="11"/>
+      <circle class="n" cx="70" cy="200" r="9"/><circle class="n" cx="150" cy="200" r="9"/>
+      <circle class="n" cx="270" cy="200" r="9"/><circle class="n" cx="350" cy="200" r="9"/>
+      <path class="e red" d="M70 215 C 70 265, 350 265, 350 215"/>
+      <text x="210" y="285" text-anchor="middle" fill="#8A8884" font-size="12.5">4 clics pour passer d'une feuille à l'autre</text>
+
+      <text class="s" x="560" y="16">Demain — on passe de page en page</text>
+      <path class="e" d="M760 60 L660 130 M760 60 L760 130 M760 60 L860 130 M660 130 L620 200 M660 130 L700 200 M860 130 L820 200 M860 130 L900 200"/>
+      <path class="e red" d="M620 200 L700 200 M700 200 L820 200 M820 200 L900 200 M660 130 L760 130 M760 130 L860 130 M700 200 C 740 160, 780 160, 820 200"/>
+      <circle class="n hi" cx="760" cy="60" r="13"/>
+      <circle class="n" cx="660" cy="130" r="11"/><circle class="n" cx="760" cy="130" r="11"/><circle class="n" cx="860" cy="130" r="11"/>
+      <circle class="n" cx="620" cy="200" r="9"/><circle class="n" cx="700" cy="200" r="9"/>
+      <circle class="n" cx="820" cy="200" r="9"/><circle class="n" cx="900" cy="200" r="9"/>
+      <text x="760" y="285" text-anchor="middle" fill="#8A8884" font-size="12.5">1 clic — le lien est dans la page</text>
+    </svg>
+  </div></div>
+</section>
+
+<!-- 3. La matrice -->
+<section class="panel">
+  <div class="wrap"><div class="box">
+    <p class="kicker">La clé de voûte</p>
+    <h2 class="sec">Une matrice solutions × industries</h2>
+    <p class="lead">Une seule table de correspondance alimente les liens dans les deux sens : sur chaque page solution, « utilisée dans ces industries » ; sur chaque page industrie, « les solutions concernées ». Elle se remplit une fois, elle sert partout — et elle devient aussi la grille de filtres des case studies et de la documentation.</p>
+
+    <div class="matrix-scroll">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th style="text-align:left">Solution</th>
+            <th>Chlorine<br>related</th>
+            <th>Fluorine<br>related · HF Alky</th>
+            <th>Nuclear</th>
+            <th>CN<br>related</th>
+            <th>Other critical<br>applications</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>Process / Piping</th>
+            <td><span class="dot core"></span></td><td><span class="dot core"></span></td><td><span class="dot rel"></span></td><td><span class="dot core"></span></td><td><span class="dot rel"></span></td></tr>
+          <tr><th>Instrumentation</th>
+            <td><span class="dot rel"></span></td><td><span class="dot rel"></span></td><td><span class="dot rel"></span></td><td><span class="dot rel"></span></td><td><span class="dot rel"></span></td></tr>
+          <tr><th>Transport</th>
+            <td><span class="dot core"></span></td><td><span class="dot no"></span></td><td><span class="dot core"></span></td><td><span class="dot rel"></span></td><td><span class="dot no"></span></td></tr>
+          <tr><th>Storage</th>
+            <td><span class="dot core"></span></td><td><span class="dot rel"></span></td><td><span class="dot no"></span></td><td><span class="dot core"></span></td><td><span class="dot rel"></span></td></tr>
+          <tr><th>Fluid transfer / Jet &amp; Ejectors</th>
+            <td><span class="dot rel"></span></td><td><span class="dot rel"></span></td><td><span class="dot no"></span></td><td><span class="dot rel"></span></td><td><span class="dot core"></span></td></tr>
+          <tr><th>Tailor-made engineering</th>
+            <td><span class="dot rel"></span></td><td><span class="dot rel"></span></td><td><span class="dot rel"></span></td><td><span class="dot rel"></span></td><td><span class="dot core"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legend">
+      <span><i class="dot core"></i>Produit phare — mis en avant des deux côtés</span>
+      <span><i class="dot rel"></i>Concerné — lien simple</span>
+      <span><i class="dot no"></i>Sans objet</span>
+    </div>
+
+    <p class="note"><b>À valider avec Descote.</b> Les croisements ci-dessus sont une hypothèse de travail : seuls quelques-uns sont déjà lisibles dans l'arborescence (vannes pour cylindres UF6 → nucléaire, HF Alky → fluor, produits approuvés Eurochlor → chlore). C'est la seule chose à faire remplir par leurs équipes techniques — tout le reste de la navigation en découle automatiquement.</p>
+  </div></div>
+</section>
+
+<!-- 4. Les quatre mécanismes -->
+<section class="panel soft">
+  <div class="wrap"><div class="box">
+    <p class="kicker">Dans les pages</p>
+    <h2 class="sec">Quatre mécanismes, et le menu n'a plus à tout porter</h2>
+
+    <div class="two mt">
+      <div>
+        <div class="card">
+          <span class="num">1</span>
+          <h3>La barre de pages sœurs</h3>
+          <p>En haut de chaque page d'une famille, les autres pages du même niveau. On change de solution sans revenir en arrière.</p>
+          <div class="demo">
+            <div class="bar"><i>Process / Piping</i><i class="on">Storage</i><i>Transport</i><i>Instrumentation</i><i>Fluid transfer</i></div>
+            <div class="body"><b>Top &amp; Bottom tank valves</b>Contexte, défis techniques, familles de solutions…</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <span class="num">2</span>
+          <h3>Le lien croisé solution ↔ industrie</h3>
+          <p>La matrice, rendue visible dans la page : d'un côté les industries desservies, de l'autre les vannes concernées.</p>
+          <div class="demo">
+            <div class="body"><b>Storage — Top &amp; Bottom tank valves</b>Utilisées dans :
+              <div class="chips"><i>Chlorine related</i><i>CN related</i><i>Other critical</i></div>
+            </div>
+            <div class="body" style="border-top:1px solid var(--line)"><b>Chlorine related</b>Solutions Descote :
+              <div class="chips"><i>Storage</i><i>Transport</i><i>Process / Piping</i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <span class="num">3</span>
+          <h3>Les preuves comme connecteurs</h3>
+          <p>Case studies, documentation, certifications et FAQ sont étiquetées (solution + industrie + fluide). Elles remontent automatiquement sur les pages concernées et renvoient vers elles : chaque étiquette est un lien latéral de plus.</p>
+          <div class="demo">
+            <div class="body"><b>Case study — Chlorine tank farm</b>
+              <div class="chips"><i>Storage</i><i>Chlorine</i><i>Eurochlor</i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <span class="num">4</span>
+          <h3>Le bloc « et après ? »</h3>
+          <p>Juste avant le pied de page, trois liens choisis selon la page lue, à la place du seul « contactez-nous » actuel.</p>
+          <div class="demo">
+            <div class="body"><b>Vous lisez : Top &amp; Bottom tank valves</b>
+              <div class="next3">
+                <div><span>Industrie</span>Chlorine related</div>
+                <div><span>Preuve</span>Chlorine tank farm</div>
+                <div><span>Technique</span>Fiche &amp; certifications</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- 5. Le menu -->
+<section class="panel">
+  <div class="wrap"><div class="box">
+    <p class="kicker">Le menu</p>
+    <h2 class="sec">Six entrées et trois niveaux deviennent quatre entrées</h2>
+    <p class="lead">Une fois les liens latéraux en place, le menu n'a plus besoin de donner accès à tout : il sert à <strong>entrer</strong> dans le site, pas à le parcourir. Les 29 pages restent, elles se découvrent en chemin.</p>
+
+    <div class="menu-cmp">
+      <div>
+        <h3>Avant</h3>
+        <ul>
+          <li>What we do <small>7 sous-pages, jusqu'à 3 niveaux</small></li>
+          <li>Industry <small>5 sous-pages</small></li>
+          <li>Case studies</li>
+          <li>After sales</li>
+          <li>About us <small>4 sous-pages</small></li>
+          <li>Resources <small>3 sous-pages</small></li>
+        </ul>
+      </div>
+      <div class="after">
+        <h3>Après</h3>
+        <ul>
+          <li>Solutions <small>les 6 familles, à plat</small></li>
+          <li>Industries <small>les 5 secteurs, à plat</small></li>
+          <li>Références <small>case studies + documentation + FAQ, filtrables par solution et par industrie</small></li>
+          <li>Descote <small>société, qualité, réseau mondial, after sales, carrières</small></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="note">Le bouton <b>Inquiry</b> reste à part, toujours visible : c'est la conversion, pas une rubrique.</p>
+  </div></div>
+</section>
+
+<!-- 6. Le parcours -->
+<section class="panel soft">
+  <div class="wrap"><div class="box">
+    <p class="kicker">Ce que ça change</p>
+    <h2 class="sec">Un même visiteur, avant et après</h2>
+    <p class="lead">Un ingénieur procédé cherche une vanne de fond de cuve pour du chlore, puis veut une preuve et une fiche technique.</p>
+
+    <div class="mt">
+      <p class="lead"><strong>Aujourd'hui</strong></p>
+      <div class="path">
+        <b>Home</b><em>→</em><b>What we do</b><em>→</em><b>Storage</b><em>→</em><b>Top &amp; Bottom tank valves</b><em>→ retour menu →</em><b>Industry</b><em>→</em><b>Chlorine related</b><em>→ retour menu →</em><b>Case studies</b><em>→ tri manuel</em>
+      </div>
+      <p class="count"><b>8 clics</b> dont 2 retours au menu</p>
+    </div>
+
+    <div class="mt">
+      <p class="lead"><strong>Avec le maillage</strong></p>
+      <div class="path">
+        <b>Home</b><em>→</em><b class="hi">Storage</b><em>→</em><b class="hi">Top &amp; Bottom tank valves</b><em>→ lien dans la page →</em><b class="hi">Chlorine related</b><em>→ « et après ? » →</em><b class="hi">Case study + fiche technique</b>
+      </div>
+      <p class="count"><b>4 clics</b>, aucun retour en arrière</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- 7. La suite -->
+<section class="panel">
+  <div class="wrap"><div class="box">
+    <p class="kicker">La suite</p>
+    <h2 class="sec">Ce que ça demande, dans l'ordre</h2>
+    <ol class="steps">
+      <li><div><b>Faire remplir la matrice</b><p>6 solutions × 5 industries = 30 cases, à cocher par les équipes techniques Descote. C'est le seul vrai travail de fond.</p></div></li>
+      <li><div><b>Étiqueter les contenus existants</b><p>Chaque case study, fiche et certification reçoit ses étiquettes solution / industrie / fluide. Les listes et filtres se génèrent ensuite tout seuls.</p></div></li>
+      <li><div><b>Ajouter les trois blocs de page</b><p>Barre de pages sœurs, liens croisés, bloc « et après ? ». Trois composants à dessiner une fois, réutilisés sur toutes les pages.</p></div></li>
+      <li><div><b>Simplifier le menu</b><p>Passage à quatre entrées, une fois que les liens latéraux couvrent le reste.</p></div></li>
+      <li><div><b>Prototyper deux pages</b><p>Une page solution et une page industrie dans la maquette, pour valider le principe en vrai avant de dérouler les 29 pages.</p></div></li>
+    </ol>
+  </div></div>
+</section>
+
+<footer class="end">
+  <div class="in">
+    <div>
+      <img src="assets/logo-new-white.png" alt="descote">
+      <p style="margin-top:12px">Proposition de navigation — document de travail, septembre 2026</p>
+    </div>
+    <p><a href="index.html">← Revenir à la maquette</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
