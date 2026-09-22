@@ -143,6 +143,48 @@ table.matrix tbody tr:hover td,table.matrix tbody tr:hover th{background:rgba(24
 .steps b{font-weight:500}
 .steps p{font-size:14.5px;color:var(--body);margin-top:3px;line-height:1.55}
 
+/* vue d'ensemble (pieuvre) */
+
+.octo{width:100%;height:auto;display:block;margin-top:14px}
+.octo .home{fill:#F0473B}
+.octo .home-t{fill:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;font-family:inherit}
+.octo .menu{fill:#161615}
+.octo .menu.acc{fill:#161615}
+.octo .menu-t{fill:#fff;font-size:12px;font-weight:600;letter-spacing:.06em;font-family:inherit}
+.octo .card{fill:#fff;stroke:#E3E1DE;stroke-width:1}
+.octo .card-t{fill:#161615;font-size:10.5px;font-family:inherit}
+.octo .tab{fill:#161615}
+.octo .tab.acc{fill:#F0473B}
+.octo .branch{fill:none;stroke:#C9C6C2;stroke-width:1.2}
+.octo .rail{fill:none;stroke:#C9C6C2;stroke-width:1}
+.octo .x-link{fill:none;stroke:#F0473B;stroke-width:1.3;stroke-dasharray:5 4}
+.octo .tag-link{fill:none;stroke:#F0473B;stroke-width:1.1;stroke-dasharray:2 3;opacity:.85}
+.octo .sib{fill:none;stroke:#F0473B;stroke-width:1.2}
+.octo .sib-t{fill:#F0473B;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;font-family:inherit}
+.octo .legend-box{fill:#F7F6F4}
+.octo .lg{fill:#4B4A48;font-size:10px;font-family:inherit}
+</style>
+</head>
+<body>
+.octo .card-t,.octo .lg{font-size:11px}
+
+/* actions & mail */
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 20px;border-radius:3px;font-size:12.5px;font-weight:500;
+  letter-spacing:.09em;text-transform:uppercase;text-decoration:none;transition:background .2s,color .2s,border-color .2s}
+.btn.solid{background:var(--red);color:#fff;border:1px solid var(--red)}
+.btn.solid:hover{background:var(--red-deep);border-color:var(--red-deep)}
+.btn.ghost{border:1px solid rgba(255,255,255,.6);color:#fff}
+.btn.ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+.mail{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.mail .top{display:flex;align-items:center;gap:16px;padding:14px 22px;border-bottom:1px solid var(--line);background:var(--paper-soft)}
+.mail .top b{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.mail .top button{margin-left:auto;font:inherit;font-size:12px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;
+  color:var(--red);background:none;border:1px solid var(--red);border-radius:3px;padding:8px 14px;cursor:pointer}
+.mail .top button:hover{background:var(--red);color:#fff}
+.mail .txt{padding:26px 28px;font-size:15px;line-height:1.7;color:var(--body);white-space:pre-line}
+.mail .txt strong{color:var(--ink);font-weight:500}
+
 footer.end{background:var(--dark);color:#fff;margin-top:64px}
 footer.end .in{padding:46px 0 52px;width:min(calc(100% * 6 / 7),calc(1440px * 6 / 7));margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
 footer.end img{height:26px;width:auto}
@@ -175,6 +217,10 @@ footer.end a{color:#fff;text-decoration:underline;text-underline-offset:3px}
     <h1>De l'arborescence <em>pyramidale</em> au <em>maillage</em></h1>
     <p class="intro">Le plan actuel compte 29 pages sur 3 niveaux, réparties en deux branches qui parlent des mêmes vannes : les <strong>solutions</strong> d'un côté, les <strong>industries</strong> de l'autre. Aujourd'hui, passer de l'une à l'autre oblige à remonter par le menu. Voici comment les relier.</p>
     <p class="meta">Descote 2026 · proposition de navigation</p>
+    <div class="actions">
+      <a class="btn solid" href="Descote-nouvelle-arborescence.pdf" download>Télécharger le PDF — 3 pages</a>
+      <a class="btn ghost" href="index.html">Voir la maquette</a>
+    </div>
   </div>
 </header>
 
@@ -237,6 +283,143 @@ footer.end a{color:#fff;text-decoration:underline;text-underline-offset:3px}
       <circle class="n" cx="820" cy="200" r="9"/><circle class="n" cx="900" cy="200" r="9"/>
       <text x="760" y="285" text-anchor="middle" fill="#8A8884" font-size="12.5">1 clic — le lien est dans la page</text>
     </svg>
+  </div></div>
+</section>
+
+
+<!-- 2 bis. Vue d'ensemble -->
+<section class="panel">
+  <div class="wrap"><div class="box">
+    <p class="kicker">Vue d'ensemble</p>
+    <h2 class="sec">Les quatre entrées et leurs liens transversaux</h2>
+    <p class="lead">La même arborescence que dans le document PDF : en noir la structure, en rouge ce qui n'existe pas aujourd'hui — les passages directs d'une page à l'autre. Le menu sert à entrer dans le site, les liens rouges à le parcourir.</p>
+<svg class="octo" viewBox="0 0 1180 560" role="img" aria-label="Vue d'ensemble de la navigation : quatre entrées et leurs liens transversaux">
+<defs><marker id="ar" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 L6 4 L0 7 Z" fill="#F0473B"/></marker></defs>
+<rect class="home" x="520.0" y="20" width="140" height="34" rx="3"/>
+<text class="home-t" x="590.0" y="42" text-anchor="middle">HOME</text>
+<path class="branch" d="M590.0 54 C 590.0 68, 133.0 62, 133.0 92"/>
+<rect class="menu" x="24" y="92" width="218" height="32" rx="3"/>
+<text class="menu-t" x="133.0" y="114" text-anchor="middle">Solutions</text>
+<path class="rail" d="M38 124 L38 413.0"/>
+<path class="rail" d="M38 179.0 L46 179.0"/>
+<rect class="card" x="46" y="164" width="196" height="30" rx="3"/>
+<rect class="tab acc" x="46" y="164" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="58" y="183">Pre-engineered solutions</text>
+<path class="rail" d="M38 218.0 L46 218.0"/>
+<rect class="card" x="46" y="203" width="196" height="30" rx="3"/>
+<rect class="tab acc" x="46" y="203" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="58" y="222">Process / Piping</text>
+<path class="rail" d="M38 257.0 L46 257.0"/>
+<rect class="card" x="46" y="242" width="196" height="30" rx="3"/>
+<rect class="tab acc" x="46" y="242" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="58" y="261">Instrumentation</text>
+<path class="rail" d="M38 296.0 L46 296.0"/>
+<rect class="card" x="46" y="281" width="196" height="30" rx="3"/>
+<rect class="tab acc" x="46" y="281" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="58" y="300">Transport</text>
+<path class="rail" d="M38 335.0 L46 335.0"/>
+<rect class="card" x="46" y="320" width="196" height="30" rx="3"/>
+<rect class="tab acc" x="46" y="320" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="58" y="339">Storage</text>
+<path class="rail" d="M38 374.0 L46 374.0"/>
+<rect class="card" x="46" y="359" width="196" height="30" rx="3"/>
+<rect class="tab acc" x="46" y="359" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="58" y="378">Fluid transfer / Jet & Ejectors</text>
+<path class="rail" d="M38 413.0 L46 413.0"/>
+<rect class="card" x="46" y="398" width="196" height="30" rx="3"/>
+<rect class="tab acc" x="46" y="398" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="58" y="417">Tailor-made engineering</text>
+<path class="branch" d="M590.0 54 C 590.0 68, 425.0 62, 425.0 92"/>
+<rect class="menu" x="316" y="92" width="218" height="32" rx="3"/>
+<text class="menu-t" x="425.0" y="114" text-anchor="middle">Industries</text>
+<path class="rail" d="M330 124 L330 335.0"/>
+<path class="rail" d="M330 179.0 L338 179.0"/>
+<rect class="card" x="338" y="164" width="196" height="30" rx="3"/>
+<rect class="tab acc" x="338" y="164" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="350" y="183">Chlorine related</text>
+<path class="rail" d="M330 218.0 L338 218.0"/>
+<rect class="card" x="338" y="203" width="196" height="30" rx="3"/>
+<rect class="tab acc" x="338" y="203" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="350" y="222">Fluorine related · HF Alky</text>
+<path class="rail" d="M330 257.0 L338 257.0"/>
+<rect class="card" x="338" y="242" width="196" height="30" rx="3"/>
+<rect class="tab acc" x="338" y="242" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="350" y="261">Nuclear</text>
+<path class="rail" d="M330 296.0 L338 296.0"/>
+<rect class="card" x="338" y="281" width="196" height="30" rx="3"/>
+<rect class="tab acc" x="338" y="281" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="350" y="300">CN related</text>
+<path class="rail" d="M330 335.0 L338 335.0"/>
+<rect class="card" x="338" y="320" width="196" height="30" rx="3"/>
+<rect class="tab acc" x="338" y="320" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="350" y="339">Other critical applications</text>
+<path class="branch" d="M590.0 54 C 590.0 68, 745.0 62, 745.0 92"/>
+<rect class="menu" x="636" y="92" width="218" height="32" rx="3"/>
+<text class="menu-t" x="745.0" y="114" text-anchor="middle">Références</text>
+<path class="rail" d="M650 124 L650 296.0"/>
+<path class="rail" d="M650 179.0 L658 179.0"/>
+<rect class="card" x="658" y="164" width="196" height="30" rx="3"/>
+<rect class="tab " x="658" y="164" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="670" y="183">Case studies</text>
+<path class="rail" d="M650 218.0 L658 218.0"/>
+<rect class="card" x="658" y="203" width="196" height="30" rx="3"/>
+<rect class="tab " x="658" y="203" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="670" y="222">Literature & documentation</text>
+<path class="rail" d="M650 257.0 L658 257.0"/>
+<rect class="card" x="658" y="242" width="196" height="30" rx="3"/>
+<rect class="tab " x="658" y="242" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="670" y="261">Certifications / approbations</text>
+<path class="rail" d="M650 296.0 L658 296.0"/>
+<rect class="card" x="658" y="281" width="196" height="30" rx="3"/>
+<rect class="tab " x="658" y="281" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="670" y="300">FAQ</text>
+<path class="branch" d="M590.0 54 C 590.0 68, 1047.0 62, 1047.0 92"/>
+<rect class="menu" x="938" y="92" width="218" height="32" rx="3"/>
+<text class="menu-t" x="1047.0" y="114" text-anchor="middle">Descote</text>
+<path class="rail" d="M952 124 L952 335.0"/>
+<path class="rail" d="M952 179.0 L960 179.0"/>
+<rect class="card" x="960" y="164" width="196" height="30" rx="3"/>
+<rect class="tab " x="960" y="164" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="972" y="183">Company</text>
+<path class="rail" d="M952 218.0 L960 218.0"/>
+<rect class="card" x="960" y="203" width="196" height="30" rx="3"/>
+<rect class="tab " x="960" y="203" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="972" y="222">Quality & Certification</text>
+<path class="rail" d="M952 257.0 L960 257.0"/>
+<rect class="card" x="960" y="242" width="196" height="30" rx="3"/>
+<rect class="tab " x="960" y="242" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="972" y="261">Globally</text>
+<path class="rail" d="M952 296.0 L960 296.0"/>
+<rect class="card" x="960" y="281" width="196" height="30" rx="3"/>
+<rect class="tab " x="960" y="281" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="972" y="300">After sales & repair shops</text>
+<path class="rail" d="M952 335.0 L960 335.0"/>
+<rect class="card" x="960" y="320" width="196" height="30" rx="3"/>
+<rect class="tab " x="960" y="320" width="3.5" height="30" rx="1.5"/>
+<text class="card-t" x="972" y="339">Careers</text>
+<path class="x-link" d="M242 218.0 C 288 218.0, 292 179.0, 338 179.0" marker-end="url(#ar)"/>
+<path class="x-link" d="M242 218.0 C 288 218.0, 292 218.0, 338 218.0" marker-end="url(#ar)"/>
+<path class="x-link" d="M242 218.0 C 288 218.0, 292 296.0, 338 296.0" marker-end="url(#ar)"/>
+<path class="x-link" d="M242 296.0 C 288 296.0, 292 179.0, 338 179.0" marker-end="url(#ar)"/>
+<path class="x-link" d="M242 296.0 C 288 296.0, 292 257.0, 338 257.0" marker-end="url(#ar)"/>
+<path class="x-link" d="M242 335.0 C 288 335.0, 292 179.0, 338 179.0" marker-end="url(#ar)"/>
+<path class="x-link" d="M242 335.0 C 288 335.0, 292 296.0, 338 296.0" marker-end="url(#ar)"/>
+<path class="x-link" d="M242 374.0 C 288 374.0, 292 335.0, 338 335.0" marker-end="url(#ar)"/>
+<path class="x-link" d="M242 413.0 C 288 413.0, 292 335.0, 338 335.0" marker-end="url(#ar)"/>
+<path class="tag-link" d="M658 179.0 C 608 179.0, 584 149.0, 534 179.0" marker-end="url(#ar)"/>
+<path class="tag-link" d="M658 218.0 C 598 288.0, 594 385.0, 534 335.0" marker-end="url(#ar)"/>
+<path class="sib" d="M30 164 L20 164 L20 428 L30 428"/>
+<text class="sib-t" transform="translate(12,296.0) rotate(-90)" text-anchor="middle">pages sœurs</text>
+<path class="sib" d="M532 164 L542 164 L542 350 L532 350"/>
+<text class="sib-t" transform="translate(554,257.0) rotate(-90)" text-anchor="middle">pages sœurs</text>
+<rect class="legend-box" x="0" y="472" width="1180" height="62" rx="3"/>
+<line class="x-link" x1="22" y1="498" x2="74" y2="498" marker-end="url(#ar)"/>
+<text class="lg" x="86" y="502">lien croisé solution ↔ industrie (croisements « produit phare » de la matrice)</text>
+<line class="tag-link" x1="600" y1="498" x2="652" y2="498" marker-end="url(#ar)"/>
+<text class="lg" x="664" y="502">références étiquetées, remontées sur les pages concernées</text>
+<path class="sib" d="M22 524 L44 524"/><text class="lg" x="56" y="528">barre de pages sœurs — on circule dans la famille sans remonter</text>
+<text class="lg" x="600" y="528">+ bloc « et après ? » en fin de chaque page : 3 liens choisis</text>
+</svg>
   </div></div>
 </section>
 
@@ -425,6 +608,33 @@ footer.end a{color:#fff;text-decoration:underline;text-underline-offset:3px}
   </div></div>
 </section>
 
+<!-- 8. Le mail -->
+<section class="panel soft">
+  <div class="wrap"><div class="box">
+    <p class="kicker">À envoyer</p>
+    <h2 class="sec">Le texte du mail</h2>
+    <p class="lead">Version courte, à copier dans un mail avec le PDF en pièce jointe.</p>
+    <div class="mail">
+      <div class="top"><b>Objet : Descote — proposition pour l'arborescence</b><button type="button" id="copy">Copier le texte</button></div>
+      <div class="txt" id="mailtxt">Bonjour,
+
+En travaillant sur la maquette, un point m'est apparu : le site sépare les <strong>solutions</strong> (Process, Transport, Storage…) et les <strong>industries</strong> (chlore, fluor, nucléaire…), alors qu'il s'agit des mêmes vannes. Aujourd'hui, pour passer de l'une à l'autre, le visiteur doit remonter au menu et redescendre — d'où un menu à trois niveaux.
+
+Je vous propose de garder votre structure (bonne pour le référencement) et de relier les pages entre elles — liens croisés solution ↔ industrie, passage direct d'une famille de vannes à l'autre, case studies et fiches techniques qui remontent sur les pages concernées.
+
+Ce que ça donne : un menu à <strong>4 entrées à plat</strong> au lieu de 6 sur 3 niveaux, et un parcours type qui passe de <strong>8 clics à 4</strong>, sans retour en arrière.
+
+Une seule chose à produire de votre côté : une <strong>matrice solutions × industries</strong> (30 cases à cocher — quelle vanne pour quelle application). Vos équipes techniques sont les seules à pouvoir la remplir ; tout le reste de la navigation en découle. Je l'ai pré-remplie en hypothèse dans le document joint, à corriger.
+
+Ci-joint l'arborescence et la matrice. Le détail avec les schémas : https://frankymoiss.github.io/descote-maquette/plan.html
+
+Si le principe vous convient, je prototype une page solution et une page industrie pour que vous le voyiez fonctionner, pendant que vos équipes remplissent la matrice.
+
+Bien à vous,</div>
+    </div>
+  </div></div>
+</section>
+
 <footer class="end">
   <div class="in">
     <div>
@@ -435,5 +645,16 @@ footer.end a{color:#fff;text-decoration:underline;text-underline-offset:3px}
   </div>
 </footer>
 
+<script>
+(function(){
+  var b=document.getElementById('copy'), t=document.getElementById('mailtxt');
+  if(!b||!t) return;
+  b.addEventListener('click',function(){
+    navigator.clipboard.writeText(t.innerText).then(function(){
+      var old=b.textContent; b.textContent='Copié'; setTimeout(function(){b.textContent=old;},1800);
+    });
+  });
+})();
+</script>
 </body>
 </html>
