@@ -133,7 +133,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .panel > .wrap{background:var(--paper);width:min(calc(100% * 6 / 7),calc(1440px * 6 / 7));border-radius:var(--r)}
 .panel.soft > .wrap{background:var(--paper-soft)}
 .panel .grid-lines{background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px calc(100% / 6));background-position:0 0;border-radius:var(--r)}
-.panel .inner{padding-left:48px;padding-right:48px}
+.panel{--pad:48px}
+.panel .inner{padding-left:var(--pad);padding-right:var(--pad)}
 .dark-band{position:relative;color:#fff;
   background:linear-gradient(180deg,rgba(10,10,10,0) 0,rgba(10,10,10,.45) 140px,rgba(10,10,10,.55) calc(100% - 140px),rgba(10,10,10,0) 100%)}
 .section{padding:88px 0 96px}
@@ -176,9 +177,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* --- Fit for challenge --- */
 .two{display:grid;grid-template-columns:3fr 3fr;gap:0 calc(var(--col) / 2);align-items:start}
 .two .right{padding-top:14px}
-.challenge-visual{position:relative;margin-top:88px}
-.challenge-visual img{width:100%;height:clamp(260px,29vw,420px);object-fit:cover;border-radius:var(--r)}
-.challenge-visual .tag-card{left:0;bottom:0;text-align:left;border-radius:0 var(--r) 0 var(--r)}
+.challenge-visual{position:relative;margin:88px calc(-1 * var(--pad)) 0}
+.challenge-visual img{width:100%;height:clamp(260px,29vw,420px);object-fit:cover}
+.challenge-visual .tag-card{left:0;bottom:0;text-align:left;border-radius:0 var(--r) 0 0}
 
 /* --- Bandeau industries --- */
 .industries{padding:112px 0 124px}
@@ -193,14 +194,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* --- Fit for purpose --- */
 .purpose{display:grid;grid-template-columns:3fr 1fr 2fr;gap:0 calc(var(--col) / 2);align-items:start}
 .purpose .left{padding-top:0}
-.purpose .visual{position:relative;grid-column:3}
-.purpose .visual img{width:100%;height:clamp(340px,32vw,460px);object-fit:cover;object-position:center 30%;border-radius:var(--r)}
-.purpose .visual .tag-card{right:0;bottom:0;text-align:right;border-radius:var(--r) 0 var(--r) 0}
+.purpose .visual{position:relative;grid-column:3;margin-right:calc(-1 * var(--pad))}
+.purpose .visual img{width:100%;height:clamp(340px,32vw,460px);object-fit:cover;object-position:center 30%}
+.purpose .visual .tag-card{right:0;bottom:0;text-align:right;border-radius:var(--r) 0 0 0}
 
 /* --- Human chemistry --- */
 .human{display:grid;grid-template-columns:2fr 1fr 3fr;gap:0 calc(var(--col) / 2);align-items:center}
-.collage{position:relative;height:clamp(380px,36vw,520px)}
-.collage .a{position:absolute;left:0;top:0;width:50%;height:58%;object-fit:cover;border-radius:var(--r) 0 0 var(--r)}
+.collage{position:relative;height:clamp(380px,36vw,520px);margin-left:calc(-1 * var(--pad))}
+.collage .a{position:absolute;left:0;top:0;width:50%;height:58%;object-fit:cover}
 .collage .tag-card{left:50%;top:40%;width:50%;border-radius:0 var(--r) 0 0;padding:24px 26px}
 .collage .b{position:absolute;z-index:1;left:50%;top:64%;width:50%;height:36%;object-fit:cover;object-position:center 20%;border-radius:0 0 var(--r) 0}
 .human .text{grid-column:3}
@@ -257,7 +258,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .menu-panel{position:fixed;inset:var(--nav-h) 0 0 0;width:auto;max-height:none;border-radius:0}
   .panel{margin:40px 0}
   .panel > .wrap{width:calc(100% - 24px)}
-  .panel .inner{padding-left:24px;padding-right:24px}
+  .panel{--pad:24px}
   .site-footer{margin-top:40px}
   .global .lower{padding-right:0}
   .global .find{border-radius:0}
