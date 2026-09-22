@@ -125,7 +125,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* même largeur que le header et les panneaux (6 colonnes sur 7) */
 .hero .wrap{position:relative;width:min(calc(100% * 6 / 7),calc(1440px * 6 / 7))}
 .video-box{position:relative}
-.hero video{width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;background:#0b0b0b;border-radius:0 0 var(--r) var(--r)}
+/* la vidéo remonte de la hauteur de son bandeau logo (5,8 % de sa hauteur,
+   soit 3,3 % de sa largeur) : ce bandeau passe derrière le header opaque */
+.hero video{width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;background:#0b0b0b;
+  margin-top:-3.3%;border-radius:0 0 var(--r) var(--r)}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* ---------- Panneaux ---------- */
 /* Les panneaux blancs sont en retrait (6 colonnes sur 7) et espacés :
