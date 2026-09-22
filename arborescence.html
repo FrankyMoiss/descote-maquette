@@ -42,6 +42,7 @@ body{font-family:"Outfit",system-ui,sans-serif;color:var(--ink);background:#fff;
 .cross{margin-top:4mm;border:1px solid var(--line);border-left:3px solid var(--red);background:var(--soft);padding:4mm 5mm}
 .cross h3{font-size:8.5pt;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:2.5mm}
 .cross .rows{display:grid;grid-template-columns:repeat(2,1fr);gap:2mm 8mm}
+.cross .rows p:nth-child(5){grid-column:1 / -1}
 .cross p{font-size:8.8pt;color:var(--body);line-height:1.45}
 .cross p b{color:var(--ink);font-weight:500}
 .cross .ar{color:var(--red);font-weight:600}
@@ -180,6 +181,7 @@ table.matrix tbody th{text-align:left;font-weight:500;padding-left:0;white-space
       <p><b>Pages sœurs</b> — en haut de chaque page solution ou industrie, les autres pages du même niveau : on change de famille sans revenir en arrière.</p>
       <p><b>Références étiquetées</b> — case studies, fiches et certifications portent des étiquettes solution + industrie + fluide : elles remontent sur les pages concernées et y renvoient.</p>
       <p><b>Bloc « et après ? »</b> — en fin de page, 3 liens choisis selon la page lue, à la place du seul pied de page actuel.</p>
+      <p><b>Barre permanente</b> <span class="ar">↔</span> <b>toutes les pages</b> — Certifications, FAQ, Documentation et After sales à un clic depuis n'importe où, sans passer par le menu.</p>
     </div>
   </div>
 
@@ -354,12 +356,13 @@ table.matrix tbody th{text-align:left;font-weight:500;padding-left:0;white-space
 
   <div class="two">
     <div class="block">
-      <h2 class="sec">Quatre blocs à dessiner une fois</h2>
+      <h2 class="sec">Cinq blocs à dessiner une fois</h2>
       <div class="mechs">
         <div class="mech"><h3><i>1.</i> Barre de pages sœurs</h3><p>Les autres pages du même niveau, en haut de page.</p></div>
         <div class="mech"><h3><i>2.</i> Liens croisés</h3><p>Industries desservies / solutions concernées.</p></div>
         <div class="mech"><h3><i>3.</i> Références étiquetées</h3><p>Chaque étiquette devient un lien latéral.</p></div>
         <div class="mech"><h3><i>4.</i> Bloc « et après ? »</h3><p>3 liens choisis en fin de page.</p></div>
+        <div class="mech" style="grid-column:1 / -1"><h3><i>5.</i> Barre permanente</h3><p>Certifications · FAQ · Documentation · After sales · Inquiry, en bas de chaque page. Ces contenus restent aussi contextuels dans les pages produit et industrie.</p></div>
       </div>
     </div>
 

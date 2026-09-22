@@ -228,8 +228,21 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .global .find h3{font-size:16px;font-weight:600;margin-bottom:22px}
 .global .find p{font-size:15px;color:var(--body);max-width:44ch;margin-bottom:26px}
 
+
+/* ---------- Barre permanente (réassurance) ---------- */
+.reassure{position:relative;margin-top:110px}
+.reassure .wrap{width:min(calc(100% * 6 / 7),calc(1440px * 6 / 7));background:var(--paper);border-radius:var(--r) var(--r) 0 0}
+.reassure ul{list-style:none;display:grid;grid-template-columns:repeat(5,1fr)}
+.reassure li + li{border-left:1px solid var(--line)}
+.reassure a{display:flex;align-items:center;gap:12px;padding:22px 24px;font-size:14.5px;color:var(--ink);transition:color .2s,background .2s}
+.reassure a:hover{color:var(--red);background:var(--paper-soft)}
+.reassure svg{width:18px;height:18px;flex:0 0 18px;color:var(--red)}
+.reassure svg *{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.reassure b{font-weight:400}
+.reassure small{display:block;font-size:12px;color:var(--muted);margin-top:1px}
+
 /* ---------- Footer ---------- */
-.site-footer{background:var(--dark);color:#fff;margin-top:110px}
+.site-footer{background:var(--dark);color:#fff}
 .foot-top{display:flex;justify-content:space-between;align-items:flex-end;padding:64px 0 52px;gap:40px;flex-wrap:wrap}
 .foot-top img{height:34px;width:auto}
 .foot-top address{font-style:normal;font-size:13.5px;color:rgba(255,255,255,.72);margin-top:18px}
@@ -263,7 +276,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .panel{margin:40px 0}
   .panel > .wrap{width:calc(100% - 24px)}
   .panel{--pad:24px}
-  .site-footer{margin-top:40px}
+  .reassure{margin-top:40px}
+  .reassure .wrap{width:calc(100% - 24px)}
+  .reassure ul{grid-template-columns:1fr 1fr}
+  .reassure li{border-top:1px solid var(--line)}
+  .reassure li + li{border-left:1px solid var(--line)}
+  .reassure li:nth-child(odd){border-left:0}
+  .reassure li:last-child{grid-column:1 / -1}
+  .reassure a{padding:16px 18px;font-size:14px}
   .global .lower{padding-right:0}
   .global .find{border-radius:0}
   .inner{padding-left:24px;padding-right:24px}
@@ -456,6 +476,20 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 </main>
 
 <!-- ================= FOOTER ================= -->
+  <!-- Barre permanente : présente en bas de chaque page -->
+  <div class="reassure">
+    <div class="wrap">
+      <ul>
+        <li><a href="soon.html"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 1.6l2 1.5 2.4-.3.9 2.3 2.1 1.2-.7 2.4.7 2.4-2.1 1.2-.9 2.3-2.4-.3-2 1.5-2-1.5-2.4.3-.9-2.3L1.6 12l.7-2.4L1.6 7.2l2.1-1.2.9-2.3 2.4.3z"/><path d="M6.4 9.1l1.8 1.8 3.4-3.6"/></svg><span><b>Certifications</b><small>Approbations &amp; agréments</small></span></a></li>
+        <li><a href="soon.html"><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.4"/><path d="M6.9 6.9a2.1 2.1 0 1 1 2.9 2c-.6.3-.9.8-.9 1.4v.4"/><path d="M9 13.4v.1"/></svg><span><b>FAQ</b><small>Questions fréquentes</small></span></a></li>
+        <li><a href="soon.html"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 1.8h6.2L14.5 6v10.2H4z"/><path d="M10.2 1.8V6h4.3M6.4 9.4h5.2M6.4 12.2h5.2"/></svg><span><b>Documentation</b><small>Fiches &amp; notices</small></span></a></li>
+        <li><a href="soon.html"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M7.6 3.2l1.6 1.6-2 2-1.6-1.6a3.4 3.4 0 0 0 4.4 4.4l3.6 3.6a1.4 1.4 0 0 1-2 2L8 11.6a3.4 3.4 0 0 1-4.4-4.4z"/></svg><span><b>After sales</b><small>Réparation &amp; ateliers</small></span></a></li>
+        <li><a href="inquiry.html"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2.2 4.4h13.6v9.2H2.2z"/><path d="M2.2 4.4L9 9.8l6.8-5.4"/></svg><span><b>Inquiry</b><small>Nous écrire</small></span></a></li>
+      </ul>
+    </div>
+  </div>
+
+
   <footer class="site-footer">
     <div class="wrap">
       <div class="inner">
