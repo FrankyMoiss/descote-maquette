@@ -166,6 +166,17 @@ table.matrix tbody tr:hover td,table.matrix tbody tr:hover th{background:rgba(24
 .octo .lg{fill:#4B4A48;font-size:10px;font-family:inherit}
 .octo .card-t,.octo .lg{font-size:11px}
 
+/* chiffre clé en tête */
+.kpi{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:34px;padding:24px 28px;
+  background:rgba(255,255,255,.08);border-left:3px solid var(--red);border-radius:0 var(--r) var(--r) 0}
+.kpi .n{display:flex;align-items:baseline;gap:14px;color:#fff}
+.kpi .n b{font-size:clamp(40px,5vw,64px);font-weight:300;line-height:1;letter-spacing:-.02em}
+.kpi .n b.now{color:rgba(255,255,255,.55);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--red)}
+.kpi .n b.next{color:var(--red)}
+.kpi .n i{font-style:normal;font-size:22px;color:rgba(255,255,255,.5)}
+.kpi p{font-size:15.5px;line-height:1.5;color:rgba(255,255,255,.85);max-width:44ch}
+.kpi p b{color:#fff;font-weight:500}
+
 /* boutons */
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 20px;border-radius:3px;font-size:12.5px;font-weight:500;
@@ -206,6 +217,10 @@ footer.end a{color:#fff;text-decoration:underline;text-underline-offset:3px}
     <p class="tagline">Proposition · navigation</p>
     <h1>De l'arborescence <em>pyramidale</em> au <em>maillage</em></h1>
     <p class="intro">Le plan actuel compte 29 pages sur 3 niveaux, réparties en deux branches qui parlent des mêmes vannes : les <strong>solutions</strong> d'un côté, les <strong>industries</strong> de l'autre. Aujourd'hui, passer de l'une à l'autre oblige à remonter par le menu. Voici comment les relier.</p>
+    <div class="kpi">
+      <span class="n"><b class="now">8</b><i>→</i><b class="next">4</b></span>
+      <p><b>clics</b> pour relier une vanne à son industrie puis à sa preuve. Aujourd'hui jusqu'à huit, avec deux retours au menu ; avec le maillage, quatre et aucun retour en arrière.</p>
+    </div>
     <p class="meta">Descote 2026 · proposition de navigation</p>
     <div class="actions">
       <a class="btn solid" href="Descote-nouvelle-arborescence.pdf" download>Télécharger le PDF — 4 pages</a>
@@ -589,7 +604,7 @@ footer.end a{color:#fff;text-decoration:underline;text-underline-offset:3px}
       <div class="path">
         <b>Home</b><em>→</em><b>What we do</b><em>→</em><b>Storage</b><em>→</em><b>Top &amp; Bottom tank valves</b><em>→ retour menu →</em><b>Industry</b><em>→</em><b>Chlorine related</b><em>→ retour menu →</em><b>Case studies</b><em>→ tri manuel</em>
       </div>
-      <p class="count"><b>8 clics</b> dont 2 retours au menu</p>
+      <p class="count"><b>8 clics</b> dont 2 retours au menu <span style="text-transform:none;letter-spacing:0">(ouvertures de sous-menu comprises)</span></p>
     </div>
 
     <div class="mt">
