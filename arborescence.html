@@ -94,8 +94,32 @@ table.matrix tbody th{text-align:left;font-weight:500;padding-left:0;white-space
 .octo .tag-link{fill:none;stroke:#F0473B;stroke-width:1.1;stroke-dasharray:2 3;opacity:.85}
 .octo .sib{fill:none;stroke:#F0473B;stroke-width:1.2}
 .octo .sib-t{fill:#F0473B;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;font-family:inherit}
+.octo .tag-t{fill:#F0473B;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;font-family:inherit}
 .octo .legend-box{fill:#F7F6F4}
 .octo .lg{fill:#4B4A48;font-size:10px;font-family:inherit}
+
+/* page 4 : grille à remplir */
+.fill-intro{display:grid;grid-template-columns:1.4fr 1fr;gap:7mm;margin-bottom:4mm;align-items:start}
+.howto{border:1px solid var(--line);border-left:3px solid var(--red);background:var(--soft);padding:3.5mm 4.5mm}
+.howto h3{font-size:8.5pt;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:2mm}
+.howto ol{margin-left:4mm;font-size:8.4pt;color:var(--body);line-height:1.45}
+.howto li{margin-bottom:1mm}
+table.fill{border-collapse:collapse;width:100%;font-size:9pt}
+table.fill th,table.fill td{border:1px solid #D8D5D1;padding:0;text-align:center}
+table.fill thead th{font-size:7.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);font-weight:600;
+  line-height:1.3;padding:2.4mm 2mm;background:var(--soft);vertical-align:bottom}
+table.fill thead th:first-child{text-align:left;padding-left:3mm}
+table.fill tbody th{text-align:left;font-weight:500;padding:0 3mm;white-space:nowrap;background:#fff}
+table.fill tbody td{height:11mm;background:#fff}
+.boxes{display:flex;justify-content:center;gap:3.5mm}
+.bx{display:flex;flex-direction:column;align-items:center;gap:1mm}
+.bx i{display:block;width:4.5mm;height:4.5mm;border:1px solid #9B9793;border-radius:.6mm}
+.bx i.core{border-color:var(--red)}
+.bx span{font-size:6pt;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.fill-foot{display:grid;grid-template-columns:1fr 1fr;gap:8mm;margin-top:3mm}
+.sigline{font-size:8.5pt;color:var(--muted)}
+.sigline b{display:block;color:var(--ink);font-weight:500;margin-bottom:1mm;font-size:9pt}
+.rule{border-bottom:1px solid #C9C6C2;height:6mm}
 </style>
 </head>
 <body>
@@ -185,7 +209,7 @@ table.matrix tbody th{text-align:left;font-weight:500;padding-left:0;white-space
     </div>
   </div>
 
-  <div class="foot"><span>descote — nouvelle arborescence</span><span>1 / 3</span></div>
+  <div class="foot"><span>descote — nouvelle arborescence</span><span>1 / 4</span></div>
 </section>
 
 
@@ -196,8 +220,8 @@ table.matrix tbody th{text-align:left;font-weight:500;padding-left:0;white-space
     <div class="sub"><b>Descote 2026</b>Proposition · septembre 2026</div>
   </div>
   <p class="intro">La même arborescence, avec en rouge ce qui n'existe pas aujourd'hui : les passages directs d'une page à l'autre. Le menu sert à entrer dans le site, les liens rouges à le parcourir.</p>
-<svg class="octo" viewBox="0 0 1180 560" role="img" aria-label="Vue d'ensemble de la navigation : quatre entrées et leurs liens transversaux">
-<defs><marker id="ar" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 L6 4 L0 7 Z" fill="#F0473B"/></marker></defs>
+<svg class="octo" viewBox="0 0 1180 560" role="img" aria-label="Vue d'ensemble de la navigation : quatre entrées, leurs liens transversaux et les références reliées à chaque industrie">
+<defs><marker id="ar" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 L6 4 L0 7 Z" fill="#F0473B"/></marker><marker id="ard" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1.5 L5 4 L0 6.5 Z" fill="#F0473B" opacity=".75"/></marker></defs>
 <rect class="home" x="520.0" y="20" width="140" height="34" rx="3"/>
 <text class="home-t" x="590.0" y="42" text-anchor="middle">HOME</text>
 <path class="branch" d="M590.0 54 C 590.0 68, 133.0 62, 133.0 92"/>
@@ -309,21 +333,28 @@ table.matrix tbody th{text-align:left;font-weight:500;padding-left:0;white-space
 <path class="x-link" d="M242 335.0 C 288 335.0, 292 296.0, 338 296.0" marker-end="url(#ar)"/>
 <path class="x-link" d="M242 374.0 C 288 374.0, 292 335.0, 338 335.0" marker-end="url(#ar)"/>
 <path class="x-link" d="M242 413.0 C 288 413.0, 292 335.0, 338 335.0" marker-end="url(#ar)"/>
-<path class="tag-link" d="M658 179.0 C 608 179.0, 584 149.0, 534 179.0" marker-end="url(#ar)"/>
-<path class="tag-link" d="M658 218.0 C 598 288.0, 594 385.0, 534 335.0" marker-end="url(#ar)"/>
+<path class="tag-link" d="M610.0 165.0 L610.0 349.0"/>
+<path class="tag-link" d="M658 179.0 C 632 179.0, 636.0 179.0, 610.0 179.0"/>
+<path class="tag-link" d="M658 218.0 C 632 218.0, 636.0 218.0, 610.0 218.0"/>
+<path class="tag-link" d="M658 257.0 C 632 257.0, 636.0 257.0, 610.0 257.0"/>
+<path class="tag-link" d="M610.0 179.0 C 584.0 179.0, 560 179.0, 534 179.0" marker-end="url(#ard)"/>
+<path class="tag-link" d="M610.0 218.0 C 584.0 218.0, 560 218.0, 534 218.0" marker-end="url(#ard)"/>
+<path class="tag-link" d="M610.0 257.0 C 584.0 257.0, 560 257.0, 534 257.0" marker-end="url(#ard)"/>
+<path class="tag-link" d="M610.0 296.0 C 584.0 296.0, 560 296.0, 534 296.0" marker-end="url(#ard)"/>
+<path class="tag-link" d="M610.0 335.0 C 584.0 335.0, 560 335.0, 534 335.0" marker-end="url(#ard)"/>
+<circle class="bus-dot" cx="610.0" cy="257.0" r="0"/>
+<text class="tag-t" transform="translate(601.0,257.0) rotate(-90)" text-anchor="middle">étiquettes</text>
 <path class="sib" d="M30 164 L20 164 L20 428 L30 428"/>
 <text class="sib-t" transform="translate(12,296.0) rotate(-90)" text-anchor="middle">pages sœurs</text>
-<path class="sib" d="M532 164 L542 164 L542 350 L532 350"/>
-<text class="sib-t" transform="translate(554,257.0) rotate(-90)" text-anchor="middle">pages sœurs</text>
 <rect class="legend-box" x="0" y="472" width="1180" height="62" rx="3"/>
 <line class="x-link" x1="22" y1="498" x2="74" y2="498" marker-end="url(#ar)"/>
 <text class="lg" x="86" y="502">lien croisé solution ↔ industrie (croisements « produit phare » de la matrice)</text>
-<line class="tag-link" x1="600" y1="498" x2="652" y2="498" marker-end="url(#ar)"/>
-<text class="lg" x="664" y="502">références étiquetées, remontées sur les pages concernées</text>
+<line class="tag-link" x1="600" y1="498" x2="652" y2="498" marker-end="url(#ard)"/>
+<text class="lg" x="664" y="502">case studies, documentation et certifications, étiquetées par industrie</text>
 <path class="sib" d="M22 524 L44 524"/><text class="lg" x="56" y="528">barre de pages sœurs — on circule dans la famille sans remonter</text>
-<text class="lg" x="600" y="528">+ bloc « et après ? » en fin de chaque page : 3 liens choisis</text>
+<text class="lg" x="600" y="528">+ bloc « et après ? » et barre permanente en bas de chaque page</text>
 </svg>
-  <div class="foot"><span>descote — vue d'ensemble de la navigation</span><span>2 / 3</span></div>
+  <div class="foot"><span>descote — vue d'ensemble de la navigation</span><span>2 / 4</span></div>
 </section>
 
 <!-- ============ PAGE 3 : MATRICE & PARCOURS ============ -->
@@ -376,7 +407,48 @@ table.matrix tbody th{text-align:left;font-weight:500;padding-left:0;white-space
     </div>
   </div>
 
-  <div class="foot"><span>descote — matrice solutions × industries</span><span>3 / 3</span></div>
+  <div class="foot"><span>descote — matrice solutions × industries</span><span>3 / 4</span></div>
+</section>
+
+
+<!-- ============ PAGE 4 : GRILLE À REMPLIR ============ -->
+<section class="sheet">
+  <div class="head">
+    <h1>Grille à remplir — <em>solutions × industries</em></h1>
+    <div class="sub"><b>Descote 2026</b>À compléter par les équipes techniques</div>
+  </div>
+
+  <div class="fill-intro">
+    <p class="intro" style="margin-bottom:0">Cette grille est le seul contenu nécessaire pour mettre en place la navigation croisée. Une case = une famille de vannes face à une industrie. Une fois remplie, elle alimente automatiquement les liens entre pages produit et pages industrie, ainsi que les filtres des case studies et de la documentation.</p>
+    <div class="howto">
+      <h3>Comment la remplir</h3>
+      <ol>
+        <li><b>Produit phare</b> : la solution est mise en avant des deux côtés (page produit et page industrie).</li>
+        <li><b>Concerné</b> : la solution s'applique, un lien simple suffit.</li>
+        <li><b>Non</b> : sans objet, aucun lien.</li>
+        <li>Une seule case cochée par croisement. En cas de doute, cocher « concerné ».</li>
+      </ol>
+    </div>
+  </div>
+
+  <table class="fill">
+    <thead><tr><th>Solution</th><th>Chlorine<br>related</th><th>Fluorine<br>related · HF Alky</th><th>Nuclear</th><th>CN<br>related</th><th>Other critical<br>applications</th></tr></thead>
+    <tbody>
+      <tr><th>Process / Piping</th><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td></tr>
+      <tr><th>Instrumentation</th><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td></tr>
+      <tr><th>Transport</th><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td></tr>
+      <tr><th>Storage</th><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td></tr>
+      <tr><th>Fluid transfer / Jet &amp; Ejectors</th><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td></tr>
+      <tr><th>Tailor-made engineering</th><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td><td><div class="boxes"><span class="bx"><i class="core"></i><span>phare</span></span><span class="bx"><i></i><span>concerné</span></span><span class="bx"><i></i><span>non</span></span></div></td></tr>
+      </tbody>
+  </table>
+
+  <div class="fill-foot">
+    <div class="sigline"><b>Remarques / cas particuliers</b><div class="rule"></div><div class="rule"></div></div>
+    <div class="sigline"><b>Rempli par</b><div class="rule"></div><span>Nom, service, date</span></div>
+  </div>
+
+  <div class="foot"><span>descote — grille solutions × industries à compléter</span><span>4 / 4</span></div>
 </section>
 
 </body>

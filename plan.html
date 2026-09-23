@@ -161,6 +161,7 @@ table.matrix tbody tr:hover td,table.matrix tbody tr:hover th{background:rgba(24
 .octo .tag-link{fill:none;stroke:#F0473B;stroke-width:1.1;stroke-dasharray:2 3;opacity:.85}
 .octo .sib{fill:none;stroke:#F0473B;stroke-width:1.2}
 .octo .sib-t{fill:#F0473B;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;font-family:inherit}
+.octo .tag-t{fill:#F0473B;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;font-family:inherit}
 .octo .legend-box{fill:#F7F6F4}
 .octo .lg{fill:#4B4A48;font-size:10px;font-family:inherit}
 .octo .card-t,.octo .lg{font-size:11px}
@@ -207,7 +208,7 @@ footer.end a{color:#fff;text-decoration:underline;text-underline-offset:3px}
     <p class="intro">Le plan actuel compte 29 pages sur 3 niveaux, réparties en deux branches qui parlent des mêmes vannes : les <strong>solutions</strong> d'un côté, les <strong>industries</strong> de l'autre. Aujourd'hui, passer de l'une à l'autre oblige à remonter par le menu. Voici comment les relier.</p>
     <p class="meta">Descote 2026 · proposition de navigation</p>
     <div class="actions">
-      <a class="btn solid" href="Descote-nouvelle-arborescence.pdf" download>Télécharger le PDF — 3 pages</a>
+      <a class="btn solid" href="Descote-nouvelle-arborescence.pdf" download>Télécharger le PDF — 4 pages</a>
       <a class="btn ghost" href="index.html">Voir la maquette</a>
     </div>
   </div>
@@ -282,8 +283,8 @@ footer.end a{color:#fff;text-decoration:underline;text-underline-offset:3px}
     <p class="kicker">Vue d'ensemble</p>
     <h2 class="sec">Les quatre entrées et leurs liens transversaux</h2>
     <p class="lead">La même arborescence, vue d'en haut : en noir la structure, en rouge ce qui n'existe pas aujourd'hui — les passages directs d'une page à l'autre. Le menu sert à entrer dans le site, les liens rouges à le parcourir.</p>
-<svg class="octo" viewBox="0 0 1180 560" role="img" aria-label="Vue d'ensemble de la navigation : quatre entrées et leurs liens transversaux">
-<defs><marker id="ar" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 L6 4 L0 7 Z" fill="#F0473B"/></marker></defs>
+<svg class="octo" viewBox="0 0 1180 560" role="img" aria-label="Vue d'ensemble de la navigation : quatre entrées, leurs liens transversaux et les références reliées à chaque industrie">
+<defs><marker id="ar" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 L6 4 L0 7 Z" fill="#F0473B"/></marker><marker id="ard" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1.5 L5 4 L0 6.5 Z" fill="#F0473B" opacity=".75"/></marker></defs>
 <rect class="home" x="520.0" y="20" width="140" height="34" rx="3"/>
 <text class="home-t" x="590.0" y="42" text-anchor="middle">HOME</text>
 <path class="branch" d="M590.0 54 C 590.0 68, 133.0 62, 133.0 92"/>
@@ -395,19 +396,26 @@ footer.end a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 <path class="x-link" d="M242 335.0 C 288 335.0, 292 296.0, 338 296.0" marker-end="url(#ar)"/>
 <path class="x-link" d="M242 374.0 C 288 374.0, 292 335.0, 338 335.0" marker-end="url(#ar)"/>
 <path class="x-link" d="M242 413.0 C 288 413.0, 292 335.0, 338 335.0" marker-end="url(#ar)"/>
-<path class="tag-link" d="M658 179.0 C 608 179.0, 584 149.0, 534 179.0" marker-end="url(#ar)"/>
-<path class="tag-link" d="M658 218.0 C 598 288.0, 594 385.0, 534 335.0" marker-end="url(#ar)"/>
+<path class="tag-link" d="M610.0 165.0 L610.0 349.0"/>
+<path class="tag-link" d="M658 179.0 C 632 179.0, 636.0 179.0, 610.0 179.0"/>
+<path class="tag-link" d="M658 218.0 C 632 218.0, 636.0 218.0, 610.0 218.0"/>
+<path class="tag-link" d="M658 257.0 C 632 257.0, 636.0 257.0, 610.0 257.0"/>
+<path class="tag-link" d="M610.0 179.0 C 584.0 179.0, 560 179.0, 534 179.0" marker-end="url(#ard)"/>
+<path class="tag-link" d="M610.0 218.0 C 584.0 218.0, 560 218.0, 534 218.0" marker-end="url(#ard)"/>
+<path class="tag-link" d="M610.0 257.0 C 584.0 257.0, 560 257.0, 534 257.0" marker-end="url(#ard)"/>
+<path class="tag-link" d="M610.0 296.0 C 584.0 296.0, 560 296.0, 534 296.0" marker-end="url(#ard)"/>
+<path class="tag-link" d="M610.0 335.0 C 584.0 335.0, 560 335.0, 534 335.0" marker-end="url(#ard)"/>
+<circle class="bus-dot" cx="610.0" cy="257.0" r="0"/>
+<text class="tag-t" transform="translate(601.0,257.0) rotate(-90)" text-anchor="middle">étiquettes</text>
 <path class="sib" d="M30 164 L20 164 L20 428 L30 428"/>
 <text class="sib-t" transform="translate(12,296.0) rotate(-90)" text-anchor="middle">pages sœurs</text>
-<path class="sib" d="M532 164 L542 164 L542 350 L532 350"/>
-<text class="sib-t" transform="translate(554,257.0) rotate(-90)" text-anchor="middle">pages sœurs</text>
 <rect class="legend-box" x="0" y="472" width="1180" height="62" rx="3"/>
 <line class="x-link" x1="22" y1="498" x2="74" y2="498" marker-end="url(#ar)"/>
 <text class="lg" x="86" y="502">lien croisé solution ↔ industrie (croisements « produit phare » de la matrice)</text>
-<line class="tag-link" x1="600" y1="498" x2="652" y2="498" marker-end="url(#ar)"/>
-<text class="lg" x="664" y="502">références étiquetées, remontées sur les pages concernées</text>
+<line class="tag-link" x1="600" y1="498" x2="652" y2="498" marker-end="url(#ard)"/>
+<text class="lg" x="664" y="502">case studies, documentation et certifications, étiquetées par industrie</text>
 <path class="sib" d="M22 524 L44 524"/><text class="lg" x="56" y="528">barre de pages sœurs — on circule dans la famille sans remonter</text>
-<text class="lg" x="600" y="528">+ bloc « et après ? » en fin de chaque page : 3 liens choisis</text>
+<text class="lg" x="600" y="528">+ bloc « et après ? » et barre permanente en bas de chaque page</text>
 </svg>
   </div></div>
 </section>
@@ -454,7 +462,7 @@ footer.end a{color:#fff;text-decoration:underline;text-underline-offset:3px}
       <span><i class="dot no"></i>Sans objet</span>
     </div>
 
-    <p class="note"><b>À valider avec Descote.</b> Les croisements ci-dessus sont une hypothèse de travail : seuls quelques-uns sont déjà lisibles dans l'arborescence (vannes pour cylindres UF6 → nucléaire, HF Alky → fluor, produits approuvés Eurochlor → chlore). C'est la seule chose à faire remplir par les équipes techniques Descote — tout le reste de la navigation en découle automatiquement.</p>
+    <p class="note"><b>À valider avec Descote.</b> Les croisements ci-dessus sont une hypothèse de travail : seuls quelques-uns sont déjà lisibles dans l'arborescence (vannes pour cylindres UF6 → nucléaire, HF Alky → fluor, produits approuvés Eurochlor → chlore). C'est la seule chose à faire remplir par les équipes techniques Descote — tout le reste de la navigation en découle automatiquement. La <a href="Descote-nouvelle-arborescence.pdf" download style="color:var(--red)">grille vierge à remplir</a> est en dernière page du PDF.</p>
   </div></div>
 </section>
 
@@ -600,7 +608,7 @@ footer.end a{color:#fff;text-decoration:underline;text-underline-offset:3px}
     <p class="kicker">La suite</p>
     <h2 class="sec">Ce que ça demande, dans l'ordre</h2>
     <ol class="steps">
-      <li><div><b>Faire remplir la matrice</b><p>6 solutions × 5 industries = 30 cases, à cocher par les équipes techniques Descote. C'est le seul vrai travail de fond.</p></div></li>
+      <li><div><b>Faire remplir la matrice</b><p>6 solutions × 5 industries = 30 cases, à cocher par les équipes techniques Descote. C'est le seul vrai travail de fond — la <a href="Descote-nouvelle-arborescence.pdf" download>grille vierge est en dernière page du PDF</a>, prête à imprimer.</p></div></li>
       <li><div><b>Étiqueter les contenus existants</b><p>Chaque case study, fiche et certification reçoit ses étiquettes solution / industrie / fluide. Les listes et filtres se génèrent ensuite tout seuls.</p></div></li>
       <li><div><b>Ajouter les blocs de page</b><p>Barre de pages sœurs, liens croisés, références étiquetées, bloc « et après ? » : quatre composants à dessiner une fois, réutilisés sur toutes les pages. La barre permanente, elle, est déjà en place dans la maquette.</p></div></li>
       <li><div><b>Simplifier le menu</b><p>Passage à quatre entrées, une fois que les liens latéraux couvrent le reste.</p></div></li>
