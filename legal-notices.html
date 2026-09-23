@@ -304,6 +304,65 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .sign{margin-left:0}
   }
 
+/* ---------- Pages solution / industrie (prototype) ---------- */
+.kicker{display:flex;align-items:center;gap:11px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:500;color:var(--red);margin-bottom:14px}
+.kicker::before{content:"";width:0;height:0;flex:0 0 auto;border-style:solid;border-width:5px 0 5px 8px;
+  border-color:transparent transparent transparent var(--red)}
+h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-spacing:-.015em;margin-bottom:12px;text-wrap:balance}
+.panel .box, .panel .inner{}
+.siblings{position:relative;margin-top:-1px}
+.siblings .wrap{width:min(calc(100% * 6 / 7),calc(1440px * 6 / 7));background:var(--paper);border-radius:var(--r) var(--r) 0 0}
+.siblings ul{list-style:none;display:flex;flex-wrap:wrap;padding:0 8px}
+.siblings li{flex:0 0 auto}
+.siblings a{display:block;padding:18px 18px 16px;font-size:14.5px;color:var(--body);border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.siblings a:hover{color:var(--ink)}
+.siblings a[aria-current="page"]{color:var(--red);border-bottom-color:var(--red);font-weight:500}
+.siblings .lbl{display:block;padding:18px 14px 16px 8px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+
+.cross-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:26px}
+.cross-card{display:block;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;background:#fff;transition:border-color .2s,transform .2s}
+.cross-card:hover{border-color:var(--red);transform:translateY(-2px)}
+.cross-card .rank{display:inline-block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+  padding:4px 8px;border-radius:2px;margin-bottom:12px}
+.cross-card .rank.core{background:var(--red);color:#fff}
+.cross-card .rank.rel{background:rgba(22,22,21,.07);color:var(--body)}
+.cross-card h3{font-size:17px;font-weight:500;margin-bottom:5px}
+.cross-card p{font-size:13.5px;color:var(--muted);line-height:1.45}
+
+.ref-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:26px}
+.ref{display:flex;flex-direction:column;gap:10px;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;background:#fff}
+.ref .kind{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--red)}
+.ref h3{font-size:15.5px;font-weight:500;line-height:1.35;color:var(--ink)}
+.ref .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.ref .tags a{font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:2px;
+  background:rgba(240,71,59,.09);color:var(--red-deep);font-weight:500;transition:background .2s,color .2s}
+.ref .tags a:hover{background:var(--red);color:#fff}
+
+.after{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.after a{display:block;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;background:#fff;transition:border-color .2s,transform .2s}
+.after a:hover{border-color:var(--red);transform:translateY(-2px)}
+.after span{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:8px}
+.after b{display:block;font-size:16px;font-weight:500;line-height:1.35}
+.after small{display:block;font-size:13px;color:var(--muted);margin-top:4px;line-height:1.45}
+
+.todo{margin-top:26px;padding:20px 24px;border:1px dashed rgba(22,22,21,.22);border-radius:var(--r);
+  font-size:14.5px;color:var(--muted);line-height:1.6;background:var(--paper-soft)}
+.todo b{color:var(--body);font-weight:500}
+.spec{list-style:none;margin-top:8px}
+.spec li{position:relative;padding:11px 0 11px 22px;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--body);line-height:1.5}
+.spec li:last-child{border-bottom:0}
+.spec li::before{content:"";position:absolute;left:0;top:19px;width:6px;height:6px;border-radius:50%;background:var(--red)}
+.family{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.family li{border:1px solid var(--line);border-radius:var(--r);padding:14px 18px;font-size:15.5px;color:var(--ink);background:#fff}
+.hub{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:30px}
+@media (max-width:980px){
+  .siblings .wrap{width:calc(100% - 24px)}
+  .siblings ul{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .siblings a{white-space:nowrap}
+  .after{grid-template-columns:1fr}
+}
+
 /* ---------- Pages internes ---------- */
 .page-head{position:relative;color:#fff;padding:110px 0 70px}
 .page-head .crumbs{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:18px}
@@ -428,17 +487,42 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </button>
     <nav class="menu-panel" id="menu-panel" hidden aria-label="Menu">
       <ul class="menu-list">
-        <li><span>What we do</span>
-          <ul><li><a href="index.html#challenge">Fit for challenge</a></li><li><a href="index.html#purpose">Fit for purpose</a></li><li><a href="index.html#human">Human chemistry</a></li></ul>
+        <li><span>Solutions</span>
+          <ul>
+            <li><a href="solution-pre-engineered.html">Pre-engineered solutions</a></li>
+            <li><a href="solution-process-piping.html">Process / Piping</a></li>
+            <li><a href="solution-instrumentation.html">Instrumentation</a></li>
+            <li><a href="solution-transport.html">Transport</a></li>
+            <li><a href="solution-storage.html">Storage</a></li>
+            <li><a href="solution-fluid-transfer.html">Fluid transfer / Jet &amp; Ejectors</a></li>
+            <li><a href="solution-tailor-made.html">Tailor-made engineering</a></li>
+          </ul>
         </li>
-        <li><a href="index.html#industries">Industry</a></li>
-        <li><a href="soon.html">Case studies</a></li>
-        <li><a href="soon.html">After sales</a></li>
-        <li><span>About us</span>
-          <ul><li><a href="index.html#human">Human chemistry</a></li><li><a href="index.html#global">Our network</a></li><li><a href="join-us.html">Join us</a></li></ul>
+        <li><span>Industries</span>
+          <ul>
+            <li><a href="industry-chlorine.html">Chlorine related</a></li>
+            <li><a href="industry-fluorine.html">Fluorine related · HF Alky</a></li>
+            <li><a href="industry-nuclear.html">Nuclear</a></li>
+            <li><a href="industry-cn.html">CN related</a></li>
+            <li><a href="industry-other.html">Other critical applications</a></li>
+          </ul>
         </li>
-        <li><span>Resources</span>
-          <ul><li><a href="soon.html">Documentation</a></li><li><a href="soon.html">Certifications</a></li><li><a href="soon.html">News</a></li></ul>
+        <li><span>Références</span>
+          <ul>
+            <li><a href="references.html">Études de cas</a></li>
+            <li><a href="references.html">Documentation</a></li>
+            <li><a href="references.html">Certifications</a></li>
+            <li><a href="soon.html">FAQ</a></li>
+          </ul>
+        </li>
+        <li><span>Descote</span>
+          <ul>
+            <li><a href="index.html#human">Human chemistry</a></li>
+            <li><a href="globally.html">Globally — notre réseau</a></li>
+            <li><a href="soon.html">Quality &amp; Certification</a></li>
+            <li><a href="soon.html">After sales &amp; repair shops</a></li>
+            <li><a href="join-us.html">Careers</a></li>
+          </ul>
         </li>
         <li><a href="inquiry.html">Inquiry</a></li>
       </ul>
