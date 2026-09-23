@@ -195,25 +195,23 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .challenge-visual img{width:100%;height:clamp(260px,29vw,420px);object-fit:cover}
 .challenge-visual .tag-card{left:0;bottom:0;text-align:left;border-radius:0 var(--r) 0 0}
 
-/* --- Bandeau industries --- */
-/* photo de raffinerie derrière les mots, fondue en haut et en bas dans le phare */
-.industries{padding:112px 0 124px;overflow:hidden}
-.industries::before{
-  content:"";position:absolute;inset:0;z-index:0;
-  background:url("assets/industries.jpg") center 42% / cover;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 110px,#000 calc(100% - 110px),transparent 100%);
-  mask-image:linear-gradient(180deg,transparent 0,#000 110px,#000 calc(100% - 110px),transparent 100%);
-}
-.industries::after{
-  content:"";position:absolute;inset:0;z-index:0;
-  background:linear-gradient(180deg,rgba(8,8,8,0) 0,rgba(8,8,8,.70) 110px,rgba(8,8,8,.70) calc(100% - 110px),rgba(8,8,8,0) 100%);
-}
+/* --- Bandeau industries ---
+   une photo par industrie (médiathèque Descote), qui change avec le mot actif */
+.industries{padding:120px 0 132px;overflow:hidden}
+.industries .shots{position:absolute;inset:0;z-index:0;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 120px,#000 calc(100% - 120px),transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0,#000 120px,#000 calc(100% - 120px),transparent 100%)}
+.industries .shots img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;
+  opacity:0;transition:opacity .9s ease}
+.industries .shots img.on{opacity:1}
+.industries .scrim{position:absolute;inset:0;z-index:0;
+  background:linear-gradient(180deg,rgba(8,8,8,0) 0,rgba(8,8,8,.64) 120px,rgba(8,8,8,.64) calc(100% - 120px),rgba(8,8,8,0) 100%)}
 .industries .wrap{position:relative;z-index:1}
-.industries ul{list-style:none;display:flex;flex-direction:column;align-items:flex-end;gap:2px;text-align:right}
+.industries ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
 .industries li{
   font-size:clamp(38px,5.6vw,80px);font-weight:600;line-height:1.05;letter-spacing:-.02em;
-  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.85);
-  transition:color .6s ease,-webkit-text-stroke-color .6s ease;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.85);cursor:default;
+  transition:color .5s ease,-webkit-text-stroke-color .5s ease;
 }
 .industries li.on{color:#fff;-webkit-text-stroke-color:#fff}
 
@@ -638,14 +636,22 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
     els.forEach(function(el){io.observe(el);});
   }else{ els.forEach(function(el){el.classList.add('in');}); }
 
-  // --- Industries : le mot plein tourne doucement ---
+  // --- Industries : le mot plein et sa photo changent ensemble ---
   var items=document.querySelectorAll('#industry-list li');
-  if(items.length&&!reduce){
-    var i=2;
-    setInterval(function(){
-      items[i].classList.remove('on'); i=(i+1)%items.length; items[i].classList.add('on');
-    },2600);
+  var shots=document.querySelectorAll('.industries .shots img');
+  function show(i){
+    items.forEach(function(el,k){ el.classList.toggle('on',k===i); });
+    var key=items[i].dataset.shot;
+    shots.forEach(function(img){ img.classList.toggle('on',img.dataset.shot===key); });
   }
+  if(items.length){
+    var i=2, timer=null;
+    items.forEach(function(el,k){
+      el.addEventListener('mouseenter',function(){ i=k; show(k); });
+    });
+    if(!reduce){ timer=setInterval(function(){ i=(i+1)%items.length; show(i); },3200); }
+  }
+
 
   // --- Formulaires de maquette : pas d'envoi, juste un accusé ---
   document.querySelectorAll('form.form').forEach(function(f){
