@@ -98,15 +98,25 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   box-shadow:0 30px 60px rgba(0,0,0,.22);z-index:60;
 }
 .menu-panel[hidden]{display:none}
-.menu-list{list-style:none;padding:12px 0}
+.menu-list{list-style:none;padding:8px 0}
 .menu-list > li{border-bottom:1px solid var(--line)}
 .menu-list > li:last-child{border-bottom:0}
-.menu-list > li > a,.menu-list > li > span{display:block;padding:15px 36px;font-size:18px;color:var(--ink)}
-.menu-list > li > span{padding-bottom:6px;color:var(--muted);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+.menu-list > li > a{display:block;padding:16px 36px;font-size:18px;color:var(--ink)}
 .menu-list > li > a:hover{color:var(--red)}
-.menu-list ul{list-style:none;padding:0 0 12px}
-.menu-list ul a{display:block;padding:8px 36px;font-size:16px;color:var(--ink)}
-.menu-list ul a:hover{color:var(--red)}
+.menu-list details > summary{
+  display:flex;align-items:center;gap:12px;padding:16px 36px;font-size:18px;color:var(--ink);
+  cursor:pointer;list-style:none;transition:color .2s;
+}
+.menu-list details > summary::-webkit-details-marker{display:none}
+.menu-list details > summary:hover{color:var(--red)}
+.menu-list details > summary .cv{width:9px;height:9px;margin-left:auto;flex:0 0 9px;transition:transform .2s}
+.menu-list details > summary .cv path{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.menu-list details[open] > summary{color:var(--red)}
+.menu-list details[open] > summary .cv{transform:rotate(180deg)}
+.menu-list details ul{list-style:none;padding:0 0 12px}
+.menu-list details ul a{display:block;padding:9px 36px;font-size:16px;color:var(--body)}
+.menu-list details ul a:hover{color:var(--red)}
+.menu-list details ul a.all{color:var(--ink);font-weight:500}
 .menu-foot{display:flex;align-items:center;gap:20px;padding:18px 36px 22px;background:var(--paper-soft);border-top:1px solid var(--line)}
 .menu-foot .lang{display:flex;gap:14px;font-size:14px;font-weight:500}
 .menu-foot .lang a{color:var(--muted)}
@@ -487,43 +497,22 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
     </button>
     <nav class="menu-panel" id="menu-panel" hidden aria-label="Menu">
       <ul class="menu-list">
-        <li><span>Solutions</span>
-          <ul>
-            <li><a href="solution-pre-engineered.html">Pre-engineered solutions</a></li>
-            <li><a href="solution-process-piping.html">Process / Piping</a></li>
-            <li><a href="solution-instrumentation.html">Instrumentation</a></li>
-            <li><a href="solution-transport.html">Transport</a></li>
-            <li><a href="solution-storage.html">Storage</a></li>
-            <li><a href="solution-fluid-transfer.html">Fluid transfer / Jet &amp; Ejectors</a></li>
-            <li><a href="solution-tailor-made.html">Tailor-made engineering</a></li>
-          </ul>
-        </li>
-        <li><span>Industries</span>
-          <ul>
-            <li><a href="industry-chlorine.html">Chlorine related</a></li>
-            <li><a href="industry-fluorine.html">Fluorine related · HF Alky</a></li>
-            <li><a href="industry-nuclear.html">Nuclear</a></li>
-            <li><a href="industry-cn.html">CN related</a></li>
-            <li><a href="industry-other.html">Other critical applications</a></li>
-          </ul>
-        </li>
-        <li><span>Références</span>
-          <ul>
-            <li><a href="references.html">Études de cas</a></li>
-            <li><a href="references.html">Documentation</a></li>
-            <li><a href="references.html">Certifications</a></li>
-            <li><a href="soon.html">FAQ</a></li>
-          </ul>
-        </li>
-        <li><span>Descote</span>
-          <ul>
-            <li><a href="index.html#human">Human chemistry</a></li>
-            <li><a href="globally.html">Globally — notre réseau</a></li>
-            <li><a href="soon.html">Quality &amp; Certification</a></li>
-            <li><a href="soon.html">After sales &amp; repair shops</a></li>
-            <li><a href="join-us.html">Careers</a></li>
-          </ul>
-        </li>
+        <li><details>
+          <summary>Solutions<svg class="cv" viewBox="0 0 9 9" aria-hidden="true"><path d="M1.6 3.2L4.5 6.1 7.4 3.2"/></svg></summary>
+          <ul><li><a class="all" href="solutions.html">Toutes les solutions</a></li><li><a href="solution-pre-engineered.html">Pre-engineered solutions</a></li><li><a href="solution-process-piping.html">Process / Piping</a></li><li><a href="solution-instrumentation.html">Instrumentation</a></li><li><a href="solution-transport.html">Transport</a></li><li><a href="solution-storage.html">Storage</a></li><li><a href="solution-fluid-transfer.html">Fluid transfer / Jet &amp; Ejectors</a></li><li><a href="solution-tailor-made.html">Tailor-made engineering</a></li></ul>
+        </details></li>
+        <li><details>
+          <summary>Industries<svg class="cv" viewBox="0 0 9 9" aria-hidden="true"><path d="M1.6 3.2L4.5 6.1 7.4 3.2"/></svg></summary>
+          <ul><li><a class="all" href="industries.html">Toutes les industries</a></li><li><a href="industry-chlorine.html">Chlorine related</a></li><li><a href="industry-fluorine.html">Fluorine related · HF Alky</a></li><li><a href="industry-nuclear.html">Nuclear</a></li><li><a href="industry-cn.html">CN related</a></li><li><a href="industry-other.html">Other critical applications</a></li></ul>
+        </details></li>
+        <li><details>
+          <summary>Références<svg class="cv" viewBox="0 0 9 9" aria-hidden="true"><path d="M1.6 3.2L4.5 6.1 7.4 3.2"/></svg></summary>
+          <ul><li><a class="all" href="references.html">Toutes les références</a></li><li><a href="references.html">Études de cas</a></li><li><a href="references.html">Documentation</a></li><li><a href="references.html">Certifications</a></li><li><a href="soon.html">FAQ</a></li></ul>
+        </details></li>
+        <li><details>
+          <summary>Descote<svg class="cv" viewBox="0 0 9 9" aria-hidden="true"><path d="M1.6 3.2L4.5 6.1 7.4 3.2"/></svg></summary>
+          <ul><li><a href="index.html#human">Human chemistry</a></li><li><a href="globally.html">Globally — notre réseau</a></li><li><a href="soon.html">Quality &amp; Certification</a></li><li><a href="soon.html">After sales &amp; repair shops</a></li><li><a href="join-us.html">Careers</a></li></ul>
+        </details></li>
         <li><a href="inquiry.html">Inquiry</a></li>
       </ul>
       <div class="menu-foot">
@@ -661,6 +650,11 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
     panel.addEventListener('click',function(e){ if(e.target.tagName==='A') setMenu(false); });
     document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!panel.hidden){setMenu(false);mbtn.focus();} });
     document.addEventListener('click',function(e){ if(!panel.hidden&&!panel.contains(e.target)&&!mbtn.contains(e.target)) setMenu(false); });
+    panel.querySelectorAll('details').forEach(function(d){
+      d.addEventListener('toggle',function(){
+        if(d.open) panel.querySelectorAll('details').forEach(function(o){ if(o!==d) o.open=false; });
+      });
+    });
   }
 
   // --- Apparition douce au scroll ---
