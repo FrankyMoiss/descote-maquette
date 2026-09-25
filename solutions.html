@@ -6,6 +6,12 @@
 <title>Solutions — Descote</title>
 <meta name="description" content="Descote — Valves Solutions for Hazardous Applications. Critical technology, Human chemistry.">
 <link rel="icon" href="assets/favicon-descote.png">
+<script>
+/* mode Jour / Nuit : Jour par défaut, choix mémorisé d'une page à l'autre */
+(function(){var m='jour',q=/[?&]mode=(jour|nuit)/.exec(location.search);
+try{m=q?q[1]:(localStorage.getItem('descote-mode')||'jour')}catch(e){if(q)m=q[1]}
+document.documentElement.setAttribute('data-mode',m)})();
+</script>
 <style>
 /* ------------------------------------------------------------------
    Descote 2026 — maquette "adoucie"
@@ -127,6 +133,36 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .menu-foot button:hover{background:var(--red)}
 .menu-foot button svg{width:15px;height:15px}
 .menu-foot button svg *{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+
+
+/* ---------- Mode Jour / Nuit ----------
+   Nuit = version d'origine (phare contrasté, bandeaux sombres).
+   Jour = phare éclairci, voiles blancs, titres en encre. */
+.bg .sky,.header-sky .sky{position:absolute;inset:0;transition:opacity .6s ease}
+.bg .sky img{width:100%;height:100%;object-fit:cover;object-position:50% 72%}
+html[data-mode="jour"] .sky.nuit,html:not([data-mode="jour"]) .sky.jour{opacity:0}
+.mode{margin-left:auto;display:flex;align-items:stretch;background:rgba(255,255,255,.96);border-right:1px solid var(--line)}
+.mode button{display:flex;align-items:center;gap:8px;padding:0 18px;font-size:13px;font-weight:500;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);transition:color .2s,background .2s}
+.mode button:hover{color:var(--ink)}
+.mode button[aria-pressed="true"]{color:var(--red)}
+.mode button + button{border-left:1px solid var(--line)}
+.mode svg{width:16px;height:16px;flex:0 0 16px}
+.mode svg *{fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.mode + .menu-btn{margin-left:0}
+
+html[data-mode="jour"] body,html[data-mode="jour"] .bg{background:#dcdbd9}
+html[data-mode="jour"] .bg::after{background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.06) 60%,rgba(255,255,255,.14) 100%)}
+html[data-mode="jour"] .dark-band{color:var(--ink);
+  background:linear-gradient(180deg,rgba(255,255,255,0) 0,rgba(255,255,255,.42) 140px,rgba(255,255,255,.5) calc(100% - 140px),rgba(255,255,255,0) 100%)}
+html[data-mode="jour"] .dark-band .grid-lines{background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px var(--col))}
+html[data-mode="jour"] .global .title .white{color:var(--ink)}
+/* en-têtes des pages internes */
+html[data-mode="jour"] .page-head{color:var(--ink)}
+html[data-mode="jour"] .page-head .crumbs{color:var(--muted)}
+html[data-mode="jour"] .page-head .crumbs a:hover{color:var(--ink)}
+html[data-mode="jour"] .page-head .intro{color:var(--body)}
+html[data-mode="jour"] .stat span{color:var(--muted)}
 
 /* ---------- Hero vidéo ----------
    Le teaser porte déjà le titre « Critical Technology / Human Chemistry » :
@@ -291,6 +327,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .site-header .wrap,.hero .wrap{width:calc(100% - 24px)}
   .brand{padding:0 16px}.brand img{height:20px}
   .menu-btn{padding:0 18px;gap:10px}
+  .mode button{padding:0 12px}
+  .mode button span{display:none}
   .menu-btn span{display:none}
   .menu-panel{position:fixed;inset:var(--nav-h) 0 0 0;width:auto;max-height:none;border-radius:0}
   .panel{margin:40px 0}
@@ -484,23 +522,35 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
 <body>
 <!-- Fond : le phare, fixe sous tout le site -->
 <div class="bg" aria-hidden="true">
-  <picture>
+  <picture class="sky nuit">
     <source media="(max-width:700px)" srcset="assets/phare-mobile.jpg">
     <img src="assets/phare-desktop.jpg" alt="">
+  </picture>
+  <picture class="sky jour">
+    <source media="(max-width:700px)" srcset="assets/phare-mobile-clair.jpg">
+    <img src="assets/phare-desktop-clair.jpg" alt="">
   </picture>
 </div>
 
 <header class="site-header">
   <div class="header-sky" aria-hidden="true">
-    <picture>
+    <picture class="sky nuit">
       <source media="(max-width:700px)" srcset="assets/phare-mobile.jpg">
       <img src="assets/phare-desktop.jpg" alt="">
+    </picture>
+    <picture class="sky jour">
+      <source media="(max-width:700px)" srcset="assets/phare-mobile-clair.jpg">
+      <img src="assets/phare-desktop-clair.jpg" alt="">
     </picture>
   </div>
   <div class="wrap">
     <a class="brand" href="index.html#top" aria-label="Descote — home">
       <img src="assets/logo-new.png" alt="descote">
     </a>
+    <div class="mode" role="group" aria-label="Affichage">
+      <button type="button" data-set="jour" aria-pressed="true"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg><span>Jour</span></button>
+      <button type="button" data-set="nuit" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 10.2A5.6 5.6 0 0 1 5.8 2.8a5.6 5.6 0 1 0 7.4 7.4z"/></svg><span>Nuit</span></button>
+    </div>
     <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel">
       <span>Menu</span>
       <svg viewBox="0 0 22 22" aria-hidden="true"><path class="bars" d="M3 6h16M3 11h16M3 16h16"/><path class="x" d="M5 5l12 12M17 5L5 17"/></svg>
@@ -599,58 +649,10 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
   </footer>
 
 <script>
-(function(){
-  // --- Menu déroulant ---
-  var mbtn=document.getElementById('menu-btn'), panel=document.getElementById('menu-panel');
-  function setMenu(open){
-    panel.hidden=!open; mbtn.setAttribute('aria-expanded',open?'true':'false');
-    if(window.innerWidth<=980){document.body.style.overflow=open?'hidden':'';}
-  }
-  if(mbtn&&panel){
-    mbtn.addEventListener('click',function(){setMenu(panel.hidden);});
-    panel.addEventListener('click',function(e){ if(e.target.tagName==='A') setMenu(false); });
-    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!panel.hidden){setMenu(false);mbtn.focus();} });
-    document.addEventListener('click',function(e){ if(!panel.hidden&&!panel.contains(e.target)&&!mbtn.contains(e.target)) setMenu(false); });
-    panel.querySelectorAll('details').forEach(function(d){
-      d.addEventListener('toggle',function(){
-        if(d.open) panel.querySelectorAll('details').forEach(function(o){ if(o!==d) o.open=false; });
-      });
-    });
-  }
-
-  // --- Apparition douce au scroll ---
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&]shot/.test(location.search);
-  if(/[?&]shot/.test(location.search)){
-    document.documentElement.style.scrollBehavior='auto';
-    var m=/[?&]y=(\d+)/.exec(location.search); // capture : simule un scroll pour les captures headless
-    if(m){document.querySelector('main').style.marginTop='-'+m[1]+'px';}
-    if(/[?&]menu/.test(location.search)&&typeof setMenu==='function'){setMenu(true);}
-  }
-  var els=document.querySelectorAll('.reveal');
-  if(!reduce&&'IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);} });
-    },{threshold:.15,rootMargin:'0px 0px -8% 0px'});
-    els.forEach(function(el){io.observe(el);});
-  }else{ els.forEach(function(el){el.classList.add('in');}); }
-
-  // --- Industries : le mot plein et sa photo changent ensemble ---
-  var items=document.querySelectorAll('#industry-list li');
-  var shots=document.querySelectorAll('.industries .shots img');
-  function show(i){
-    items.forEach(function(el,k){ el.classList.toggle('on',k===i); });
-    var key=items[i].dataset.shot;
-    shots.forEach(function(img){ img.classList.toggle('on',img.dataset.shot===key); });
-  }
-  if(items.length){
-    var i=2, timer=null;
-    items.forEach(function(el,k){
-      el.addEventListener('mouseenter',function(){ i=k; show(k); });
-    });
-    if(!reduce){ timer=setInterval(function(){ i=(i+1)%items.length; show(i); },3200); }
-  }
-
-
+/* mode Jour / Nuit : Jour par défaut, choix mémorisé d'une page à l'autre */
+(function(){var m='jour',q=/[?&]mode=(jour|nuit)/.exec(location.search);
+try{m=q?q[1]:(localStorage.getItem('descote-mode')||'jour')}catch(e){if(q)m=q[1]}
+document.documentElement.setAttribute('data-mode',m)
   // --- Formulaires de maquette : pas d'envoi, juste un accusé ---
   document.querySelectorAll('form.form').forEach(function(f){
     f.addEventListener('submit',function(e){e.preventDefault();f.classList.add('is-sent');f.querySelector('.sent').scrollIntoView({block:'nearest'});});
