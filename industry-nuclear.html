@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nuclear — Descote</title>
-<meta name="description" content="Descote — Valves Solutions for Hazardous Applications. Critical technology, Human chemistry.">
+<title>Valves and ejectors for the nuclear fuel cycle | descote</title>
+<meta name="description" content="Bellows sealed valves, UF6 cylinder valves and steam jet ejectors for uranium conversion, enrichment, fuel fabrication and reprocessing.">
 <link rel="icon" href="assets/favicon-descote.png">
 <script>
 /* mode Jour / Nuit : Jour par défaut, choix mémorisé d'une page à l'autre */
@@ -25,16 +25,16 @@ document.documentElement.setAttribute('data-mode',m)})();
   font-display:swap;
 }
 :root{
-  --red:#F0473B;          /* corail Figma : textes, boutons, cartes  */
-  --red-deep:#E22B22;     /* rouge logo : hover                       */
-  --ink:#161615;
+  --red:#FF2222;          /* rouge charte v2 (sept. 2026) : aplats, accents, grands titres */
+  --red-deep:#D4171C;     /* rouge foncé : petits textes rouges (contraste AA), boutons pleins, survols */
+  --ink:#231F20;          /* noir charte v2 */
   --body:#4B4A48;
   --muted:#8A8884;
   --paper:rgba(255,255,255,.975);
   --paper-soft:rgba(247,246,244,.975);
-  --line:rgba(22,22,21,.09);
+  --line:rgba(35,31,32,.09);
   --line-dark:rgba(255,255,255,.14);
-  --dark:rgba(16,16,15,.92);
+  --dark:rgba(35,31,32,.95);
   --r:6px;
   --nav-h:72px;
   --col:calc(100% / 7);
@@ -149,7 +149,13 @@ html[data-mode="jour"] .sky.nuit,html:not([data-mode="jour"]) .sky.jour{opacity:
 .mode button + button{border-left:1px solid var(--line)}
 .mode svg{width:16px;height:16px;flex:0 0 16px}
 .mode svg *{fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
-.mode + .menu-btn{margin-left:0}
+.mode + .menu-btn,.inq-btn + .menu-btn{margin-left:0}
+/* bouton Inquiry permanent */
+.inq-btn{display:flex;align-items:center;gap:10px;padding:0 24px;background:var(--red-deep);color:#fff;
+  font-size:13px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;transition:background .2s}
+.inq-btn:hover{background:var(--ink)}
+.inq-btn svg{width:17px;height:17px;flex:0 0 17px}
+.inq-btn svg *{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:round}
 
 html[data-mode="jour"] body,html[data-mode="jour"] .bg{background:#dcdbd9}
 html[data-mode="jour"] .bg::after{background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.06) 60%,rgba(255,255,255,.14) 100%)}
@@ -207,7 +213,7 @@ html[data-mode="jour"] .stat span{color:var(--muted)}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   padding:13px 20px;border:1px solid var(--red);border-radius:3px;
-  font-size:12.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--red);
+  font-size:12.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--red-deep);
   transition:background .2s,color .2s,border-color .2s,transform .2s;
 }
 .btn:hover{background:var(--red);color:#fff}
@@ -220,7 +226,7 @@ html[data-mode="jour"] .stat span{color:var(--muted)}
 .tag-card{
   position:absolute;background:var(--red);color:#fff;
   padding:24px 28px;font-size:15px;font-weight:600;line-height:1.55;border-radius:var(--r);
-  box-shadow:0 20px 50px rgba(240,71,59,.25);
+  box-shadow:0 20px 50px rgba(255,34,34,.22);
 }
 .tag-card span{display:block}
 
@@ -327,8 +333,11 @@ html[data-mode="jour"] .stat span{color:var(--muted)}
   .site-header .wrap,.hero .wrap{width:calc(100% - 24px)}
   .brand{padding:0 16px}.brand img{height:20px}
   .menu-btn{padding:0 18px;gap:10px}
-  .mode button{padding:0 12px}
+  .brand{padding:0 12px}
+  .mode button{padding:0 10px}
   .mode button span{display:none}
+  .inq-btn{padding:0 13px}
+  .inq-btn span{display:none}
   .menu-btn span{display:none}
   .menu-panel{position:fixed;inset:var(--nav-h) 0 0 0;width:auto;max-height:none;border-radius:0}
   .panel{margin:40px 0}
@@ -362,58 +371,44 @@ html[data-mode="jour"] .stat span{color:var(--muted)}
   .sign{margin-left:0}
   }
 
-/* ---------- Pages solution / industrie (prototype) ---------- */
+/* ---------- Navigation en maillage ---------- */
 .kicker{display:flex;align-items:center;gap:11px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-  font-weight:500;color:var(--red);margin-bottom:14px}
+  font-weight:500;color:var(--red-deep);margin-bottom:14px}
 .kicker::before{content:"";width:0;height:0;flex:0 0 auto;border-style:solid;border-width:5px 0 5px 8px;
   border-color:transparent transparent transparent var(--red)}
-h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-spacing:-.015em;margin-bottom:12px;text-wrap:balance}
-.panel .box, .panel .inner{}
+h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-spacing:-.015em;margin-bottom:12px;text-wrap:balance;color:var(--ink)}
 .siblings{position:relative;margin-top:-1px}
 .siblings .wrap{width:min(calc(100% * 6 / 7),calc(1440px * 6 / 7));background:var(--paper);border-radius:var(--r) var(--r) 0 0}
 .siblings ul{list-style:none;display:flex;flex-wrap:wrap;padding:0 8px}
 .siblings li{flex:0 0 auto}
-.siblings a{display:block;padding:18px 18px 16px;font-size:14.5px;color:var(--body);border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.siblings a{display:block;padding:18px 16px 16px;font-size:14.5px;color:var(--body);border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
 .siblings a:hover{color:var(--ink)}
-.siblings a[aria-current="page"]{color:var(--red);border-bottom-color:var(--red);font-weight:500}
-.siblings .lbl{display:block;padding:18px 14px 16px 8px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.siblings a[aria-current="page"]{color:var(--red-deep);border-bottom-color:var(--red);font-weight:500}
+.siblings .lbl{display:block;padding:18px 12px 16px 8px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
 
-.cross-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:26px}
+.cross-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:22px}
 .cross-card{display:block;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;background:#fff;transition:border-color .2s,transform .2s}
 .cross-card:hover{border-color:var(--red);transform:translateY(-2px)}
 .cross-card .rank{display:inline-block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
   padding:4px 8px;border-radius:2px;margin-bottom:12px}
-.cross-card .rank.core{background:var(--red);color:#fff}
-.cross-card .rank.rel{background:rgba(22,22,21,.07);color:var(--body)}
-.cross-card h3{font-size:17px;font-weight:500;margin-bottom:5px}
+.cross-card .rank.core{background:var(--red-deep);color:#fff}
+.cross-card .rank.rel{background:rgba(35,31,32,.07);color:var(--body)}
+.cross-card h3{font-size:17px;font-weight:500;margin-bottom:5px;color:var(--ink)}
 .cross-card p{font-size:13.5px;color:var(--muted);line-height:1.45}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chips a{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:7px 11px;border-radius:2px;
+  background:rgba(255,34,34,.08);color:var(--red-deep);font-weight:500;transition:background .2s,color .2s}
+.chips a:hover{background:var(--red-deep);color:#fff}
+.chip-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;margin-top:26px}
+.chip-row > span{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.chip-row .chips{margin-top:0}
 
-.ref-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:26px}
-.ref{display:flex;flex-direction:column;gap:10px;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;background:#fff}
-.ref .kind{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--red)}
-.ref h3{font-size:15.5px;font-weight:500;line-height:1.35;color:var(--ink)}
-.ref .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
-.ref .tags a{font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:2px;
-  background:rgba(240,71,59,.09);color:var(--red-deep);font-weight:500;transition:background .2s,color .2s}
-.ref .tags a:hover{background:var(--red);color:#fff}
-
-.after{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.after{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
 .after a{display:block;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;background:#fff;transition:border-color .2s,transform .2s}
 .after a:hover{border-color:var(--red);transform:translateY(-2px)}
-.after span{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:8px}
-.after b{display:block;font-size:16px;font-weight:500;line-height:1.35}
+.after span{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--red-deep);font-weight:600;margin-bottom:8px}
+.after b{display:block;font-size:16px;font-weight:500;line-height:1.35;color:var(--ink)}
 .after small{display:block;font-size:13px;color:var(--muted);margin-top:4px;line-height:1.45}
-
-.todo{margin-top:26px;padding:20px 24px;border:1px dashed rgba(22,22,21,.22);border-radius:var(--r);
-  font-size:14.5px;color:var(--muted);line-height:1.6;background:var(--paper-soft)}
-.todo b{color:var(--body);font-weight:500}
-.spec{list-style:none;margin-top:8px}
-.spec li{position:relative;padding:11px 0 11px 22px;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--body);line-height:1.5}
-.spec li:last-child{border-bottom:0}
-.spec li::before{content:"";position:absolute;left:0;top:19px;width:6px;height:6px;border-radius:50%;background:var(--red)}
-.family{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:6px}
-.family li{border:1px solid var(--line);border-radius:var(--r);padding:14px 18px;font-size:15.5px;color:var(--ink);background:#fff}
-.hub{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:30px}
 @media (max-width:980px){
   .siblings .wrap{width:calc(100% - 24px)}
   .siblings ul{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
@@ -421,6 +416,8 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
   .after{grid-template-columns:1fr}
 }
 
+.menu-foot .lang span{color:var(--muted);cursor:default}
+.menu-foot .lang span.on{color:var(--ink)}
 /* ---------- Pages internes ---------- */
 .page-head{position:relative;color:#fff;padding:110px 0 70px}
 .page-head .crumbs{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:18px}
@@ -436,7 +433,7 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
 .prose p{font-size:15.5px;line-height:1.65;color:var(--body);margin-bottom:14px;white-space:pre-line}
 .prose ul{padding-left:20px;color:var(--body);line-height:1.6;margin-bottom:14px}
 .prose li{margin-bottom:6px}
-.prose a{color:var(--red)}
+.prose a{color:var(--red-deep)}
 .prose table{border-collapse:collapse;font-size:14px;margin:12px 0 20px;width:100%}
 .prose th,.prose td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;color:var(--body)}
 .prose th{color:var(--ink);font-weight:500;background:var(--paper-soft)}
@@ -444,7 +441,7 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
 .card{background:var(--paper-soft);border:1px solid var(--line);border-radius:var(--r);padding:28px 30px}
 .card h3{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--muted);margin-bottom:14px}
 .card p{font-size:15.5px;line-height:1.6;color:var(--ink);white-space:pre-line}
-.card a{color:var(--red)}
+.card a{color:var(--red-deep)}
 .card + .card{margin-top:20px}
 /* formulaires (maquette : non reliés) */
 .form{display:grid;grid-template-columns:1fr 1fr;gap:20px 24px}
@@ -452,16 +449,17 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
 .field.full{grid-column:1 / -1}
 .field label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--muted)}
 .field label small{text-transform:none;letter-spacing:0;font-weight:400;color:var(--muted)}
-.field input,.field select,.field textarea{width:100%;border:1px solid rgba(22,22,21,.18);border-radius:3px;padding:12px 14px;font:inherit;font-size:15px;color:var(--ink);background:#fff}
+.field input,.field select,.field textarea{width:100%;border:1px solid rgba(35,31,32,.18);border-radius:3px;padding:12px 14px;font:inherit;font-size:15px;color:var(--ink);background:#fff}
 .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--red);outline-offset:1px;border-color:transparent}
 .field textarea{min-height:140px;resize:vertical}
 .field.file input{padding:10px}
 .consent{grid-column:1 / -1;display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--body);line-height:1.5}
-.consent input{margin-top:3px;accent-color:var(--red)}
+.consent input{margin-top:3px;accent-color:var(--red-deep)}
+.consent a{color:var(--red-deep)}
 .form .actions{grid-column:1 / -1;display:flex;align-items:center;gap:18px}
 .form .note{font-size:13px;color:var(--muted)}
-.btn.solid{background:var(--red);color:#fff}
-.btn.solid:hover{background:var(--red-deep);border-color:var(--red-deep)}
+.btn.solid{background:var(--red-deep);border-color:var(--red-deep);color:#fff}
+.btn.solid:hover{background:var(--ink);border-color:var(--ink)}
 .sent{display:none;padding:16px 20px;background:var(--paper-soft);border-left:3px solid var(--red);color:var(--ink);font-size:15px}
 .form.is-sent .sent{display:block;grid-column:1 / -1}
 /* carte monde */
@@ -473,22 +471,22 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
 .worldmap .m{stroke:#fff;stroke-width:1.4}
 .worldmap .m.main{fill:var(--red);stroke-width:2}
 .worldmap .m.office,.worldmap .m.on{fill:#2E2E2C}
-/* filtres : on éteint ce qui n'est pas sélectionné */
+/* filtres : on éteint ce qui n'est pas sélectionné (Main = siège + filiales) */
 .map-wrap[data-filter="global-presence"] .c.repair{fill:#2E2E2C}
 .map-wrap[data-filter="global-presence"] .m.main{fill:#2E2E2C}
 .map-wrap[data-filter="repair-shops"] .c.on{fill:#DDDCD9}
 .map-wrap[data-filter="repair-shops"] .m.office,.map-wrap[data-filter="repair-shops"] .m.on{fill:#DDDCD9}
 .map-wrap[data-filter="repair-shops"] .m.main{fill:#DDDCD9}
 .map-wrap[data-filter="main"] .c.on,.map-wrap[data-filter="main"] .c.repair{fill:#DDDCD9}
-.map-wrap[data-filter="main"] .m.office,.map-wrap[data-filter="main"] .m.on{fill:#DDDCD9}
+.map-wrap[data-filter="main"] .m.on{fill:#DDDCD9}
 .filters{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 30px}
 .filters button{
   padding:10px 16px;border:1px solid var(--line);border-radius:3px;background:#fff;
   font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;color:var(--body);
   transition:color .2s,border-color .2s,background .2s;
 }
-.filters button:hover{color:var(--ink);border-color:rgba(22,22,21,.3)}
-.filters button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.filters button:hover{color:var(--ink);border-color:rgba(35,31,32,.3)}
+.filters button[aria-pressed="true"]{background:var(--red-deep);border-color:var(--red-deep);color:#fff}
 .legend{display:flex;flex-wrap:wrap;gap:26px;margin:22px 0 38px;font-size:13.5px;color:var(--body)}
 .legend span{display:flex;align-items:center;gap:9px}
 .legend i{width:12px;height:12px;border-radius:2px;display:block}
@@ -507,15 +505,336 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
 .net ul.two{columns:2}
 .net + .net{margin-top:56px}
 .offer{display:flex;align-items:center;gap:22px;padding:22px 26px;border:1px solid var(--line);border-radius:var(--r);background:#fff}
-.offer .type{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#fff;background:var(--red);padding:6px 10px;border-radius:3px}
+.offer .type{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#fff;background:var(--red-deep);padding:6px 10px;border-radius:3px}
 .offer h3{font-size:18px;font-weight:500;flex:1}
 .offer .btn{flex:0 0 auto}
+/* panneaux des pages internes : marge intérieure, écarts resserrés (pages longues) */
+.panel.ip{margin:56px 0}
+.panel.ip.section{padding:0}
+.panel.ip > .wrap > .inner{padding-top:64px;padding-bottom:72px}
+.panel.ip.has-visual > .wrap > .inner{padding-top:0}
+.siblings + .panel.ip{margin-top:0}
+.siblings + .panel.ip > .wrap{border-radius:0 0 var(--r) var(--r);box-shadow:inset 0 1px 0 var(--line)}
+.page-head + .panel.ip{margin-top:0}
+.card.new-card{background:#fff}
+.new-blk{margin-top:64px}
 @media (max-width:980px){
   .page-head{padding:56px 0 44px}
   .cols,.form{grid-template-columns:1fr}
   .net ul{columns:2}
   .page-visual{margin-bottom:36px;height:200px}
   .offer{flex-wrap:wrap}
+  .panel.ip{margin:24px 0}
+  .panel.ip > .wrap > .inner{padding-top:40px;padding-bottom:48px}
+}
+
+/* ---------- Pages de contenu (site-content/*.json) ---------- */
+.page-head .inner.has-fig{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px calc(var(--col) / 2);align-items:end}
+.head-eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--red);margin-bottom:14px}
+html[data-mode="jour"] .head-eyebrow{color:var(--red-deep)}
+.head-fig{width:clamp(200px,22vw,300px);height:clamp(240px,26vw,360px);background:#fff;border-radius:var(--r);overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,.18)}
+.head-fig img{width:100%;height:100%;object-fit:contain;padding:18px}
+.head-fig.photo img{object-fit:cover;padding:0}
+.panel.has-visual.section{padding-top:0}
+.panel.has-visual .page-visual{border-radius:var(--r) var(--r) 0 0}
+
+.blk{position:relative}
+.blk + .blk,.blk + .hook,.two-docs + .blk,.blk + .two-docs{margin-top:76px}
+.blk-title{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-spacing:-.015em;color:var(--ink);
+  margin-bottom:16px;text-wrap:balance;max-width:26ch}
+.blk-sub{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--muted);margin:-8px 0 14px}
+.blk .lead + .lead{margin-top:12px}
+.blk .blk-note{font-size:15px;color:var(--muted);max-width:62ch;padding:18px 22px;border:1px dashed rgba(35,31,32,.2);border-radius:var(--r);background:var(--paper-soft)}
+.blk .quote{margin-top:20px}
+.prose-blk .lead{max-width:68ch}
+.links{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:18px}
+a.more{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--red-deep);border-bottom:1px solid transparent;transition:border-color .2s}
+a.more:hover{border-bottom-color:currentColor}
+.blk-more{margin-top:26px}
+.spec{list-style:none;margin-top:14px;max-width:72ch}
+.spec li{position:relative;padding:11px 0 11px 22px;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--body);line-height:1.5}
+.spec li:last-child{border-bottom:0}
+.spec li::before{content:"";position:absolute;left:0;top:19px;width:6px;height:6px;border-radius:50%;background:var(--red)}
+.spec b{font-weight:500;color:var(--ink)}
+
+/* image / texte (gabarits image, image_right) */
+.media-row{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:28px calc(var(--col) / 2);align-items:center}
+.media-row.flip .media{order:2}
+.media-row .media{display:flex;gap:12px}
+.fig{margin:0;border-radius:var(--r);overflow:hidden;background:#fff;flex:1 1 0}
+.fig img{width:100%;height:clamp(240px,24vw,340px)}
+.fig.cut{border:1px solid var(--line)}
+.fig.cut img{object-fit:contain;padding:14px}
+.fig.photo img{object-fit:cover}
+.duo-fig .fig img{height:clamp(220px,20vw,300px)}
+.fig.natural img{height:auto}
+.media-row .fig.natural{flex:0 1 auto}
+.media-row.flip .media{justify-content:flex-end}
+
+/* défis techniques [text_double] */
+.duo{list-style:none;border-top:1px solid var(--line);margin-top:10px}
+.duo li{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:8px calc(var(--col) / 2);padding:18px 0;border-bottom:1px solid var(--line);counter-increment:duo}
+.duo b{font-weight:500;font-size:17px;color:var(--ink);display:flex;gap:14px;align-items:baseline}
+.duo b::before{content:counter(duo,decimal-leading-zero);font-size:12px;letter-spacing:.08em;color:var(--red-deep);font-weight:600}
+.duo span{font-size:15.5px;color:var(--body);line-height:1.55}
+.duo{counter-reset:duo}
+
+/* familles : carrousel */
+.carousel .car-head{display:flex;justify-content:space-between;align-items:flex-end;gap:0 20px}
+.car-copy{flex:1 1 auto;min-width:0}
+.car-copy .lead{margin-bottom:18px}
+.car-ctrl{display:flex;gap:8px;flex:0 0 auto;margin-bottom:18px}
+.car-ctrl button{width:42px;height:42px;border:1px solid var(--line);border-radius:3px;background:#fff;font-size:17px;color:var(--ink);transition:border-color .2s,color .2s}
+.car-ctrl button:hover:not(:disabled){border-color:var(--red);color:var(--red-deep)}
+.car-ctrl button:disabled{opacity:.35;cursor:default}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 16px) / 2.15);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;padding-bottom:10px;scrollbar-width:thin;overscroll-behavior-x:contain}
+.track > *{scroll-snap-align:start}
+.track:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+.fam-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:6px}
+.fam{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:#fff;overflow:hidden}
+.fam-body{padding:24px 26px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.fam h3{font-size:22px;font-weight:500;letter-spacing:-.01em;color:var(--ink)}
+.fam h3 a:hover{color:var(--red-deep)}
+.fam p{font-size:15px;color:var(--body);line-height:1.55}
+.fam .links{margin-top:auto;padding-top:8px}
+.variants{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.variants li{font-size:12.5px;padding:6px 10px;border-radius:2px;background:rgba(35,31,32,.06);color:var(--ink)}
+.variants li a{color:var(--red-deep)}
+.variants li:has(a){background:rgba(255,34,34,.08)}
+.card-fig{margin:0;background:#fff;border-bottom:1px solid var(--line)}
+.card-fig img{width:100%;height:210px}
+.card-fig.cut img{object-fit:contain;padding:14px}
+.card-fig.photo img{object-fit:cover}
+
+/* certifications */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:10px}
+.cert{display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:var(--r);padding:18px 20px;background:#fff}
+.cert h3{font-size:16px;font-weight:500;color:var(--ink);line-height:1.3}
+.cert p{font-size:14px;color:var(--body);line-height:1.5}
+.cert-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:auto;padding-top:6px}
+.access{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:4px 8px;border-radius:2px}
+.access.req{background:rgba(35,31,32,.07);color:var(--body)}
+.access.free{background:var(--ink);color:#fff}
+.loc{font-size:12px;color:var(--muted)}
+.cert-foot .more{margin-left:auto}
+
+/* études de cas */
+.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin-top:12px}
+.case{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:#fff;overflow:hidden}
+.case-body{display:flex;flex-direction:column;gap:9px;padding:20px 22px 22px;flex:1}
+.case .meta{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--red-deep)}
+.case h3{font-size:17px;font-weight:500;line-height:1.3;color:var(--ink)}
+.case p{font-size:14.5px;color:var(--body);line-height:1.5}
+.case p.small{font-size:12.5px;color:var(--muted)}
+.case p.small span{display:inline-block;min-width:0;margin-right:6px;font-weight:600;color:var(--body)}
+.case .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.tags a{font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:2px;
+  background:rgba(255,34,34,.08);color:var(--red-deep);font-weight:500;transition:background .2s,color .2s}
+.tags a:hover{background:var(--red-deep);color:#fff}
+
+/* filtres */
+.filterbar{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 14px;margin:6px 0 18px}
+.chipsbar button{padding:9px 14px;border:1px solid var(--line);border-radius:3px;background:#fff;font-size:12.5px;letter-spacing:.08em;
+  text-transform:uppercase;font-weight:500;color:var(--body);transition:color .2s,border-color .2s,background .2s}
+.chipsbar button:hover{color:var(--ink);border-color:rgba(35,31,32,.3)}
+.chipsbar button[aria-pressed="true"]{background:var(--red-deep);border-color:var(--red-deep);color:#fff}
+.fsel{display:flex;flex-direction:column;gap:6px}
+.fsel span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--muted)}
+.fsel select{border:1px solid rgba(35,31,32,.18);border-radius:3px;padding:10px 12px;font:inherit;font-size:14px;color:var(--ink);background:#fff;min-width:170px}
+.filterbar .reset{padding:10px 4px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--red-deep)}
+.filter-count{margin-left:auto;font-size:13px;color:var(--muted);align-self:center}
+.filterable .empty{margin-top:14px;font-size:15px;color:var(--muted)}
+.filter-items > [hidden]{display:none}
+
+/* documentation */
+.docs{list-style:none;border-top:1px solid var(--line);margin-top:6px}
+.doc{display:flex;justify-content:space-between;align-items:center;gap:14px 28px;padding:15px 0;border-bottom:1px solid var(--line)}
+.doc h3{font-size:15.5px;font-weight:500;color:var(--ink);line-height:1.35}
+.doc-meta{font-size:12.5px;color:var(--muted);margin-top:3px}
+.doc-side{display:flex;align-items:center;gap:16px;flex:0 0 auto}
+.langs{font-size:12px;color:var(--muted);letter-spacing:.04em;max-width:260px;text-align:right}
+.btn.small{padding:8px 13px;font-size:11.5px}
+
+/* FAQ : accordéon */
+.faq{border-top:1px solid var(--line);margin-top:6px}
+.qa{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:18px 0;font-size:16.5px;font-weight:500;color:var(--ink);line-height:1.4}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";flex:0 0 auto;font-size:22px;font-weight:300;line-height:1;color:var(--red-deep);transition:transform .2s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa summary:hover{color:var(--red-deep)}
+.qa .a{padding:0 40px 20px 0}
+.qa .a p{font-size:15.5px;color:var(--body);line-height:1.6;max-width:72ch}
+.two-docs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px calc(var(--col) / 2);align-items:start}
+.two-docs .blk + .blk{margin-top:0}
+.two-docs .doc{flex-direction:column;align-items:flex-start}
+.two-docs .doc-side{width:100%;justify-content:space-between}
+.two-docs .langs{text-align:left}
+
+/* CTA */
+.cta-card{display:flex;justify-content:space-between;align-items:center;gap:24px 48px;padding:40px 44px;border-radius:var(--r);
+  background:var(--red-deep);color:#fff;box-shadow:0 20px 50px rgba(212,23,28,.18)}
+.cta-card h2{font-size:clamp(24px,2.4vw,32px);font-weight:400;line-height:1.15;letter-spacing:-.01em}
+.cta-card p{font-size:15.5px;line-height:1.55;margin-top:10px;max-width:56ch;color:rgba(255,255,255,.92)}
+.cta-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;flex:0 0 auto}
+.cta-actions small{font-size:12.5px;color:rgba(255,255,255,.85);max-width:24ch}
+.btn.light{background:#fff;border-color:#fff;color:var(--red-deep)}
+.btn.light:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.cta-card .btn.ghost{border-color:rgba(255,255,255,.8);color:#fff}
+.cta-card + .cta-card{margin-top:14px}
+.final .next-wrap{margin-top:64px}
+.final .cta-card + .chip-row,.final .next-wrap + .chip-row{margin-top:30px}
+
+/* accroche sur-mesure / qualité */
+.hook{display:flex;align-items:flex-start;gap:18px;margin-top:64px;padding:26px 30px;border-radius:var(--r);background:var(--paper-soft);border:1px solid var(--line)}
+.panel.soft .hook{background:#fff}
+.hook p{font-size:clamp(18px,1.6vw,21px);line-height:1.45;color:var(--ink);max-width:62ch}
+.hook .mark{position:relative;flex:0 0 26px;height:14px;margin-top:7px}
+.hook .mark::before,.hook .mark::after{content:"";position:absolute;top:0;width:0;height:0;border-style:solid}
+.hook .mark::before{left:0;border-width:7px 0 7px 12px;border-color:transparent transparent transparent var(--red)}
+.hook .mark::after{right:0;border-width:7px 12px 7px 0;border-color:transparent var(--ink) transparent transparent}
+
+/* listes de cartes */
+.lgrid{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:8px}
+.lgrid.compact{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.lcard{position:relative;display:flex;flex-direction:column;gap:8px;height:100%;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;background:#fff}
+a.lcard{padding-right:44px;transition:border-color .2s,transform .2s}
+a.lcard:hover{border-color:var(--red);transform:translateY(-2px)}
+.lcard h3{font-size:16.5px;font-weight:500;line-height:1.3;color:var(--ink)}
+.lcard p{font-size:14px;color:var(--body);line-height:1.5}
+.lcard .go{position:absolute;right:18px;top:18px;color:var(--red-deep);font-size:16px}
+.lgrid.steps{counter-reset:none}
+.step-n{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;margin-right:10px;border-radius:50%;
+  background:var(--red-deep);color:#fff;font-size:13px;font-weight:600;vertical-align:1px}
+.lgrid.logos{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+svg.tile{width:64px;height:64px;margin-bottom:6px}
+svg.tile rect{fill:#fff;stroke:var(--ink);stroke-width:1.5}
+svg.tile text{font-family:inherit;fill:var(--ink)}
+svg.tile .n{font-size:9.5px;font-weight:500}
+svg.tile .s{font-weight:600;fill:var(--red);text-anchor:middle}
+svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
+
+/* sommaire des savoir-faire */
+.skill-nav{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;margin-bottom:64px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.skill-nav > span{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.skill-nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.skill-nav a{display:block;font-size:13.5px;padding:7px 12px;border:1px solid var(--line);border-radius:3px;color:var(--body);background:#fff;transition:color .2s,border-color .2s}
+.skill-nav a:hover{color:var(--red-deep);border-color:var(--red)}
+[id]{scroll-margin-top:calc(var(--nav-h) + 24px)}
+
+/* onglets */
+.tabs{margin-top:10px}
+.tablist{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid var(--line)}
+.tablist [role=tab]{padding:14px 18px 13px;font-size:15px;color:var(--body);border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s}
+.tablist [role=tab]:hover{color:var(--ink)}
+.tablist [role=tab][aria-selected="true"]{color:var(--red-deep);border-bottom-color:var(--red);font-weight:500}
+.tab-pane{padding:26px 0 4px;max-width:72ch}
+.tab-pane p{font-size:15.5px;color:var(--body);line-height:1.6}
+.tabs.js .pane-title{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.tabs:not(.js) .tablist{display:none}
+.tabs:not(.js) .tab-pane + .tab-pane{border-top:1px solid var(--line)}
+.pane-title{font-size:17px;font-weight:500;margin-bottom:8px;color:var(--ink)}
+
+/* histoire, chiffres */
+.timeline{list-style:none;position:relative;margin-top:12px;border-left:1px solid var(--line);margin-left:6px}
+.timeline li{position:relative;display:grid;grid-template-columns:90px minmax(0,1fr);gap:18px;padding:12px 0 12px 26px}
+.timeline li::before{content:"";position:absolute;left:-5px;top:21px;width:9px;height:9px;border-radius:50%;background:var(--red)}
+.timeline b{font-size:20px;font-weight:500;color:var(--ink);line-height:1.3}
+.timeline p{font-size:15.5px;color:var(--body);line-height:1.55;max-width:64ch}
+.figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:10px}
+.fig-n{border-top:2px solid var(--red);padding:18px 4px 0}
+.fig-n b{display:block;font-size:clamp(44px,5vw,64px);font-weight:300;line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.fig-n span{display:block;margin-top:10px;font-size:14px;color:var(--body);line-height:1.45;max-width:30ch}
+.skills{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.skills li{padding:8px 12px;border:1px solid var(--line);border-radius:3px;background:#fff;font-size:14px}
+
+/* formulaires */
+.jform{display:block}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 24px}
+.fgroup{border:0;padding:0;margin:0 0 34px}
+.fgroup legend{font-size:18px;font-weight:500;color:var(--ink);margin-bottom:16px;padding:0}
+.field .help{font-size:12.5px;color:var(--muted);line-height:1.45}
+.field abbr,.req-note abbr,.consent abbr{text-decoration:none;color:var(--red-deep)}
+.jform .consent{margin:4px 0 22px}
+.jform .actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px}
+.req-note{font-size:12.5px;color:var(--muted);margin-top:12px}
+.jform.is-sent .sent{display:block;margin-top:18px}
+
+/* coordonnées + carte */
+.map-blk{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:32px calc(var(--col) / 2);align-items:center}
+.contact{display:grid;gap:14px;margin-top:10px}
+.contact dt{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--muted)}
+.contact dd{font-size:17px;color:var(--ink);margin-top:3px}
+.contact a:hover{color:var(--red-deep)}
+.map-fig{margin:0;background:var(--paper-soft);border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.minimap{display:block;width:100%;height:auto}
+.minimap .c{fill:#DDDCD9;stroke:#fff;stroke-width:.2}
+.minimap .c.on{fill:#BDBBB7}
+.minimap .pin{fill:var(--red);stroke:#fff;stroke-width:.45}
+.minimap .pin-l{font-size:2.6px;font-family:inherit;fill:var(--ink);font-weight:600}
+
+/* textes juridiques */
+.legal-list{list-style:none;counter-reset:none;border-top:1px solid var(--line);margin-top:8px;max-width:78ch}
+.legal-list li{padding:18px 0;border-bottom:1px solid var(--line)}
+.legal-list h3{font-size:17px;font-weight:500;color:var(--ink);margin-bottom:6px}
+.legal-list p{font-size:15px;color:var(--body);line-height:1.6}
+
+/* accueil : blocs nouveaux */
+.new-home .eyebrow{margin-bottom:34px}
+.new-home > .wrap > .inner{padding-bottom:48px}
+.ind-tiles{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.ind-tile{position:relative;display:flex;flex-direction:column;gap:8px;height:100%;padding:22px 20px 24px;border:1px solid var(--line);border-radius:var(--r);
+  background:#fff;transition:border-color .2s,transform .2s}
+.ind-tile:hover{border-color:var(--red);transform:translateY(-2px)}
+.ind-tile h3{font-size:17px;font-weight:500;color:var(--ink)}
+.ind-tile p{font-size:13.5px;color:var(--body);line-height:1.5}
+.ind-tile .go{position:absolute;right:18px;top:20px;color:var(--red-deep)}
+.home-explore{grid-column:1 / -1;margin-top:88px}
+.xgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:6px}
+.xcard{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);border:1px solid var(--line);border-radius:var(--r);background:#fff;overflow:hidden}
+.xcard .card-fig{border-bottom:0;border-right:1px solid var(--line)}
+.xcard .card-fig img{height:100%;min-height:240px}
+.xbody{display:flex;flex-direction:column;gap:12px;padding:24px 26px}
+.xbody h3{font-size:21px;font-weight:500;color:var(--ink)}
+.xbody h3 a:hover{color:var(--red-deep)}
+.xbody p{font-size:15px;color:var(--body);line-height:1.55}
+.new-home .case-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+@media (max-width:1180px){
+  .ind-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .xgrid{grid-template-columns:1fr}
+}
+@media (max-width:980px){
+  .page-head .inner.has-fig{grid-template-columns:1fr}
+  .head-fig{width:100%;max-width:340px;height:220px}
+  .blk + .blk,.blk + .hook,.two-docs + .blk,.blk + .two-docs{margin-top:52px}
+  .media-row,.map-blk,.two-docs{grid-template-columns:1fr}
+  .media-row.flip .media{order:0}
+  .duo li{grid-template-columns:1fr}
+  .track{grid-auto-columns:86%}
+  .carousel .car-head{flex-wrap:wrap}
+  .fam-grid{grid-template-columns:1fr}
+  .cta-card{flex-direction:column;align-items:flex-start;padding:30px 26px}
+  .doc{flex-direction:column;align-items:flex-start}
+  .doc-side{width:100%;justify-content:space-between}
+  .langs{text-align:left}
+  .form-grid{grid-template-columns:1fr}
+  .timeline li{grid-template-columns:1fr;gap:4px}
+  .ind-tiles{grid-template-columns:1fr 1fr}
+  .xcard{grid-template-columns:1fr}
+  .xcard .card-fig{border-right:0;border-bottom:1px solid var(--line)}
+  .xcard .card-fig img{min-height:0;height:220px}
+  .new-home .case-grid{grid-template-columns:1fr}
+  .filter-count{margin-left:0;width:100%}
+  .fsel{flex:1 1 140px}
+  .fsel select{min-width:0;width:100%}
+  .hook{padding:20px 20px;margin-top:48px}
+  .home-explore{margin-top:56px}
+}
+@media (max-width:560px){
+  .ind-tiles{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -547,10 +866,11 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
     <a class="brand" href="index.html#top" aria-label="Descote — home">
       <img src="assets/logo-new.png" alt="descote">
     </a>
-    <div class="mode" role="group" aria-label="Affichage">
-      <button type="button" data-set="jour" aria-pressed="true"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg><span>Jour</span></button>
-      <button type="button" data-set="nuit" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 10.2A5.6 5.6 0 0 1 5.8 2.8a5.6 5.6 0 1 0 7.4 7.4z"/></svg><span>Nuit</span></button>
+    <div class="mode" role="group" aria-label="Display mode">
+      <button type="button" data-set="jour" aria-pressed="true"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg><span>Day</span></button>
+      <button type="button" data-set="nuit" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 10.2A5.6 5.6 0 0 1 5.8 2.8a5.6 5.6 0 1 0 7.4 7.4z"/></svg><span>Night</span></button>
     </div>
+    <a class="inq-btn" href="inquiry.html" aria-label="Inquiry"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2.2 4.4h13.6v9.2H2.2z"/><path d="M2.2 4.4L9 9.8l6.8-5.4"/></svg><span>Inquiry</span></a>
     <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel">
       <span>Menu</span>
       <svg viewBox="0 0 22 22" aria-hidden="true"><path class="bars" d="M3 6h16M3 11h16M3 16h16"/><path class="x" d="M5 5l12 12M17 5L5 17"/></svg>
@@ -559,24 +879,24 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
       <ul class="menu-list">
         <li><details>
           <summary>Solutions<svg class="cv" viewBox="0 0 9 9" aria-hidden="true"><path d="M1.6 3.2L4.5 6.1 7.4 3.2"/></svg></summary>
-          <ul><li><a class="all" href="solutions.html">Toutes les solutions</a></li><li><a href="solution-pre-engineered.html">Pre-engineered solutions</a></li><li><a href="solution-process-piping.html">Process / Piping</a></li><li><a href="solution-instrumentation.html">Instrumentation</a></li><li><a href="solution-transport.html">Transport</a></li><li><a href="solution-storage.html">Storage</a></li><li><a href="solution-fluid-transfer.html">Fluid transfer / Jet &amp; Ejectors</a></li><li><a href="solution-tailor-made.html">Tailor-made engineering</a></li></ul>
+          <ul><li><a class="all" href="solutions.html">All solutions</a></li><li><a href="solution-pre-engineered.html">Pre-engineered solutions</a></li><li><a href="solution-process-piping.html">Process / Piping</a></li><li><a href="solution-instrumentation.html">Instrumentation</a></li><li><a href="solution-transport.html">Transport</a></li><li><a href="solution-storage.html">Storage</a></li><li><a href="solution-fluid-transfer.html">Fluid transfer / Jet &amp; Ejectors</a></li><li><a href="solution-tailor-made.html">Tailor-made engineering &amp; skills</a></li></ul>
         </details></li>
         <li><details>
           <summary>Industries<svg class="cv" viewBox="0 0 9 9" aria-hidden="true"><path d="M1.6 3.2L4.5 6.1 7.4 3.2"/></svg></summary>
-          <ul><li><a class="all" href="industries.html">Toutes les industries</a></li><li><a href="industry-chlorine.html">Chlorine related</a></li><li><a href="industry-fluorine.html">Fluorine related · HF Alky</a></li><li><a href="industry-nuclear.html">Nuclear</a></li><li><a href="industry-cn.html">CN related</a></li><li><a href="industry-other.html">Other critical applications</a></li></ul>
+          <ul><li><a class="all" href="industries.html">All industries</a></li><li><a href="industry-chlorine.html">Chlorine related</a></li><li><a href="industry-fluorine.html">Fluorine related</a></li><li><a href="industry-nuclear.html">Nuclear</a></li><li><a href="industry-cn.html">CN related</a></li><li><a href="industry-other.html">Other critical applications</a></li></ul>
         </details></li>
         <li><details>
-          <summary>Références<svg class="cv" viewBox="0 0 9 9" aria-hidden="true"><path d="M1.6 3.2L4.5 6.1 7.4 3.2"/></svg></summary>
-          <ul><li><a class="all" href="references.html">Toutes les références</a></li><li><a href="references.html">Études de cas</a></li><li><a href="references.html">Documentation</a></li><li><a href="references.html">Certifications</a></li><li><a href="soon.html">FAQ</a></li></ul>
+          <summary>References<svg class="cv" viewBox="0 0 9 9" aria-hidden="true"><path d="M1.6 3.2L4.5 6.1 7.4 3.2"/></svg></summary>
+          <ul><li><a class="all" href="references.html">All references</a></li><li><a href="case-studies.html">Case studies</a></li><li><a href="literature.html">Literature &amp; documentation</a></li><li><a href="quality-certification.html">Certifications &amp; approvals</a></li><li><a href="faq.html">FAQ</a></li></ul>
         </details></li>
         <li><details>
-          <summary>Descote<svg class="cv" viewBox="0 0 9 9" aria-hidden="true"><path d="M1.6 3.2L4.5 6.1 7.4 3.2"/></svg></summary>
-          <ul><li><a href="index.html#human">Human chemistry</a></li><li><a href="globally.html">Globally — notre réseau</a></li><li><a href="soon.html">Quality &amp; Certification</a></li><li><a href="soon.html">After sales &amp; repair shops</a></li><li><a href="join-us.html">Careers</a></li></ul>
+          <summary>descote<svg class="cv" viewBox="0 0 9 9" aria-hidden="true"><path d="M1.6 3.2L4.5 6.1 7.4 3.2"/></svg></summary>
+          <ul><li><a href="company.html">Company</a></li><li><a href="quality-certification.html">Quality &amp; Certification</a></li><li><a href="globally.html">Globally</a></li><li><a href="after-sales.html">After sales &amp; repair shops</a></li><li><a href="join-us.html">Careers</a></li></ul>
         </details></li>
         <li><a href="inquiry.html">Inquiry</a></li>
       </ul>
       <div class="menu-foot">
-        <div class="lang" aria-label="Language"><a class="on" href="index.html#">EN</a><a href="index.html#">FR</a></div>
+        <div class="lang" aria-label="Language"><span class="on" aria-current="true">EN</span><span title="French version in preparation">FR</span></div>
         <form role="search" onsubmit="return false"><input type="search" placeholder="Search" aria-label="Search"><button type="submit" aria-label="Search"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg></button></form>
       </div>
     </nav>
@@ -588,68 +908,59 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
     <div class="wrap">
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner">
-        <p class="crumbs"><a href="index.html">Home</a><span>▸</span><a href="industries.html">Industries</a><span>▸</span>Nuclear</p>
-        <h1>Nuclear</h1>
-        <p class="intro">Cycle du combustible et installations nucléaires</p>
+        <div class="head-copy">
+          <p class="crumbs"><a href="index.html">Home</a><span>▸</span><a href="industries.html">Industries</a><span>▸</span>Nuclear</p>
+          <h1>Valves and ejectors for the nuclear fuel cycle</h1>
+          <p class="intro">Nuclear facilities handle fluids that are both chemically aggressive and radioactive. descote has worked for the nuclear industry since 1974.</p>
+        </div>
+        
       </div>
     </div>
   </section>
   <nav class="siblings" aria-label="Industries">
     <div class="wrap">
-      <ul><li><span class="lbl">Industries</span></li>
-      <li><a href="industry-chlorine.html">Chlorine related</a></li><li><a href="industry-fluorine.html">Fluorine related</a></li><li><a href="industry-nuclear.html" aria-current="page">Nuclear</a></li><li><a href="industry-cn.html">CN related</a></li><li><a href="industry-other.html">Other critical applications</a></li></ul>
+      <ul><li><span class="lbl">Industries</span></li><li><a href="industry-chlorine.html">Chlorine related</a></li><li><a href="industry-fluorine.html">Fluorine related</a></li><li><a href="industry-nuclear.html" aria-current="page">Nuclear</a></li><li><a href="industry-cn.html">CN related</a></li><li><a href="industry-other.html">Other critical applications</a></li></ul>
     </div>
   </nav>
-  <section class="panel section">
+  <section class="panel section ip first has-visual">
     <div class="wrap">
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner">
-<div class="prose"><h2>Nuclear</h2><p>Cycle du combustible et installations nucléaires.</p></div>
-        <p class="todo"><b>Contenu à venir.</b> Cette page reprendra la même structure que <a href="industry-chlorine.html" style="color:var(--red)">Chlorine related</a> : contexte, points de vigilance, solutions concernées, références et suite du parcours.</p>
+<img class="page-visual" src="assets/ph-nuclear.jpg" alt="Industrial installation hall" loading="lazy">
+<div class="blk blk-list"><h2 class="blk-title">Across the fuel cycle</h2><ul class="lgrid"><li><div class="lcard"><h3>Conversion</h3><p>Anhydrous hydrogen fluoride (HF) and uranium hexafluoride (UF6) lines: manual and on-off bellows sealed globe valves.</p></div></li><li><div class="lcard"><h3>Enrichment</h3><p>UF6 process lines, including depleted UF6 deconversion.</p></div></li><li><div class="lcard"><h3>Fuel fabrication</h3><p>HF lines in the conversion of UF6 to uranium oxide.</p></div></li><li><div class="lcard"><h3>UF6 transport</h3><p>1-inch cylinder valves to the ANSI N14.1 standard; our UF6 cylinder valves were first accepted by the US Department of Energy in 1979.</p></div></li><li><div class="lcard"><h3>Reprocessing and MOX</h3><p>Steam jet ejectors transfer radioactive liquids in reprocessing and mixed-oxide (MOX) fuel plants.</p></div></li><li><div class="lcard"><h3>Reactors and research</h3><p>Ejectors for reactor safety circuits; valves for heavy water (D2O) lines in research facilities.</p></div></li></ul></div><div class="blk blk-challenges"><h2 class="blk-title">What the fuel cycle demands</h2><ul class="duo"><li><b>Chemistry and radioactivity</b><span>UF6 reacts with moisture to form HF. Tightness to the atmosphere comes first.</span></li><li><b>Frequent cycling</b><span>Some on-off valves operate very often: bellows life must be designed and proven.</span></li><li><b>Nuclear quality</b><span>Complete documentation and traceability for every valve.</span></li></ul></div><div class="blk blk-families"><div class="carousel" data-carousel><div class="car-head"><div class="car-copy"><h2 class="blk-title">Solutions for this industry</h2></div><div class="car-ctrl"><button type="button" class="prev" aria-label="Previous" aria-controls="solutions-for-this-industry-0">←</button><button type="button" class="next" aria-label="Next" aria-controls="solutions-for-this-industry-0">→</button></div></div><div class="track" id="solutions-for-this-industry-0" role="region" tabindex="0" aria-label="Solutions for this industry"><article class="fam"><div class="fam-body"><h3><a href="solution-fluid-transfer.html">Fluid transfer / Jet &amp; Ejectors</a></h3><p>Steam jet ejectors, characterised on our own test bench in Feyzin.</p><p class="links"><a class="more" href="solution-fluid-transfer.html">Explore the range<span aria-hidden="true"> →</span></a></p></div></article><article class="fam"><div class="fam-body"><h3><a href="solution-process-piping.html">Process / Piping</a></h3><p>Bellows sealed globe valves, including an exposed-bellows design with monitoring.</p><ul class="variants"><li>2100B</li><li>2100BAT</li><li>4025</li></ul><p class="links"><a class="more" href="solution-process-piping.html">Explore the range<span aria-hidden="true"> →</span></a></p></div></article><article class="fam"><div class="fam-body"><h3><a href="solution-transport.html">Transport</a></h3><p>Valves for UF6 cylinders.</p><p class="links"><a class="more" href="solution-transport.html">Explore the range<span aria-hidden="true"> →</span></a></p></div></article></div></div></div><aside class="hook" aria-label="Tailor-made and quality"><span class="mark" aria-hidden="true"></span><p>From high-cycling on-off valves to steam jet ejectors, each piece of equipment is engineered for its step of the fuel cycle.</p></aside>
       </div>
     </div>
   </section>
-  <section class="panel section soft">
+  <section class="panel section ip soft">
     <div class="wrap">
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner">
-<p class="kicker">Solutions concernées</p>
-        <h2 class="sec">Les familles de vannes pour cette industrie</h2>
-        <p class="lead">Le même croisement, vu depuis l'industrie : chaque famille renvoie à sa page, qui renvoie ici.</p>
-        <div class="cross-grid"><a class="cross-card" href="solution-transport.html">
-<span class="rank core">Produit phare</span><h3>Transport</h3><p>Cylindres UF6, ISO-containers, route &amp; rail</p></a><a class="cross-card" href="solution-pre-engineered.html">
-<span class="rank rel">Concerné</span><h3>Pre-engineered solutions</h3><p>Catalogue standard, disponible sur étagère</p></a><a class="cross-card" href="solution-process-piping.html">
-<span class="rank rel">Concerné</span><h3>Process / Piping</h3><p>Vannes de procédé et de tuyauterie</p></a><a class="cross-card" href="solution-instrumentation.html">
-<span class="rank rel">Concerné</span><h3>Instrumentation</h3><p>Vannes et raccords pour la mesure</p></a><a class="cross-card" href="solution-tailor-made.html">
-<span class="rank rel">Concerné</span><h3>Tailor-made engineering</h3><p>Étude et fabrication sur cahier des charges</p></a></div>
+<div class="blk blk-cases"><h2 class="blk-title">Proven in the field</h2><div class="case-grid"><article class="case"><div class="case-body"><p class="meta">France · Hydrogen fluoride (HF), gas mixtures</p><h3>Nuclear fuel: HF service since 1986</h3><p>In 2002, a nuclear fuel plant reported some 250 descote bellows valves on its HF lines since 1986, with no incident and no HF leak.</p><div class="tags"><a href="solution-process-piping.html">Process / Piping</a><a href="solution-tailor-made.html">Tailor-made engineering</a><a href="industry-nuclear.html">Nuclear</a><a href="industry-fluorine.html">Fluorine related</a></div></div></article><article class="case"><div class="case-body"><p class="meta">Europe · Heavy water, gases</p><h3>950 valves for a research neutron source</h3><p>About 950 manual, on-off, control and check valves for heavy water, water and gas circuits, delivered fully documented in 1995; reliability rated outstanding after 20 years.</p><div class="tags"><a href="solution-process-piping.html">Process / Piping</a><a href="solution-tailor-made.html">Tailor-made engineering</a><a href="industry-nuclear.html">Nuclear</a><a href="industry-other.html">Other critical applications</a></div></div></article></div></div>
       </div>
     </div>
   </section>
-  <section class="panel section">
+  <section class="panel section ip">
     <div class="wrap">
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner">
-<p class="kicker">Références</p>
-        <h2 class="sec">Études de cas, documentation et certifications</h2>
-        <p class="lead">Les contenus étiquetés « Nuclear » remontent automatiquement ici.</p>
-        <div class="ref-list"><article class="ref"><span class="kind">Étude de cas</span>
-<h3>Cylindres UF6 — parc de vannes de transport</h3><div class="tags"><a href="solution-transport.html">Transport</a><a href="industry-nuclear.html">Nuclear</a></div></article>
-<article class="ref"><span class="kind">Certification</span>
-<h3>Qualification nucléaire — transport UF6</h3><div class="tags"><a href="solution-transport.html">Transport</a><a href="industry-nuclear.html">Nuclear</a></div></article></div>
+<div class="two-docs"><div class="blk blk-literature"><h2 class="blk-title">Related literature</h2><ul class="docs"><li class="doc"><div class="doc-main"><h3>Valves for the nuclear industry</h3><p class="doc-meta"></p></div><div class="doc-side"><span class="langs">4 languages</span><a class="btn small" href="literature.html#request-documents">Request</a></div></li><li class="doc"><div class="doc-main"><h3>1-inch valve for UF6 cylinders</h3><p class="doc-meta"></p></div><div class="doc-side"><span class="langs">3 languages</span><a class="btn small" href="literature.html#request-documents">Request</a></div></li><li class="doc"><div class="doc-main"><h3>Bellows sealed globe valve, Model 2100B</h3><p class="doc-meta"></p></div><div class="doc-side"><span class="langs">10 languages</span><a class="btn small" href="literature.html#request-documents">Request</a></div></li></ul><p class="links"><a class="more" href="literature.html">All literature<span aria-hidden="true"> →</span></a></p></div><div class="blk blk-faq"><h2 class="blk-title">FAQ</h2><div class="faq"><details class="qa"><summary>How do you handle nuclear quality requirements?</summary><div class="a"><p>Send them with your inquiry: the quality programme, documentation and traceability are agreed with you for each project.</p></div></details></div><p class="links"><a class="more" href="faq.html">All questions<span aria-hidden="true"> →</span></a></p></div></div>
       </div>
     </div>
   </section>
-  <section class="panel section soft">
+  <section class="panel section ip soft">
     <div class="wrap">
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner">
-<p class="kicker">Et après ?</p>
-        <h2 class="sec">La suite du parcours</h2>
-        <div class="after">
-          <a href="solution-transport.html"><span>Solution</span><b>Transport</b><small>Cylindres UF6, ISO-containers, route &amp; rail</small></a>
-          <a href="references.html"><span>Preuve</span><b>Études de cas</b><small>Réalisations comparables</small></a>
-          <a href="inquiry.html"><span>Votre projet</span><b>Nous écrire</b><small>Devis, étude, service après-vente</small></a>
-        </div>
+<h2 class="sec">All related solutions</h2><div class="cross-grid"><a class="cross-card" href="solution-fluid-transfer.html"><span class="rank core">Key range</span><h3>Fluid transfer / Jet &amp; Ejectors</h3><p>Ejectors driven by steam move radioactive and hazardous fluids, with no pump and no moving parts.</p></a><a class="cross-card" href="solution-process-piping.html"><span class="rank rel">Also used</span><h3>Process / Piping</h3><p>Bellows sealed and gland packed globe valves, 3-way and check valves for process lines.</p></a><a class="cross-card" href="solution-instrumentation.html"><span class="rank rel">Also used</span><h3>Instrumentation</h3><p>Small-bore bellows sealed valves for gauges, transmitters and sampling points.</p></a><a class="cross-card" href="solution-transport.html"><span class="rank rel">Also used</span><h3>Transport</h3><p>Valves for tank cars, road tankers and uranium hexafluoride (UF6) cylinders.</p></a><a class="cross-card" href="solution-tailor-made.html"><span class="rank rel">Also used</span><h3>Tailor-made engineering</h3><p>When no existing design fits: a valve specified from scratch with our engineers.</p></a></div><div class="chip-row"><span>Related industries</span><ul class="chips"><li><a href="industry-fluorine.html">Fluorine related</a></li><li><a href="industry-other.html">Other critical applications</a></li></ul></div>
+      </div>
+    </div>
+  </section>
+  <section class="panel section ip soft final">
+    <div class="wrap">
+      <div class="grid-lines" aria-hidden="true"></div>
+      <div class="inner">
+<div class="blk blk-cta cta-card"><div class="cta-copy"><h2>Discuss your requirements</h2><p>Describe your step of the fuel cycle, your fluid and your quality requirements. Our engineers will answer.</p></div><div class="cta-actions"><a class="btn light" href="inquiry.html">Send an inquiry</a></div></div><div class="next-wrap"><p class="kicker">What next?</p>
+        <div class="after"><a href="solution-fluid-transfer.html"><span>Solution</span><b>Fluid transfer / Jet &amp; Ejectors</b><small>Ejectors driven by steam move radioactive and hazardous fluids, with no pump and no moving parts.</small></a><a href="solution-tailor-made.html"><span>Solution</span><b>Tailor-made engineering &amp; skills</b><small>When no existing design fits: a valve specified from scratch with our engineers.</small></a><a href="quality-certification.html"><span>descote</span><b>Quality &amp; Certification</b><small>Our certificates in force, from quality management to product approvals and national registrations.</small></a></div></div>
       </div>
     </div>
   </section>
@@ -660,11 +971,11 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
   <div class="reassure">
     <div class="wrap">
       <ul>
-        <li><a href="soon.html"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 1.6l2 1.5 2.4-.3.9 2.3 2.1 1.2-.7 2.4.7 2.4-2.1 1.2-.9 2.3-2.4-.3-2 1.5-2-1.5-2.4.3-.9-2.3L1.6 12l.7-2.4L1.6 7.2l2.1-1.2.9-2.3 2.4.3z"/><path d="M6.4 9.1l1.8 1.8 3.4-3.6"/></svg><span><b>Certifications</b><small>Approbations &amp; agréments</small></span></a></li>
-        <li><a href="soon.html"><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.4"/><path d="M6.9 6.9a2.1 2.1 0 1 1 2.9 2c-.6.3-.9.8-.9 1.4v.4"/><path d="M9 13.4v.1"/></svg><span><b>FAQ</b><small>Questions fréquentes</small></span></a></li>
-        <li><a href="soon.html"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 1.8h6.2L14.5 6v10.2H4z"/><path d="M10.2 1.8V6h4.3M6.4 9.4h5.2M6.4 12.2h5.2"/></svg><span><b>Documentation</b><small>Fiches &amp; notices</small></span></a></li>
-        <li><a href="soon.html"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M7.6 3.2l1.6 1.6-2 2-1.6-1.6a3.4 3.4 0 0 0 4.4 4.4l3.6 3.6a1.4 1.4 0 0 1-2 2L8 11.6a3.4 3.4 0 0 1-4.4-4.4z"/></svg><span><b>After sales</b><small>Réparation &amp; ateliers</small></span></a></li>
-        <li><a href="inquiry.html"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2.2 4.4h13.6v9.2H2.2z"/><path d="M2.2 4.4L9 9.8l6.8-5.4"/></svg><span><b>Inquiry</b><small>Nous écrire</small></span></a></li>
+        <li><a href="quality-certification.html"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 1.6l2 1.5 2.4-.3.9 2.3 2.1 1.2-.7 2.4.7 2.4-2.1 1.2-.9 2.3-2.4-.3-2 1.5-2-1.5-2.4.3-.9-2.3L1.6 12l.7-2.4L1.6 7.2l2.1-1.2.9-2.3 2.4.3z"/><path d="M6.4 9.1l1.8 1.8 3.4-3.6"/></svg><span><b>Certifications</b><small>Certificates &amp; approvals</small></span></a></li>
+        <li><a href="faq.html"><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.4"/><path d="M6.9 6.9a2.1 2.1 0 1 1 2.9 2c-.6.3-.9.8-.9 1.4v.4"/><path d="M9 13.4v.1"/></svg><span><b>FAQ</b><small>Frequently asked questions</small></span></a></li>
+        <li><a href="literature.html"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 1.8h6.2L14.5 6v10.2H4z"/><path d="M10.2 1.8V6h4.3M6.4 9.4h5.2M6.4 12.2h5.2"/></svg><span><b>Literature</b><small>Brochures &amp; manuals</small></span></a></li>
+        <li><a href="after-sales.html"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M7.6 3.2l1.6 1.6-2 2-1.6-1.6a3.4 3.4 0 0 0 4.4 4.4l3.6 3.6a1.4 1.4 0 0 1-2 2L8 11.6a3.4 3.4 0 0 1-4.4-4.4z"/></svg><span><b>After sales</b><small>Spare parts &amp; repair shops</small></span></a></li>
+        <li><a href="inquiry.html"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2.2 4.4h13.6v9.2H2.2z"/><path d="M2.2 4.4L9 9.8l6.8-5.4"/></svg><span><b>Inquiry</b><small>Send us your request</small></span></a></li>
       </ul>
     </div>
   </div>
@@ -690,6 +1001,8 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
           <ul>
             <li><a href="legal-notices.html">Legal notices</a></li>
             <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="cookies.html">Cookie Policy</a></li>
+            <li><a href="terms.html">Terms and Conditions</a></li>
             <li><a href="join-us.html">Join us</a></li>
             <li><a lang="fr" href="index-egalite.html">Index égalité professionnelle</a></li>
           </ul>
@@ -700,10 +1013,68 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
   </footer>
 
 <script>
-/* mode Jour / Nuit : Jour par défaut, choix mémorisé d'une page à l'autre */
-(function(){var m='jour',q=/[?&]mode=(jour|nuit)/.exec(location.search);
-try{m=q?q[1]:(localStorage.getItem('descote-mode')||'jour')}catch(e){if(q)m=q[1]}
-document.documentElement.setAttribute('data-mode',m)
+(function(){
+  // --- Mode Jour / Nuit ---
+  var modeBtns=document.querySelectorAll('.mode button');
+  function setMode(m){
+    document.documentElement.setAttribute('data-mode',m);
+    modeBtns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.set===m ? 'true' : 'false'); });
+    try{ localStorage.setItem('descote-mode',m); }catch(e){}
+  }
+  modeBtns.forEach(function(b){ b.addEventListener('click',function(){ setMode(b.dataset.set); }); });
+  setMode(document.documentElement.getAttribute('data-mode')||'jour');
+
+  // --- Menu déroulant ---
+  var mbtn=document.getElementById('menu-btn'), panel=document.getElementById('menu-panel');
+  function setMenu(open){
+    panel.hidden=!open; mbtn.setAttribute('aria-expanded',open?'true':'false');
+    if(window.innerWidth<=980){document.body.style.overflow=open?'hidden':'';}
+  }
+  if(mbtn&&panel){
+    mbtn.addEventListener('click',function(){setMenu(panel.hidden);});
+    panel.addEventListener('click',function(e){ if(e.target.tagName==='A') setMenu(false); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!panel.hidden){setMenu(false);mbtn.focus();} });
+    document.addEventListener('click',function(e){ if(!panel.hidden&&!panel.contains(e.target)&&!mbtn.contains(e.target)) setMenu(false); });
+    panel.querySelectorAll('details').forEach(function(d){
+      d.addEventListener('toggle',function(){
+        if(d.open) panel.querySelectorAll('details').forEach(function(o){ if(o!==d) o.open=false; });
+      });
+    });
+  }
+
+  // --- Apparition douce au scroll ---
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&]shot/.test(location.search);
+  if(/[?&]shot/.test(location.search)){
+    document.documentElement.style.scrollBehavior='auto';
+    var m=/[?&]y=(\d+)/.exec(location.search); // capture : simule un scroll pour les captures headless
+    if(m){document.querySelector('main').style.marginTop='-'+m[1]+'px';}
+    if(/[?&]menu/.test(location.search)&&typeof setMenu==='function'){setMenu(true);}
+  }
+  var els=document.querySelectorAll('.reveal');
+  if(!reduce&&'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);} });
+    },{threshold:.15,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el);});
+  }else{ els.forEach(function(el){el.classList.add('in');}); }
+
+  // --- Industries : le mot plein et sa photo changent ensemble ---
+  var items=document.querySelectorAll('#industry-list li');
+  var shots=document.querySelectorAll('.industries .shots img');
+  function show(i){
+    items.forEach(function(el,k){ el.classList.toggle('on',k===i); });
+    var key=items[i].dataset.shot;
+    shots.forEach(function(img){ img.classList.toggle('on',img.dataset.shot===key); });
+  }
+  if(items.length){
+    var i=2, timer=null;
+    items.forEach(function(el,k){
+      el.addEventListener('mouseenter',function(){ i=k; show(k); });
+    });
+    if(!reduce){ timer=setInterval(function(){ i=(i+1)%items.length; show(i); },3200); }
+  }
+
+
   // --- Formulaires de maquette : pas d'envoi, juste un accusé ---
   document.querySelectorAll('form.form').forEach(function(f){
     f.addEventListener('submit',function(e){e.preventDefault();f.classList.add('is-sent');f.querySelector('.sent').scrollIntoView({block:'nearest'});});
@@ -720,6 +1091,95 @@ document.documentElement.setAttribute('data-mode',m)
       });
     });
   }
+
+  // --- Barre de pages sœurs : la page courante reste visible sur mobile ---
+  var sib=document.querySelector('.siblings ul'), cur=sib&&sib.querySelector('[aria-current]');
+  if(cur&&sib.scrollWidth>sib.clientWidth){ sib.scrollLeft=Math.max(0,cur.parentNode.offsetLeft-sib.clientWidth/2+cur.offsetWidth/2); }
+
+  // --- Onglets ---
+  document.querySelectorAll('[data-tabs]').forEach(function(t){
+    var tabs=[].slice.call(t.querySelectorAll('[role=tab]')), panes=[].slice.call(t.querySelectorAll('[role=tabpanel]'));
+    t.classList.add('js');
+    function sel(i,focus){
+      tabs.forEach(function(b,k){ b.setAttribute('aria-selected',k===i?'true':'false'); b.tabIndex=k===i?0:-1; panes[k].hidden=k!==i; });
+      if(focus) tabs[i].focus();
+    }
+    tabs.forEach(function(b,k){
+      b.addEventListener('click',function(){sel(k);});
+      b.addEventListener('keydown',function(e){
+        if(e.key==='ArrowRight'){e.preventDefault();sel((k+1)%tabs.length,true);}
+        if(e.key==='ArrowLeft'){e.preventDefault();sel((k-1+tabs.length)%tabs.length,true);}
+      });
+    });
+    sel(0);
+  });
+
+  // --- Carrousel (familles de solutions) : défilement auto, manuel, pause au survol ---
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&]shot/.test(location.search);
+  document.querySelectorAll('[data-carousel]').forEach(function(c){
+    var track=c.querySelector('.track'), prev=c.querySelector('.prev'), next=c.querySelector('.next'), paused=false;
+    function step(){ var f=track.firstElementChild; return f?f.getBoundingClientRect().width+16:track.clientWidth; }
+    function state(){
+      var max=track.scrollWidth-track.clientWidth-2;
+      prev.disabled=track.scrollLeft<=2; next.disabled=track.scrollLeft>=max;
+      c.classList.toggle('static',max<=0);
+    }
+    prev.addEventListener('click',function(){track.scrollBy({left:-step()});});
+    next.addEventListener('click',function(){track.scrollBy({left:step()});});
+    track.addEventListener('scroll',state,{passive:true});
+    window.addEventListener('resize',state);
+    ['mouseenter','focusin','pointerdown','touchstart'].forEach(function(ev){ c.addEventListener(ev,function(){paused=true;},{passive:true}); });
+    c.addEventListener('mouseleave',function(){paused=false;});
+    state();
+    if(!still){ setInterval(function(){
+      if(paused||document.hidden) return;
+      var max=track.scrollWidth-track.clientWidth-2; if(max<=0) return;
+      if(track.scrollLeft>=max) track.scrollTo({left:0}); else track.scrollBy({left:step()});
+    },6000); }
+  });
+
+  // --- Grilles filtrables (études de cas, documentation, certificats, FAQ) ---
+  document.querySelectorAll('.filterable').forEach(function(box){
+    var list=box.querySelector('.filter-items'), items=[].slice.call(list.children), active={};
+    var count=box.querySelector('.filter-count'), empty=box.querySelector('.empty');
+    function apply(){
+      var n=0;
+      items.forEach(function(it){
+        var ok=Object.keys(active).every(function(k){
+          if(!active[k]) return true;
+          return (it.getAttribute('data-'+k)||'').split('|').indexOf(active[k])>-1;
+        });
+        it.hidden=!ok; if(ok) n++;
+      });
+      if(count) count.textContent=n+' / '+items.length;
+      if(empty) empty.hidden=n>0;
+    }
+    box.querySelectorAll('select[data-key]').forEach(function(s){
+      s.addEventListener('change',function(){active[s.dataset.key]=s.value;apply();});
+    });
+    box.querySelectorAll('button[data-key]').forEach(function(b){
+      b.addEventListener('click',function(){
+        box.querySelectorAll('button[data-key="'+b.dataset.key+'"]').forEach(function(o){o.setAttribute('aria-pressed','false');});
+        b.setAttribute('aria-pressed','true'); active[b.dataset.key]=b.dataset.value; apply();
+      });
+    });
+    var reset=box.querySelector('.reset');
+    if(reset) reset.addEventListener('click',function(){
+      active={}; box.querySelectorAll('select[data-key]').forEach(function(s){s.value='';}); apply();
+    });
+    apply();
+  });
+
+  // --- Documentation : « Request » ajoute le document au formulaire de demande ---
+  document.querySelectorAll('[data-request]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=document.getElementById('request-documents'); if(!f) return;
+      var ta=f.querySelector('textarea');
+      if(ta){ var line=b.dataset.request; if(ta.value.indexOf(line)<0) ta.value=(ta.value?ta.value+'\n':'')+line; }
+      b.textContent='Added'; f.scrollIntoView({behavior:still?'auto':'smooth',block:'start'});
+      if(ta) setTimeout(function(){ta.focus({preventScroll:true});},still?0:500);
+    });
+  });
 })();
 </script>
 
