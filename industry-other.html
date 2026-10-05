@@ -416,6 +416,27 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
   .after{grid-template-columns:1fr}
 }
 
+/* ---------- Jour / Nuit : icônes seules (05/10/2026) ---------- */
+.site-header .inq-btn{margin-left:auto}
+.site-header .menu-btn{margin-left:0}
+.site-header .mode{margin-left:0;border-right:0}
+.site-header .mode button + button{border-left:0}
+@media (max-width:360px){.site-header .mode button{padding:0 6px}}  /* très petits téléphones : tout tient dans l'en-tête */
+/* 05/10/2026 : en-tête sur la grille (ordinateur) — logo = colonne 1, Inquiry = colonne 5, Menu + jour/nuit = colonne 6 :
+   chaque bord de bloc tombe sur un filet de la page */
+@media (min-width:981px){
+  .site-header .wrap{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+  .site-header .brand{grid-column:1;grid-row:1;justify-content:center;padding:0 12px;min-width:0}
+  .site-header .brand img{max-width:100%}
+  .site-header .inq-btn{grid-column:5;grid-row:1;justify-content:center;padding:0 10px;margin-left:0;min-width:0}
+  .site-header .menu-btn{grid-column:6;grid-row:1;justify-content:flex-start;padding:0 16px;margin-left:0;min-width:0}
+  .site-header .mode{grid-column:6;grid-row:1;justify-self:end;position:relative;z-index:1}
+  .site-header .mode button{padding:0 10px}
+}
+@media (min-width:981px) and (max-width:1320px){.site-header .menu-btn span{display:none}}
+.mode button span{display:none}
+@media (min-width:981px){.mode button{padding:0 15px}}  /* sur mobile, le padding d'origine (10 px) reste */
+.mode svg{width:17px;height:17px;flex:0 0 17px}
 .menu-foot .lang span{color:var(--muted);cursor:default}
 .menu-foot .lang span.on{color:var(--ink)}
 /* ---------- Pages internes ---------- */
@@ -782,9 +803,12 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
 .legal-list p{font-size:15px;color:var(--body);line-height:1.6}
 
 /* accueil : blocs nouveaux */
+.video-fig{margin-top:22px}
+.video-fig video{width:100%;aspect-ratio:16/9;height:auto;background:#0b0b0b;border-radius:var(--r)}
+.video-fig figcaption{margin-top:10px;font-size:13px;color:var(--muted)}
 .new-home .eyebrow{margin-bottom:34px}
 .new-home > .wrap > .inner{padding-bottom:48px}
-.ind-tiles{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.ind-tiles{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
 .ind-tile{position:relative;display:flex;flex-direction:column;gap:8px;height:100%;padding:22px 20px 24px;border:1px solid var(--line);border-radius:var(--r);
   background:#fff;transition:border-color .2s,transform .2s}
 .ind-tile:hover{border-color:var(--red);transform:translateY(-2px)}
@@ -866,15 +890,15 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
     <a class="brand" href="index.html#top" aria-label="Descote — home">
       <img src="assets/logo-new.png" alt="descote">
     </a>
-    <div class="mode" role="group" aria-label="Display mode">
-      <button type="button" data-set="jour" aria-pressed="true"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg><span>Day</span></button>
-      <button type="button" data-set="nuit" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 10.2A5.6 5.6 0 0 1 5.8 2.8a5.6 5.6 0 1 0 7.4 7.4z"/></svg><span>Night</span></button>
-    </div>
     <a class="inq-btn" href="inquiry.html" aria-label="Inquiry"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2.2 4.4h13.6v9.2H2.2z"/><path d="M2.2 4.4L9 9.8l6.8-5.4"/></svg><span>Inquiry</span></a>
     <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel">
       <span>Menu</span>
       <svg viewBox="0 0 22 22" aria-hidden="true"><path class="bars" d="M3 6h16M3 11h16M3 16h16"/><path class="x" d="M5 5l12 12M17 5L5 17"/></svg>
     </button>
+    <div class="mode" role="group" aria-label="Display mode">
+      <button type="button" data-set="jour" aria-pressed="true" aria-label="Day mode" title="Day mode"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg><span>Day</span></button>
+      <button type="button" data-set="nuit" aria-pressed="false" aria-label="Night mode" title="Night mode"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 10.2A5.6 5.6 0 0 1 5.8 2.8a5.6 5.6 0 1 0 7.4 7.4z"/></svg><span>Night</span></button>
+    </div>
     <nav class="menu-panel" id="menu-panel" hidden aria-label="Menu">
       <ul class="menu-list">
         <li><details>
@@ -926,7 +950,7 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
     <div class="wrap">
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner">
-<div class="blk blk-list"><h2 class="blk-title">Where else you find descote</h2><ul class="lgrid"><li><div class="lcard"><h3>Ammonia and hydrogen sulphide</h3><p>Toxic liquefied gases. The fluid list of our 2200/2300 tank valves includes ammonia (NH3), hydrogen sulphide (H2S) and sulphur trioxide (SO3).</p></div></li><li><div class="lcard"><h3>Hot oil</h3><p>Isolation and emergency shutdown on hot, flammable heat-transfer oils.</p></div></li><li><div class="lcard"><h3>Molten salt</h3><p>Heated jacketed valves stop the salt from freezing in the line.</p></div></li><li><div class="lcard"><h3>High-pressure hydrogen</h3><p>Valves up to Class 2500, defined project by project.</p></div></li><li><div class="lcard"><h3>Refining</h3><p>Butane isomerisation (Butamer™) units, hot coker residue lines.</p></div></li><li><div class="lcard"><h3>Ethylene oxide</h3><p>It can polymerise; our 2500 series, with its bellows in the flow, is studied for such fluids.</p></div></li></ul></div><div class="blk blk-challenges"><h2 class="blk-title">Severe conditions</h2><ul class="duo"><li><b>Temperature</b><span>From very low to very high temperatures: body, bellows and seat materials are selected for each service.</span></li><li><b>Pressure</b><span>Dedicated high-pressure series, bellows sealed or gland packed.</span></li><li><b>Functional safety</b><span>Our 1500, 2100, 2500 and 2200/2300 valve series and BIMATIC actuators are safety integrity level (SIL) 3 capable to IEC 61508. We supply the certification data; the SIL achieved depends on the complete loop.</span></li></ul></div><div class="blk blk-families"><div class="carousel" data-carousel><div class="car-head"><div class="car-copy"><h2 class="blk-title">Solutions for this industry</h2></div><div class="car-ctrl"><button type="button" class="prev" aria-label="Previous" aria-controls="solutions-for-this-industry-0">←</button><button type="button" class="next" aria-label="Next" aria-controls="solutions-for-this-industry-0">→</button></div></div><div class="track" id="solutions-for-this-industry-0" role="region" tabindex="0" aria-label="Solutions for this industry"><article class="fam"><div class="fam-body"><h3><a href="solution-process-piping.html">Process / Piping</a></h3><p>Manual, on-off and control valves, including high-pressure series.</p><ul class="variants"><li>2100BAT</li><li>2500</li><li>1500S</li></ul><p class="links"><a class="more" href="solution-process-piping.html">Explore the range<span aria-hidden="true"> →</span></a></p></div></article><article class="fam"><div class="fam-body"><h3><a href="solution-storage.html">Storage</a></h3><p>Top and bottom tank valves for liquefied gases.</p><ul class="variants"><li>2200</li><li>2300</li></ul><p class="links"><a class="more" href="solution-storage.html">Explore the range<span aria-hidden="true"> →</span></a></p></div></article><article class="fam"><div class="fam-body"><h3><a href="solution-tailor-made.html">Tailor-made</a></h3><p>Heated jacketed valves, special materials and tests.</p><ul class="variants"><li>2500J</li></ul><p class="links"><a class="more" href="solution-tailor-made.html">Explore the range<span aria-hidden="true"> →</span></a></p></div></article></div></div></div><aside class="hook" aria-label="Tailor-made and quality"><span class="mark" aria-hidden="true"></span><p>Outside our core fields, the method stays the same: the valve is defined from your fluid data, then shell- and seat-tested before delivery.</p></aside>
+<div class="blk blk-list" id="where-else"><h2 class="blk-title">Where else you find descote</h2><ul class="lgrid"><li><div class="lcard"><h3>Ammonia and hydrogen sulphide</h3><p>Toxic liquefied gases. The fluid list of our 2200/2300 tank valves includes ammonia (NH3), hydrogen sulphide (H2S) and sulphur trioxide (SO3).</p></div></li><li><div class="lcard"><h3>Hot oil</h3><p>Isolation and emergency shutdown on hot, flammable heat-transfer oils.</p></div></li><li><div class="lcard"><h3>Molten salt</h3><p>Heated jacketed valves stop the salt from freezing in the line, from chemical plants to solar thermal power.</p></div></li><li><div class="lcard"><h3>High-pressure hydrogen</h3><p>Valves up to Class 2500, defined project by project.</p></div></li><li><div class="lcard"><h3>Refining</h3><p>Butane isomerisation (Butamer™) units, hot coker residue lines.</p></div></li><li><div class="lcard"><h3>Ethylene oxide</h3><p>It can polymerise; our 2500 series, with its bellows in the flow, is studied for such fluids.</p></div></li></ul></div><div class="blk blk-challenges"><h2 class="blk-title">Severe conditions</h2><ul class="duo"><li><b>Temperature</b><span>From very low to very high temperatures: body, bellows and seat materials are selected for each service.</span></li><li><b>Pressure</b><span>Dedicated high-pressure series, bellows sealed or gland packed.</span></li><li><b>Functional safety</b><span>Our 1500, 2100, 2500 and 2200/2300 valve series and BIMATIC actuators are safety integrity level (SIL) 3 capable to IEC 61508. We supply the certification data; the SIL achieved depends on the complete loop.</span></li></ul></div><div class="blk blk-families"><div class="carousel" data-carousel><div class="car-head"><div class="car-copy"><h2 class="blk-title">Solutions for this industry</h2></div><div class="car-ctrl"><button type="button" class="prev" aria-label="Previous" aria-controls="solutions-for-this-industry-0">←</button><button type="button" class="next" aria-label="Next" aria-controls="solutions-for-this-industry-0">→</button></div></div><div class="track" id="solutions-for-this-industry-0" role="region" tabindex="0" aria-label="Solutions for this industry"><article class="fam"><div class="fam-body"><h3><a href="solution-process-piping.html">Process / Piping</a></h3><p>Manual, on-off and control valves, including high-pressure series.</p><ul class="variants"><li>2100BAT</li><li>2500</li><li>1500S</li></ul><p class="links"><a class="more" href="solution-process-piping.html">Explore the range<span aria-hidden="true"> →</span></a></p></div></article><article class="fam"><div class="fam-body"><h3><a href="solution-storage.html">Storage</a></h3><p>Top and bottom tank valves for liquefied gases.</p><ul class="variants"><li>2200</li><li>2300</li></ul><p class="links"><a class="more" href="solution-storage.html">Explore the range<span aria-hidden="true"> →</span></a></p></div></article><article class="fam"><div class="fam-body"><h3><a href="solution-tailor-made.html">Tailor-made</a></h3><p>Heated jacketed valves, special materials and tests.</p><ul class="variants"><li>2500J</li></ul><p class="links"><a class="more" href="solution-tailor-made.html">Explore the range<span aria-hidden="true"> →</span></a></p></div></article></div></div></div><aside class="hook" aria-label="Tailor-made and quality"><span class="mark" aria-hidden="true"></span><p>Outside our core fields, the method stays the same: the valve is defined from your fluid data, then shell- and seat-tested before delivery.</p></aside>
       </div>
     </div>
   </section>
@@ -934,7 +958,7 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
     <div class="wrap">
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner">
-<div class="blk blk-cases"><h2 class="blk-title">Proven in the field</h2><div class="case-grid"><article class="case"><div class="case-body"><p class="meta">Netherlands · Hot oil</p><h3>Hot-oil emergency shutdown valve</h3><p>An 8-inch bellows sealed on-off valve for a hot-oil emergency shutdown system, helium-tested to EN ISO 15848-1 and designed for the customer's SIL 2 requirement.</p><div class="tags"><a href="solution-process-piping.html">Process / Piping</a><a href="industry-other.html">Other critical applications</a></div></div></article><article class="case"><div class="case-body"><p class="meta">China · Molten salt</p><h3>69 jacketed valves for molten salt</h3><p>Heated jacketed 2500J valves keep the salt at +400 °C on a new chemical plant, with high-temperature paint.</p><div class="tags"><a href="solution-process-piping.html">Process / Piping</a><a href="solution-tailor-made.html">Tailor-made engineering</a><a href="industry-other.html">Other critical applications</a></div></div></article><article class="case"><div class="case-body"><p class="meta">France · Hydrogen</p><h3>Hydrogen at 420 bar</h3><p>A 1-inch Class 2500 gland packed actuated valve, 420 bar design pressure, replacing a descote valve supplied in 2002.</p><div class="tags"><a href="solution-process-piping.html">Process / Piping</a><a href="solution-tailor-made.html">Tailor-made engineering</a><a href="industry-other.html">Other critical applications</a></div></div></article></div></div>
+<div class="blk blk-cases" id="field-cases"><h2 class="blk-title">Proven in the field</h2><div class="case-grid"><article class="case"><div class="case-body"><p class="meta">Netherlands · Hot oil</p><h3>Hot-oil emergency shutdown valve</h3><p>An 8-inch bellows sealed on-off valve for a hot-oil emergency shutdown system, helium-tested to EN ISO 15848-1 and designed for the customer's SIL 2 requirement.</p><div class="tags"><a href="solution-process-piping.html">Process / Piping</a><a href="industry-other.html">Other critical applications</a></div></div></article><article class="case"><div class="case-body"><p class="meta">China · Molten salt</p><h3>69 jacketed valves for molten salt</h3><p>Heated jacketed 2500J valves keep the salt at +400 °C on a new chemical plant, with high-temperature paint.</p><div class="tags"><a href="solution-process-piping.html">Process / Piping</a><a href="solution-tailor-made.html">Tailor-made engineering</a><a href="industry-other.html">Other critical applications</a></div></div></article><article class="case"><div class="case-body"><p class="meta">France · Hydrogen</p><h3>Hydrogen at 420 bar</h3><p>A 1-inch Class 2500 gland packed actuated valve, 420 bar design pressure, replacing a descote valve supplied in 2002.</p><div class="tags"><a href="solution-process-piping.html">Process / Piping</a><a href="solution-tailor-made.html">Tailor-made engineering</a><a href="industry-other.html">Other critical applications</a></div></div></article></div></div>
       </div>
     </div>
   </section>

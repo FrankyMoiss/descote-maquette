@@ -416,6 +416,27 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
   .after{grid-template-columns:1fr}
 }
 
+/* ---------- Jour / Nuit : icônes seules (05/10/2026) ---------- */
+.site-header .inq-btn{margin-left:auto}
+.site-header .menu-btn{margin-left:0}
+.site-header .mode{margin-left:0;border-right:0}
+.site-header .mode button + button{border-left:0}
+@media (max-width:360px){.site-header .mode button{padding:0 6px}}  /* très petits téléphones : tout tient dans l'en-tête */
+/* 05/10/2026 : en-tête sur la grille (ordinateur) — logo = colonne 1, Inquiry = colonne 5, Menu + jour/nuit = colonne 6 :
+   chaque bord de bloc tombe sur un filet de la page */
+@media (min-width:981px){
+  .site-header .wrap{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+  .site-header .brand{grid-column:1;grid-row:1;justify-content:center;padding:0 12px;min-width:0}
+  .site-header .brand img{max-width:100%}
+  .site-header .inq-btn{grid-column:5;grid-row:1;justify-content:center;padding:0 10px;margin-left:0;min-width:0}
+  .site-header .menu-btn{grid-column:6;grid-row:1;justify-content:flex-start;padding:0 16px;margin-left:0;min-width:0}
+  .site-header .mode{grid-column:6;grid-row:1;justify-self:end;position:relative;z-index:1}
+  .site-header .mode button{padding:0 10px}
+}
+@media (min-width:981px) and (max-width:1320px){.site-header .menu-btn span{display:none}}
+.mode button span{display:none}
+@media (min-width:981px){.mode button{padding:0 15px}}  /* sur mobile, le padding d'origine (10 px) reste */
+.mode svg{width:17px;height:17px;flex:0 0 17px}
 .menu-foot .lang span{color:var(--muted);cursor:default}
 .menu-foot .lang span.on{color:var(--ink)}
 /* ---------- Pages internes ---------- */
@@ -782,9 +803,12 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
 .legal-list p{font-size:15px;color:var(--body);line-height:1.6}
 
 /* accueil : blocs nouveaux */
+.video-fig{margin-top:22px}
+.video-fig video{width:100%;aspect-ratio:16/9;height:auto;background:#0b0b0b;border-radius:var(--r)}
+.video-fig figcaption{margin-top:10px;font-size:13px;color:var(--muted)}
 .new-home .eyebrow{margin-bottom:34px}
 .new-home > .wrap > .inner{padding-bottom:48px}
-.ind-tiles{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.ind-tiles{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
 .ind-tile{position:relative;display:flex;flex-direction:column;gap:8px;height:100%;padding:22px 20px 24px;border:1px solid var(--line);border-radius:var(--r);
   background:#fff;transition:border-color .2s,transform .2s}
 .ind-tile:hover{border-color:var(--red);transform:translateY(-2px)}
@@ -866,15 +890,15 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
     <a class="brand" href="index.html#top" aria-label="Descote — home">
       <img src="assets/logo-new.png" alt="descote">
     </a>
-    <div class="mode" role="group" aria-label="Display mode">
-      <button type="button" data-set="jour" aria-pressed="true"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg><span>Day</span></button>
-      <button type="button" data-set="nuit" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 10.2A5.6 5.6 0 0 1 5.8 2.8a5.6 5.6 0 1 0 7.4 7.4z"/></svg><span>Night</span></button>
-    </div>
     <a class="inq-btn" href="inquiry.html" aria-label="Inquiry"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2.2 4.4h13.6v9.2H2.2z"/><path d="M2.2 4.4L9 9.8l6.8-5.4"/></svg><span>Inquiry</span></a>
     <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel">
       <span>Menu</span>
       <svg viewBox="0 0 22 22" aria-hidden="true"><path class="bars" d="M3 6h16M3 11h16M3 16h16"/><path class="x" d="M5 5l12 12M17 5L5 17"/></svg>
     </button>
+    <div class="mode" role="group" aria-label="Display mode">
+      <button type="button" data-set="jour" aria-pressed="true" aria-label="Day mode" title="Day mode"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg><span>Day</span></button>
+      <button type="button" data-set="nuit" aria-pressed="false" aria-label="Night mode" title="Night mode"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 10.2A5.6 5.6 0 0 1 5.8 2.8a5.6 5.6 0 1 0 7.4 7.4z"/></svg><span>Night</span></button>
+    </div>
     <nav class="menu-panel" id="menu-panel" hidden aria-label="Menu">
       <ul class="menu-list">
         <li><details>
@@ -926,7 +950,7 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
     <div class="wrap">
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner">
-<div class="blk blk-text prose-blk"><h2 class="blk-title">Context and applications</h2><p class="lead">Most chemicals that are toxic by inhalation are stored as liquefied gases. On a storage tank, the valve is the last barrier between the product and the outside. Our 2200 and 2300 tank valves are designed for fluids such as chlorine, ammonia, hydrogen sulphide, sulphur trioxide and vinyl chloride.</p></div><div class="blk blk-challenges"><h2 class="blk-title">Technical challenges addressed</h2><ul class="duo"><li><b>Emergency isolation</b><span>A spring-return actuator closes the valve, locally or by remote emergency command.</span></li><li><b>Two barriers</b><span>An internal safety check valve inside the tank, plus an external bellows sealed angle valve.</span></li><li><b>Stem tightness</b><span>Bellows sealing at the stem, with secondary packing as a second barrier.</span></li></ul></div><div class="blk blk-families"><h2 class="blk-title">Typical solution families</h2><div class="fam-grid"><article class="fam"><div class="fam-body"><h3>Top &amp; bottom tank valves</h3><p>Complete tank valve assemblies with emergency control, in two versions.</p><ul class="variants"><li>2200 — tank top, bellows out of the flow</li><li>2300 — tank bottom, liquid outlet</li></ul></div></article><article class="fam"><div class="fam-body"><h3>Dual-Tec™ seat option</h3><p>A hard metal seat, which withstands deposits and wear, combined with a soft seat for extra tightness.</p></div></article></div></div><aside class="hook" aria-label="Tailor-made and quality"><span class="mark" aria-hidden="true"></span><p>Your fluid, tank nozzle and shutdown logic set the design of each tank valve, built to the same quality plan as our process valves.</p></aside>
+<div class="blk blk-text prose-blk"><h2 class="blk-title">Context and applications</h2><p class="lead">Most chemicals that are toxic by inhalation are stored as liquefied gases. On a storage tank, the valve is the last barrier between the product and the outside. Our 2200 and 2300 tank valves are designed for fluids such as chlorine, ammonia, hydrogen sulphide, sulphur trioxide and vinyl chloride.</p></div><div class="blk blk-challenges"><h2 class="blk-title">Technical challenges addressed</h2><ul class="duo"><li><b>Emergency isolation</b><span>A spring-return actuator closes the valve, locally or by remote emergency command.</span></li><li><b>Two barriers</b><span>An internal safety check valve inside the tank, plus an external bellows sealed angle valve.</span></li><li><b>Stem tightness</b><span>Bellows sealing at the stem, with secondary packing as a second barrier.</span></li></ul></div><div class="blk blk-families"><h2 class="blk-title">Typical solution families</h2><div class="fam-grid"><article class="fam"><div class="fam-body"><h3>Top &amp; bottom tank valves</h3><p>Complete tank valve assemblies with emergency control, in two versions. Standard range 1" to 8", Class 150 to 600, remotely operated.</p><ul class="variants"><li>2200 — tank top, bellows out of the flow</li><li>2300 — tank bottom, liquid outlet</li></ul></div></article><article class="fam"><div class="fam-body"><h3>Dual-Tec™ seat option</h3><p>A hard metal seat, which withstands deposits and wear, combined with a soft seat for extra tightness.</p></div></article></div></div><aside class="hook" aria-label="Tailor-made and quality"><span class="mark" aria-hidden="true"></span><p>Your fluid, tank nozzle and shutdown logic set the design of each tank valve, built to the same quality plan as our process valves.</p></aside>
       </div>
     </div>
   </section>
@@ -934,7 +958,7 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
     <div class="wrap">
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner">
-<div class="blk blk-certifications"><h2 class="blk-title">Certifications / approvals</h2><p class="lead">Current certificates on request.</p><div class="cert-grid"><article class="cert"><h3>SIL 3 capable</h3><p>Models 2200 and 2300 certified by exida to IEC 61508, as components.</p></article><article class="cert"><h3>EN ISO 15848-1</h3><p>Fugitive emission qualification covering models 2200 and 2300.</p></article></div></div><div class="blk blk-cases"><h2 class="blk-title">Related case studies</h2><div class="case-grid"><article class="case"><div class="case-body"><p class="meta">France · Liquid and gaseous chlorine</p><h3>400 valves for a new chlorine storage unit</h3><p>A major European chlorine producer chose 400 descote valves, 1" to 10", including 2300 tank-bottom valves alongside manual, on-off and control globe valves.</p><div class="tags"><a href="solution-storage.html">Storage</a><a href="solution-process-piping.html">Process / Piping</a><a href="industry-chlorine.html">Chlorine related</a></div></div></article><article class="case"><div class="case-body"><p class="meta">USA · Anhydrous HF</p><h3>Anhydrous HF tank outlet</h3><p>Bellows sealed globe valves isolate the bottom outlet of anhydrous hydrogen fluoride (HF) storage tanks, up to 8", with long manual extensions; defined after a reliability study and helium-tested.</p><div class="tags"><a href="solution-storage.html">Storage</a><a href="solution-tailor-made.html">Tailor-made engineering</a><a href="industry-fluorine.html">Fluorine related</a></div></div></article></div></div>
+<div class="blk blk-certifications"><h2 class="blk-title">Certifications / approvals</h2><p class="lead">Certificates on request.</p><div class="cert-grid"><article class="cert"><h3>SIL 3 capable</h3><p>Models 2200 and 2300 certified by exida to IEC 61508, as components.</p></article><article class="cert"><h3>EN ISO 15848-1</h3><p>Models 2200 and 2300 type-tested to EN ISO 15848-1 (fugitive emissions).</p></article></div></div><div class="blk blk-cases"><h2 class="blk-title">Related case studies</h2><div class="case-grid"><article class="case"><div class="case-body"><p class="meta">France · Liquid and gaseous chlorine</p><h3>400 valves for a new chlorine storage unit</h3><p>A major European chlorine producer chose 400 descote valves, 1" to 10", including 2300 tank-bottom valves alongside manual, on-off and control globe valves.</p><div class="tags"><a href="solution-storage.html">Storage</a><a href="solution-process-piping.html">Process / Piping</a><a href="industry-chlorine.html">Chlorine related</a></div></div></article><article class="case"><div class="case-body"><p class="meta">USA · Anhydrous HF</p><h3>Anhydrous HF tank outlet</h3><p>Bellows sealed globe valves isolate the bottom outlet of anhydrous hydrogen fluoride (HF) storage tanks, up to 8", with long manual extensions; defined after a reliability study and helium-tested.</p><div class="tags"><a href="solution-storage.html">Storage</a><a href="solution-tailor-made.html">Tailor-made engineering</a><a href="industry-fluorine.html">Fluorine related</a></div></div></article></div></div>
       </div>
     </div>
   </section>
@@ -950,7 +974,7 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
     <div class="wrap">
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner">
-<h2 class="sec">Industries served</h2><div class="cross-grid"><a class="cross-card" href="industry-chlorine.html"><span class="rank core">Key market</span><h3>Chlorine related</h3><p>Chlor-alkali, PVC, isocyanates for polyurethanes, epichlorohydrin, agrochemicals</p></a><a class="cross-card" href="industry-fluorine.html"><span class="rank rel">Also served</span><h3>Fluorine related</h3><p>Anhydrous hydrogen fluoride (HF) and its uses</p></a><a class="cross-card" href="industry-cn.html"><span class="rank rel">Also served</span><h3>CN related</h3><p>Hydrogen cyanide (HCN) and nitriles</p></a><a class="cross-card" href="industry-other.html"><span class="rank rel">Also served</span><h3>Other critical applications</h3><p>Ammonia, hydrogen sulphide, hot oil, molten salt, high-pressure hydrogen</p></a></div><div class="chip-row"><span>Related solutions</span><ul class="chips"><li><a href="solution-pre-engineered.html">Pre-engineered solutions</a></li><li><a href="solution-process-piping.html">Process / Piping</a></li><li><a href="solution-transport.html">Transport</a></li><li><a href="solution-tailor-made.html">Tailor-made engineering</a></li></ul></div>
+<h2 class="sec">Industries served</h2><div class="cross-grid"><a class="cross-card" href="industry-chlorine.html"><span class="rank core">Key market</span><h3>Chlorine related</h3><p>Chlor-alkali, PVC, isocyanates for polyurethanes, polycarbonate, epichlorohydrin, titanium dioxide, polysilicon, agrochemicals</p></a><a class="cross-card" href="industry-fluorine.html"><span class="rank rel">Also served</span><h3>Fluorine related</h3><p>Anhydrous hydrogen fluoride (HF) and its uses</p></a><a class="cross-card" href="industry-cn.html"><span class="rank rel">Also served</span><h3>CN related</h3><p>Hydrogen cyanide (HCN) and nitriles</p></a><a class="cross-card" href="industry-other.html"><span class="rank rel">Also served</span><h3>Other critical applications</h3><p>Ethylene oxide, ammonia, hydrogen sulphide, hot oil, molten salt, high-pressure hydrogen</p></a></div><div class="chip-row"><span>Related solutions</span><ul class="chips"><li><a href="solution-pre-engineered.html">Pre-engineered solutions</a></li><li><a href="solution-process-piping.html">Process / Piping</a></li><li><a href="solution-transport.html">Transport</a></li><li><a href="solution-tailor-made.html">Tailor-made engineering</a></li></ul></div>
       </div>
     </div>
   </section>
@@ -959,7 +983,7 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner">
 <div class="blk blk-cta cta-card"><div class="cta-copy"><h2>Discuss your requirements</h2><p>Send us your fluid, tank nozzle and safety requirements.</p></div><div class="cta-actions"><a class="btn light" href="inquiry.html">Send an inquiry</a></div></div><div class="next-wrap"><p class="kicker">What next?</p>
-        <div class="after"><a href="solution-transport.html"><span>Solution</span><b>Transport</b><small>Valves for tank cars, road tankers and uranium hexafluoride (UF6) cylinders.</small></a><a href="industry-chlorine.html"><span>Industry</span><b>Chlorine related</b><small>Chlor-alkali, PVC, isocyanates for polyurethanes, epichlorohydrin, agrochemicals: liquid chlorine, dry chlorine gas, anhydrous hydrogen chloride (HCl), phosgene.</small></a><a href="solution-tailor-made.html"><span>Solution</span><b>Tailor-made engineering &amp; skills</b><small>When no existing design fits: a valve specified from scratch with our engineers.</small></a></div></div>
+        <div class="after"><a href="solution-transport.html"><span>Solution</span><b>Transport</b><small>Valves for tank cars, road tankers and uranium hexafluoride (UF6) cylinders.</small></a><a href="industry-chlorine.html"><span>Industry</span><b>Chlorine related</b><small>Chlor-alkali, PVC, isocyanates for polyurethanes, polycarbonate, epichlorohydrin, titanium dioxide, polysilicon, agrochemicals: liquid chlorine, dry chlorine gas, anhydrous hydrogen chloride (HCl), phosgene.</small></a><a href="solution-tailor-made.html"><span>Solution</span><b>Tailor-made engineering &amp; skills</b><small>When no existing design fits: a valve specified from scratch with our engineers.</small></a></div></div>
       </div>
     </div>
   </section>

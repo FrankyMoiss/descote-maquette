@@ -416,6 +416,27 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
   .after{grid-template-columns:1fr}
 }
 
+/* ---------- Jour / Nuit : icônes seules (05/10/2026) ---------- */
+.site-header .inq-btn{margin-left:auto}
+.site-header .menu-btn{margin-left:0}
+.site-header .mode{margin-left:0;border-right:0}
+.site-header .mode button + button{border-left:0}
+@media (max-width:360px){.site-header .mode button{padding:0 6px}}  /* très petits téléphones : tout tient dans l'en-tête */
+/* 05/10/2026 : en-tête sur la grille (ordinateur) — logo = colonne 1, Inquiry = colonne 5, Menu + jour/nuit = colonne 6 :
+   chaque bord de bloc tombe sur un filet de la page */
+@media (min-width:981px){
+  .site-header .wrap{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+  .site-header .brand{grid-column:1;grid-row:1;justify-content:center;padding:0 12px;min-width:0}
+  .site-header .brand img{max-width:100%}
+  .site-header .inq-btn{grid-column:5;grid-row:1;justify-content:center;padding:0 10px;margin-left:0;min-width:0}
+  .site-header .menu-btn{grid-column:6;grid-row:1;justify-content:flex-start;padding:0 16px;margin-left:0;min-width:0}
+  .site-header .mode{grid-column:6;grid-row:1;justify-self:end;position:relative;z-index:1}
+  .site-header .mode button{padding:0 10px}
+}
+@media (min-width:981px) and (max-width:1320px){.site-header .menu-btn span{display:none}}
+.mode button span{display:none}
+@media (min-width:981px){.mode button{padding:0 15px}}  /* sur mobile, le padding d'origine (10 px) reste */
+.mode svg{width:17px;height:17px;flex:0 0 17px}
 .menu-foot .lang span{color:var(--muted);cursor:default}
 .menu-foot .lang span.on{color:var(--ink)}
 /* ---------- Pages internes ---------- */
@@ -782,9 +803,12 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
 .legal-list p{font-size:15px;color:var(--body);line-height:1.6}
 
 /* accueil : blocs nouveaux */
+.video-fig{margin-top:22px}
+.video-fig video{width:100%;aspect-ratio:16/9;height:auto;background:#0b0b0b;border-radius:var(--r)}
+.video-fig figcaption{margin-top:10px;font-size:13px;color:var(--muted)}
 .new-home .eyebrow{margin-bottom:34px}
 .new-home > .wrap > .inner{padding-bottom:48px}
-.ind-tiles{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.ind-tiles{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
 .ind-tile{position:relative;display:flex;flex-direction:column;gap:8px;height:100%;padding:22px 20px 24px;border:1px solid var(--line);border-radius:var(--r);
   background:#fff;transition:border-color .2s,transform .2s}
 .ind-tile:hover{border-color:var(--red);transform:translateY(-2px)}
@@ -866,15 +890,15 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
     <a class="brand" href="index.html#top" aria-label="Descote — home">
       <img src="assets/logo-new.png" alt="descote">
     </a>
-    <div class="mode" role="group" aria-label="Display mode">
-      <button type="button" data-set="jour" aria-pressed="true"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg><span>Day</span></button>
-      <button type="button" data-set="nuit" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 10.2A5.6 5.6 0 0 1 5.8 2.8a5.6 5.6 0 1 0 7.4 7.4z"/></svg><span>Night</span></button>
-    </div>
     <a class="inq-btn" href="inquiry.html" aria-label="Inquiry"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2.2 4.4h13.6v9.2H2.2z"/><path d="M2.2 4.4L9 9.8l6.8-5.4"/></svg><span>Inquiry</span></a>
     <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel">
       <span>Menu</span>
       <svg viewBox="0 0 22 22" aria-hidden="true"><path class="bars" d="M3 6h16M3 11h16M3 16h16"/><path class="x" d="M5 5l12 12M17 5L5 17"/></svg>
     </button>
+    <div class="mode" role="group" aria-label="Display mode">
+      <button type="button" data-set="jour" aria-pressed="true" aria-label="Day mode" title="Day mode"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg><span>Day</span></button>
+      <button type="button" data-set="nuit" aria-pressed="false" aria-label="Night mode" title="Night mode"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 10.2A5.6 5.6 0 0 1 5.8 2.8a5.6 5.6 0 1 0 7.4 7.4z"/></svg><span>Night</span></button>
+    </div>
     <nav class="menu-panel" id="menu-panel" hidden aria-label="Menu">
       <ul class="menu-list">
         <li><details>

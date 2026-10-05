@@ -416,6 +416,27 @@ h2.sec{font-size:clamp(24px,2.5vw,34px);font-weight:400;line-height:1.12;letter-
   .after{grid-template-columns:1fr}
 }
 
+/* ---------- Jour / Nuit : icônes seules (05/10/2026) ---------- */
+.site-header .inq-btn{margin-left:auto}
+.site-header .menu-btn{margin-left:0}
+.site-header .mode{margin-left:0;border-right:0}
+.site-header .mode button + button{border-left:0}
+@media (max-width:360px){.site-header .mode button{padding:0 6px}}  /* très petits téléphones : tout tient dans l'en-tête */
+/* 05/10/2026 : en-tête sur la grille (ordinateur) — logo = colonne 1, Inquiry = colonne 5, Menu + jour/nuit = colonne 6 :
+   chaque bord de bloc tombe sur un filet de la page */
+@media (min-width:981px){
+  .site-header .wrap{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+  .site-header .brand{grid-column:1;grid-row:1;justify-content:center;padding:0 12px;min-width:0}
+  .site-header .brand img{max-width:100%}
+  .site-header .inq-btn{grid-column:5;grid-row:1;justify-content:center;padding:0 10px;margin-left:0;min-width:0}
+  .site-header .menu-btn{grid-column:6;grid-row:1;justify-content:flex-start;padding:0 16px;margin-left:0;min-width:0}
+  .site-header .mode{grid-column:6;grid-row:1;justify-self:end;position:relative;z-index:1}
+  .site-header .mode button{padding:0 10px}
+}
+@media (min-width:981px) and (max-width:1320px){.site-header .menu-btn span{display:none}}
+.mode button span{display:none}
+@media (min-width:981px){.mode button{padding:0 15px}}  /* sur mobile, le padding d'origine (10 px) reste */
+.mode svg{width:17px;height:17px;flex:0 0 17px}
 .menu-foot .lang span{color:var(--muted);cursor:default}
 .menu-foot .lang span.on{color:var(--ink)}
 /* ---------- Pages internes ---------- */
@@ -782,9 +803,12 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
 .legal-list p{font-size:15px;color:var(--body);line-height:1.6}
 
 /* accueil : blocs nouveaux */
+.video-fig{margin-top:22px}
+.video-fig video{width:100%;aspect-ratio:16/9;height:auto;background:#0b0b0b;border-radius:var(--r)}
+.video-fig figcaption{margin-top:10px;font-size:13px;color:var(--muted)}
 .new-home .eyebrow{margin-bottom:34px}
 .new-home > .wrap > .inner{padding-bottom:48px}
-.ind-tiles{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.ind-tiles{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
 .ind-tile{position:relative;display:flex;flex-direction:column;gap:8px;height:100%;padding:22px 20px 24px;border:1px solid var(--line);border-radius:var(--r);
   background:#fff;transition:border-color .2s,transform .2s}
 .ind-tile:hover{border-color:var(--red);transform:translateY(-2px)}
@@ -836,9 +860,88 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
 @media (max-width:560px){
   .ind-tiles{grid-template-columns:1fr}
 }
+
+html[data-mode] body.is-home,html body.is-home{background:#fff}  /* plus fort que le fond gris du mode Jour du site */
+body.is-home .bg,body.is-home .header-sky{display:none}
+body.is-home .site-header{background:#fff;border-bottom:1px solid var(--line)}
+/* filets : vraies bordures sur une grille de 6 colonnes identique à celle du contenu (bords des cases, images et blocs
+   d'en-tête) -> mêmes pixels que les bordures des cases, aucun décalage d'arrondi ; dans l'en-tête, la page et la bande Global */
+body.is-home .hgrid{position:absolute;top:0;bottom:0;left:0;right:0;max-width:1440px;margin:0 auto;pointer-events:none;z-index:1}
+body.is-home .site-header .hgrid{z-index:0}
+body.is-home .hgrid > div{height:100%;margin:0 calc(100% / 14);display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+body.is-home .hgrid i{border-left:1px solid var(--line)}
+body.is-home .hgrid i:last-child{box-shadow:inset -1px 0 0 var(--line)}  /* dernier filet sans élargir la grille (sinon décalage d'un pixel) */
+body.is-home .global .hgrid{--line:rgba(255,255,255,.12);z-index:0}
+@media (min-width:981px){
+  html:not([data-mode="nuit"]) body.is-home .site-header .brand,html:not([data-mode="nuit"]) body.is-home .site-header .menu-btn,
+  html:not([data-mode="nuit"]) body.is-home .site-header .mode{background:transparent}
+}
+@media (max-width:980px){body.is-home .hgrid{display:none}}
+body.is-home main{position:relative}
+body.is-home .hero,body.is-home .industries,body.is-home .global{position:relative;z-index:1}
+/* vidéo pleine largeur */
+body.is-home .hero .wrap{width:100%;max-width:none}
+body.is-home .hero video{border-radius:0}
+/* sections : plus de panneaux flottants, contenu calé sur les filets */
+body.is-home .panel{margin:0}
+body.is-home .panel > .wrap{background:transparent;width:auto;max-width:1440px;border-radius:0}
+body.is-home .panel .grid-lines,body.is-home .industries .grid-lines{display:none}
+body.is-home .tag-card{border-radius:0;box-shadow:none}
+body.is-home .challenge-visual{margin:88px 0 0}
+body.is-home .purpose .visual{margin-right:0}
+body.is-home .collage{margin-left:0}
+body.is-home .collage .b{border-radius:0}
+/* bandeau industries : photo pleine largeur, bords nets */
+html body.is-home .industries{background:#111;color:#fff}
+body.is-home .industries .shots{-webkit-mask-image:none;mask-image:none}
+body.is-home .industries .scrim{background:rgba(8,8,8,.55)}
+/* bande grise */
+html body.is-home .panel.soft{background:#f3f3f2}
+/* bande noire « Global » */
+html body.is-home .global{background:#0b0b0b;color:#fff}
+html body.is-home .global .title .white{color:#fff}
+body.is-home .global .grid-lines{display:none}
+body.is-home .global .find{border-radius:0}
+/* barre de réassurance du site, posée sur la page blanche */
+body.is-home .reassure{margin-top:0}
+body.is-home .reassure .wrap{border:1px solid var(--line);border-bottom:0}
+@media (min-width:981px){
+  body.is-home .panel .inner{padding-left:calc(var(--col) / 2);padding-right:calc(var(--col) / 2)}
+  /* colonnes calées sur les filets, comme la maquette : droite au filet central, visuels sur les 2 dernières colonnes */
+  body.is-home .two{column-gap:0}
+  body.is-home .two .left{padding-right:calc(100% / 6)}
+  body.is-home .purpose{grid-template-columns:4fr 2fr;column-gap:0}
+  body.is-home .purpose .left{padding-right:calc(100% / 8)}
+  body.is-home .purpose .visual{grid-column:2}
+  body.is-home .human{column-gap:0}
+  body.is-home .global .lower{padding-right:0}
+  body.is-home .global .find{margin-right:calc(100% / 7)}
+  /* « Industries served » : 6 cases jointives, une par colonne, bords sur les filets */
+  body.is-home .ind-tiles{gap:0}
+  body.is-home .ind-tile{border-radius:0;border-right-width:0}
+  body.is-home .ind-tiles li:last-child .ind-tile{border-right-width:1px}
+  body.is-home .ind-tile:hover{transform:none}
+}
+@media (min-width:981px) and (max-width:1180px){
+  body.is-home .ind-tiles li:nth-child(3n) .ind-tile{border-right-width:1px}
+  body.is-home .ind-tiles li:nth-child(n+4) .ind-tile{border-top-width:0}
+}
+@media (max-width:980px){
+  body.is-home .global .grid-lines{display:none}
+  body.is-home .panel > .wrap{width:auto}
+  body.is-home .challenge-visual{margin-top:48px}
+}
+/* mode Nuit : la même page en noir */
+html[data-mode="nuit"] body.is-home{background:#454544}  /* gris foncé plutôt que noir (demande du 05/10) */
+html[data-mode="nuit"] body.is-home .site-header{background:#454544;border-bottom-color:var(--line-dark)}
+html[data-mode="nuit"] body.is-home main{--ink:#f2f1ef;--body:rgba(255,255,255,.78);--muted:rgba(255,255,255,.6);--line:rgba(255,255,255,.14);--red-deep:#ff7a7a}  /* petits textes rouges lisibles sur le gris */
+html[data-mode="nuit"] body.is-home .panel.soft{background:#504f4e}
+html[data-mode="nuit"] body.is-home .ind-tile,html[data-mode="nuit"] body.is-home .xcard,html[data-mode="nuit"] body.is-home .case,
+html[data-mode="nuit"] body.is-home .global .find{--ink:#231F20;--body:#4B4A48;--muted:#8A8884;--line:rgba(35,31,32,.09);--red-deep:#D4171C}
+html[data-mode="nuit"] body.is-home .reassure .wrap{border-color:var(--line-dark)}
 </style>
 </head>
-<body>
+<body class="is-home">
 <!-- Fond : le phare, fixe sous tout le site -->
 <div class="bg" aria-hidden="true">
   <picture class="sky nuit">
@@ -853,6 +956,7 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
 
 <!-- ================= HEADER ================= -->
 <header class="site-header">
+<div class="hgrid" aria-hidden="true"><div><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
   <div class="header-sky" aria-hidden="true">
     <picture class="sky nuit">
       <source media="(max-width:700px)" srcset="assets/phare-mobile.jpg">
@@ -867,15 +971,15 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
     <a class="brand" href="#top" aria-label="Descote — home">
       <img src="assets/logo-new.png" alt="descote">
     </a>
-    <div class="mode" role="group" aria-label="Display mode">
-      <button type="button" data-set="jour" aria-pressed="true"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg><span>Day</span></button>
-      <button type="button" data-set="nuit" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 10.2A5.6 5.6 0 0 1 5.8 2.8a5.6 5.6 0 1 0 7.4 7.4z"/></svg><span>Night</span></button>
-    </div>
     <a class="inq-btn" href="inquiry.html" aria-label="Inquiry"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2.2 4.4h13.6v9.2H2.2z"/><path d="M2.2 4.4L9 9.8l6.8-5.4"/></svg><span>Inquiry</span></a>
     <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel">
       <span>Menu</span>
       <svg viewBox="0 0 22 22" aria-hidden="true"><path class="bars" d="M3 6h16M3 11h16M3 16h16"/><path class="x" d="M5 5l12 12M17 5L5 17"/></svg>
     </button>
+    <div class="mode" role="group" aria-label="Display mode">
+      <button type="button" data-set="jour" aria-pressed="true" aria-label="Day mode" title="Day mode"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg><span>Day</span></button>
+      <button type="button" data-set="nuit" aria-pressed="false" aria-label="Night mode" title="Night mode"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 10.2A5.6 5.6 0 0 1 5.8 2.8a5.6 5.6 0 1 0 7.4 7.4z"/></svg><span>Night</span></button>
+    </div>
     <nav class="menu-panel" id="menu-panel" hidden aria-label="Menu">
       <ul class="menu-list">
         <li><details>
@@ -905,6 +1009,7 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
 </header>
 
 <main id="top">
+<div class="hgrid" aria-hidden="true"><div><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
 
   <!-- ================= HERO VIDÉO ================= -->
   <section class="hero" aria-label="Descote teaser">
@@ -970,7 +1075,7 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner reveal">
         <p class="eyebrow">Industries served</p>
-        <ul class="ind-tiles"><li><a class="ind-tile" href="industry-chlorine.html"><svg class="tile" viewBox="0 0 72 72" aria-hidden="true"><rect x=".75" y=".75" width="70.5" height="70.5" rx="4"/><text class="n" x="8" y="16">17</text><text class="s" x="36" y="44" font-size="30">Cl</text><text class="l" x="36" y="62">Chlorine</text></svg><h3>Chlorine related</h3><p>Chlorine and hydrogen chloride, from chlor-alkali plants to PVC, isocyanates, epoxy resins and agrochemicals.</p><span class="go" aria-hidden="true">→</span></a></li><li><a class="ind-tile" href="industry-fluorine.html"><svg class="tile" viewBox="0 0 72 72" aria-hidden="true"><rect x=".75" y=".75" width="70.5" height="70.5" rx="4"/><text class="n" x="8" y="16">9</text><text class="s" x="36" y="44" font-size="30">F</text><text class="l" x="36" y="62">Fluorine</text></svg><h3>Fluorine related</h3><p>Hydrogen fluoride (HF): production, refrigerants and fluoropolymers, and HF alkylation units in refineries.</p><span class="go" aria-hidden="true">→</span></a></li><li><a class="ind-tile" href="industry-nuclear.html"><svg class="tile" viewBox="0 0 72 72" aria-hidden="true"><rect x=".75" y=".75" width="70.5" height="70.5" rx="4"/><text class="n" x="8" y="16">92</text><text class="s" x="36" y="44" font-size="30">U</text><text class="l" x="36" y="62">Uranium</text></svg><h3>Nuclear</h3><p>Uranium conversion and enrichment, fuel fabrication and reprocessing: bellows sealed valves and steam ejectors.</p><span class="go" aria-hidden="true">→</span></a></li><li><a class="ind-tile" href="industry-cn.html"><svg class="tile" viewBox="0 0 72 72" aria-hidden="true"><rect x=".75" y=".75" width="70.5" height="70.5" rx="4"/><text class="n" x="8" y="16">6 · 7</text><text class="s" x="36" y="44" font-size="30">CN</text><text class="l" x="36" y="62">Cyanide</text></svg><h3>CN related</h3><p>Hydrogen cyanide (HCN) and its derivatives: acrylic glass, nylon intermediates, methionine for animal feed.</p><span class="go" aria-hidden="true">→</span></a></li><li><a class="ind-tile" href="industry-other.html"><svg class="tile" viewBox="0 0 72 72" aria-hidden="true"><rect x=".75" y=".75" width="70.5" height="70.5" rx="4"/><text class="n" x="8" y="16"></text><text class="s" x="36" y="44" font-size="30">+</text><text class="l" x="36" y="62">Other</text></svg><h3>Other critical applications</h3><p>Hot oil, molten salt, high-pressure hydrogen, heavy water and other severe services.</p><span class="go" aria-hidden="true">→</span></a></li></ul>
+        <ul class="ind-tiles"><li><a class="ind-tile" href="industry-chlorine.html"><svg class="tile" viewBox="0 0 72 72" aria-hidden="true"><rect x=".75" y=".75" width="70.5" height="70.5" rx="4"/><text class="n" x="8" y="16">17</text><text class="s" x="36" y="44" font-size="30">Cl</text><text class="l" x="36" y="62">Chlorine</text></svg><h3>Chlorine related</h3><p>Chlorine and hydrogen chloride, from chlor-alkali plants to PVC, isocyanates, epoxy resins and agrochemicals.</p><span class="go" aria-hidden="true">→</span></a></li><li><a class="ind-tile" href="industry-fluorine.html"><svg class="tile" viewBox="0 0 72 72" aria-hidden="true"><rect x=".75" y=".75" width="70.5" height="70.5" rx="4"/><text class="n" x="8" y="16">9</text><text class="s" x="36" y="44" font-size="30">F</text><text class="l" x="36" y="62">Fluorine</text></svg><h3>Fluorine related</h3><p>Hydrogen fluoride (HF): production, refrigerants and fluoropolymers, and HF alkylation units in refineries.</p><span class="go" aria-hidden="true">→</span></a></li><li><a class="ind-tile" href="industry-nuclear.html"><svg class="tile" viewBox="0 0 72 72" aria-hidden="true"><rect x=".75" y=".75" width="70.5" height="70.5" rx="4"/><text class="n" x="8" y="16">92</text><text class="s" x="36" y="44" font-size="30">U</text><text class="l" x="36" y="62">Uranium</text></svg><h3>Nuclear</h3><p>Uranium conversion and enrichment, fuel fabrication and reprocessing: bellows sealed valves and steam ejectors.</p><span class="go" aria-hidden="true">→</span></a></li><li><a class="ind-tile" href="industry-cn.html"><svg class="tile" viewBox="0 0 72 72" aria-hidden="true"><rect x=".75" y=".75" width="70.5" height="70.5" rx="4"/><text class="n" x="8" y="16">6 · 7</text><text class="s" x="36" y="44" font-size="30">CN</text><text class="l" x="36" y="62">Cyanide</text></svg><h3>CN related</h3><p>Hydrogen cyanide (HCN) and its derivatives: acrylic glass, nylon intermediates, methionine for animal feed.</p><span class="go" aria-hidden="true">→</span></a></li><li><a class="ind-tile" href="industry-other.html#where-else"><svg class="tile" viewBox="0 0 72 72" aria-hidden="true"><rect x=".75" y=".75" width="70.5" height="70.5" rx="4"/><text class="n" x="8" y="16">1</text><text class="s" x="36" y="44" font-size="30">H</text><text class="l" x="36" y="62">Hydrogen</text></svg><h3>Hydrogen related</h3><p>High-pressure hydrogen: valves up to Class 2500, defined project by project; one runs at 420 bar.</p><span class="go" aria-hidden="true">→</span></a></li><li><a class="ind-tile" href="industry-other.html"><svg class="tile" viewBox="0 0 72 72" aria-hidden="true"><rect x=".75" y=".75" width="70.5" height="70.5" rx="4"/><text class="n" x="8" y="16"></text><text class="s" x="36" y="44" font-size="30">+</text><text class="l" x="36" y="62">Other</text></svg><h3>Other critical applications</h3><p>Hot oil, molten salt, ammonia, ethylene oxide and other severe services.</p><span class="go" aria-hidden="true">→</span></a></li></ul>
       </div>
     </div>
   </section>
@@ -1034,6 +1139,7 @@ svg.tile .l{font-size:8.5px;text-anchor:middle;letter-spacing:.04em}
 
   <!-- ================= GLOBAL (le phare apparaît) ================= -->
   <section class="dark-band global" id="global">
+<div class="hgrid" aria-hidden="true"><div><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
     <div class="wrap">
       <div class="grid-lines" aria-hidden="true"></div>
       <div class="inner">
